@@ -1,4 +1,4 @@
-export const server = "https://planwire-backend-b15f09da2367.herokuapp.com/v1";
+export const server = "https://planwire-backend-cd05c98eb5b1.herokuapp.com/v1";
 import { initializeApp } from "firebase/app";
 import { getStorage } from "firebase/storage";
 
