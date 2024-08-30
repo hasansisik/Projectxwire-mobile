@@ -48,6 +48,12 @@ const TaskCard = ({ item, navigation }) => {
             size={TEXT.medium}
             color={COLORS.black}
           />
+          <ReusableText
+            text={item.taskDesc}
+            family={"regular"}
+            size={TEXT.medium}
+            color={COLORS.black}
+          />
         </View>
         <View style={general.row("space-between")}>
           <ReusableText

@@ -7,13 +7,13 @@ import {
   Image,
   Linking,
   KeyboardAvoidingView,
+  Keyboard,
 } from "react-native";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./auth.style";
 import general from "../../components/general.style";
 import { COLORS, SIZES, TEXT } from "../../constants/theme";
 import {
-  AppBar,
   HeightSpacer,
   ReusableButton,
   ReusableInput,
@@ -28,6 +28,7 @@ const CompanyLogin = ({ navigation }) => {
   const dispatch = useDispatch();
   const [status, setStatus] = useState(null);
   const [message, setMessage] = useState(null);
+  const [isKeyboardVisible, setKeyboardVisible] = useState(false);
 
   const formik = useFormik({
     initialValues: { CompanyCode: "", password: "" },
@@ -57,6 +58,26 @@ const CompanyLogin = ({ navigation }) => {
     );
   };
 
+  useEffect(() => {
+    const keyboardDidShowListener = Keyboard.addListener(
+      "keyboardDidShow",
+      () => {
+        setKeyboardVisible(true);
+      }
+    );
+    const keyboardDidHideListener = Keyboard.addListener(
+      "keyboardDidHide",
+      () => {
+        setKeyboardVisible(false);
+      }
+    );
+
+    return () => {
+      keyboardDidHideListener.remove();
+      keyboardDidShowListener.remove();
+    };
+  }, []);
+
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === "ios" ? "padding" : "height"}
@@ -79,22 +100,24 @@ const CompanyLogin = ({ navigation }) => {
             }}
             resizeMode="contain"
           />
-          <View style={{ padding: 20 }}>
-            <ReusableText
-              text={"Merhaba,\nHoşgeldiniz! 👋\n"}
-              family={"bold"}
-              size={TEXT.xLarge}
-              color={COLORS.orange}
-            />
-            <ReusableText
-              text={
-                "Şirketinizin bilgilerine erişmek için lüfen size Planwire tarafından verilmiş olan bilgileri doldurun.\n\nŞirket Kodu kısmında büyük-küçük harf'e duyarlıdır."
-              }
-              family={"regular"}
-              size={TEXT.medium}
-              color={COLORS.description}
-            />
-          </View>
+          {!isKeyboardVisible && (
+            <View style={{ padding: 20 }}>
+              <ReusableText
+                text={"Merhaba,\nHoşgeldiniz! 👋\n"}
+                family={"bold"}
+                size={TEXT.xLarge}
+                color={COLORS.orange}
+              />
+              <ReusableText
+                text={
+                  "Şirketinizin bilgilerine erişmek için lüfen size Planwire tarafından verilmiş olan bilgileri doldurun.\n\nŞirket Kodu kısmında büyük-küçük harf'e duyarlıdır."
+                }
+                family={"regular"}
+                size={TEXT.medium}
+                color={COLORS.description}
+              />
+            </View>
+          )}
         </View>
         <View style={styles.context}>
           <View>

@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
   Image,
   KeyboardAvoidingView,
+  Keyboard,
 } from "react-native";
 import React, { useEffect, useState } from "react";
 import styles from "./auth.style";
@@ -30,14 +31,32 @@ const Login = ({ navigation }) => {
   const [status, setStatus] = useState(null);
   const [message, setMessage] = useState(null);
   const [companyId, setCompanyId] = useState("");
+  const [isKeyboardVisible, setKeyboardVisible] = useState(false);
 
   useEffect(() => {
     const fetchCompanyId = async () => {
       const storedCompanyId = await AsyncStorage.getItem("companyId");
       setCompanyId(storedCompanyId);
     };
-
     fetchCompanyId();
+
+    const keyboardDidShowListener = Keyboard.addListener(
+      "keyboardDidShow",
+      () => {
+        setKeyboardVisible(true);
+      }
+    );
+    const keyboardDidHideListener = Keyboard.addListener(
+      "keyboardDidHide",
+      () => {
+        setKeyboardVisible(false);
+      }
+    );
+
+    return () => {
+      keyboardDidHideListener.remove();
+      keyboardDidShowListener.remove();
+    };
   }, []);
 
   const formik = useFormik({
@@ -115,28 +134,29 @@ const Login = ({ navigation }) => {
             />
           </TouchableOpacity>
           <HeightSpacer height={75} />
-          <View style={{ padding: 20 }}>
-            {/* Header */}
-            <ReusableText
-              text={"Merhaba,\nTekrar Hoşgeldiniz! 👋"}
-              family={"bold"}
-              size={TEXT.xLarge}
-              color={COLORS.orange}
-            />
-            {/* Description */}
-            <ReusableText
-              text={
-                "Giriş yaparak devam edebilirsiniz,veya bir hesap oluşturabilirsiniz."
-              }
-              family={"regular"}
-              size={TEXT.medium}
-              color={COLORS.description}
-            />
-          </View>
+          {!isKeyboardVisible && (
+            <View style={{ padding: 20 }}>
+              {/* Header */}
+              <ReusableText
+                text={"Merhaba,\nTekrar Hoşgeldiniz! 👋"}
+                family={"bold"}
+                size={TEXT.xLarge}
+                color={COLORS.orange}
+              />
+              {/* Description */}
+              <ReusableText
+                text={
+                  "Giriş yaparak devam edebilirsiniz,veya bir hesap oluşturabilirsiniz."
+                }
+                family={"regular"}
+                size={TEXT.medium}
+                color={COLORS.description}
+              />
+            </View>
+          )}
         </View>
         {/* Footer */}
         <View style={styles.context}>
-          {/* Inputs */}
           <View>
             {/*Mail Input*/}
             <ReusableInput

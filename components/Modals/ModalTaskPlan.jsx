@@ -48,11 +48,12 @@ export default function ModalTaskPlan({
   }));
 
   const formik = useFormik({
-    initialValues: { taskCategory: "", taskTitle: "" },
+    initialValues: { taskCategory: "", taskTitle: "", taskDesc :""},
     onSubmit: async (values) => {
       const taskData = {
         taskTitle: values.taskTitle,
         taskCategory: values.taskCategory,
+        taskDesc: values.taskDesc,
         persons: selectedUserId,
         plan: planId,
         taskCreator: user._id,
@@ -114,8 +115,25 @@ export default function ModalTaskPlan({
             color={COLORS.description}
           />
         </View>
+        {/* Task Topic Input */}
+        <HeightSpacer height={15} />
+        <View style={{ gap: 5 }}>
+          <ReusableText
+            text={"Görev Konusu :"}
+            family={"medium"}
+            size={TEXT.small}
+            color={COLORS.black}
+          />
+          <ReusableInput
+            label="Görev Konusu"
+            theme={{ colors: { primary: "black" } }}
+            value={formik.values.taskDesc}
+            onChangeText={formik.handleChange("taskDesc")}
+            touched={formik.touched.taskDesc}
+            error={formik.errors.taskDesc}
+          />
+        </View>
         {/* Task Category Input */}
-        <HeightSpacer height={20} />
         <View style={{ gap: 5 }}>
           <ReusableText
             text={"Görev Kategorisi :"}

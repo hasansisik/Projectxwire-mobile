@@ -53,39 +53,40 @@ export default function ModalTask({
     userName: person.name,
   }));
 
-   const formik = useFormik({
-     initialValues: { taskCategory: "", taskTitle: "" },
-     onSubmit: async (values) => {
-       const taskData = {
-         taskTitle: values.taskTitle,
-         taskCategory: values.taskCategory,
-         persons: selectedUserId,
-         plan: selectedPlanId,
-         taskCreator: user._id,
-       };
-       const actionResult = await dispatch(
-         createTask({
-           projectId,
-           ...taskData,
-         })
-       );
-       if (createTask.fulfilled.match(actionResult)) {
-         setStatus("success");
-         setMessage("Görev başarıyla oluşturuldu.");
-         const taskId = actionResult.payload._id;
-         setTaskId(taskId);
-         onTaskCreated && onTaskCreated(taskId);
-         setTimeout(() => {
-           setShowFilters(false);
-         }, 1500);
-       } else if (createTask.rejected.match(actionResult)) {
-         const errorMessage = actionResult.payload;
-         setStatus("error");
-         setMessage(errorMessage);
-         setTimeout(() => setStatus(null), 2000);
-       }
-     },
-   });
+  const formik = useFormik({
+    initialValues: { taskCategory: "", taskTitle: "", taskDesc: "" },
+    onSubmit: async (values) => {
+      const taskData = {
+        taskDesc: values.taskDesc,
+        taskTitle: values.taskTitle,
+        taskCategory: values.taskCategory,
+        persons: selectedUserId,
+        plan: selectedPlanId,
+        taskCreator: user._id,
+      };
+      const actionResult = await dispatch(
+        createTask({
+          projectId,
+          ...taskData,
+        })
+      );
+      if (createTask.fulfilled.match(actionResult)) {
+        setStatus("success");
+        setMessage("Görev başarıyla oluşturuldu.");
+        const taskId = actionResult.payload._id;
+        setTaskId(taskId);
+        onTaskCreated && onTaskCreated(taskId);
+        setTimeout(() => {
+          setShowFilters(false);
+        }, 1500);
+      } else if (createTask.rejected.match(actionResult)) {
+        const errorMessage = actionResult.payload;
+        setStatus("error");
+        setMessage(errorMessage);
+        setTimeout(() => setStatus(null), 2000);
+      }
+    },
+  });
 
   useEffect(() => {
     if (!showFilters) {
@@ -120,8 +121,25 @@ export default function ModalTask({
             color={COLORS.description}
           />
         </View>
-        {/* Task Category Input */}
+        {/* Task Topic Input */}
         <HeightSpacer height={15} />
+        <View style={{ gap: 5 }}>
+          <ReusableText
+            text={"Görev Konusu :"}
+            family={"medium"}
+            size={TEXT.small}
+            color={COLORS.black}
+          />
+          <ReusableInput
+            label="Görev Konusu"
+            theme={{ colors: { primary: "black" } }}
+            value={formik.values.taskDesc}
+            onChangeText={formik.handleChange("taskDesc")}
+            touched={formik.touched.taskDesc}
+            error={formik.errors.taskDesc}
+          />
+        </View>
+        {/* Task Category Input */}
         <View style={{ gap: 5 }}>
           <ReusableText
             text={"Görev Kategorisi :"}

@@ -5,7 +5,15 @@ import { server } from "../../config";
 export const createTask = createAsyncThunk(
   "task/create",
   async (
-    { projectId, taskCategory, taskTitle, persons, plan, taskCreator },
+    {
+      projectId,
+      taskCategory,
+      taskTitle,
+      persons,
+      plan,
+      taskCreator,
+      taskDesc,
+    },
     thunkAPI
   ) => {
     try {
@@ -15,6 +23,7 @@ export const createTask = createAsyncThunk(
         persons,
         plan,
         taskCreator,
+        taskDesc,
       });
       return response.data;
     } catch (error) {
