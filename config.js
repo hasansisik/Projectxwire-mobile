@@ -1,4 +1,4 @@
-export const server = "http://192.168.1.70:3000/v1";
+export const server = "http://172.20.10.4:3040/v1";
 import { initializeApp } from "firebase/app";
 import { getStorage } from "firebase/storage";
 

@@ -12,7 +12,7 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import { useFocusEffect } from "@react-navigation/native";
 import { AppBar, ReusableText } from "../../components/index.js";
-import { Feather, Ionicons } from "@expo/vector-icons";
+import { AntDesign, Feather, Ionicons } from "@expo/vector-icons";
 import MessagesFile from "../../components/Tiles/Upload/MessagesFile.jsx";
 import CameraFile from "../../components/Tiles/Upload/CameraFile.jsx";
 import ModalSelectUser from "../../components/Modals/ModalSelectUser.jsx";
@@ -261,7 +261,7 @@ const TaskDetails = ({ route, navigation }) => {
                       >
                         <Image
                           source={{ uri: fileUri }}
-                          style={{ width: 100, height: 100 }}
+                          style={{ width: 100, height: 100, borderRadius: 5 }}
                         />
                       </TouchableOpacity>
                     )}
@@ -371,9 +371,18 @@ const TaskDetails = ({ route, navigation }) => {
               >
                 <Ionicons name="person-add" size={22} color={COLORS.orange} />
               </TouchableOpacity>
+              <View
+                style={{ width: 1, height: 40, backgroundColor: COLORS.orange }}
+              />
+              <CameraFile
+                onImageSelected={(imageUri) => setSelectedImageUri(imageUri)}
+                onImageSend={(imageUri) => {
+                  handleSendMessage(imageUri, "");
+                  setIsMessagesFileVisible(false);
+                }}
+              />
             </View>
           )}
-
           <TouchableOpacity
             onPress={() => setIsMessagesFileVisible(!isMessagesFileVisible)}
             style={styles.toggleButton}
@@ -384,13 +393,21 @@ const TaskDetails = ({ route, navigation }) => {
           <TextInput
             style={styles.textbox}
             value={messageText}
-            onChangeText={setMessageText}
+            onChangeText={(text) => {
+              setMessageText(text);
+              if (text.includes("@")) {
+                toggleModalTaskPlan();
+                setMessageText(text.replace("@", ""));
+              }
+            }}
           />
           {messageText === "" && (
-            <CameraFile
-              onImageSelected={(imageUri) => setSelectedImageUri(imageUri)}
-              onImageSend={(imageUri) => handleSendMessage(imageUri, "")}
-            />
+            <TouchableOpacity
+              style={styles.mediaButton}
+              onPress={() => handleSendMessage(null, "👍")}
+            >
+              <AntDesign name="like2" size={24} color={COLORS.orange} />
+            </TouchableOpacity>
           )}
 
           {messageText !== "" && (
