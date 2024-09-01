@@ -49,13 +49,15 @@ const Projects = () => {
         }
       }
       const token = (await Notifications.getExpoPushTokenAsync()).data;
-      dispatch(
-        sendPushNotification({ userId: user._id, expoPushToken: token })
-      );
+      if (!user.expoPushToken || user.expoPushToken !== token) {
+        console.log(user.expoPushToken);
+        dispatch(
+          sendPushNotification({ userId: user._id, expoPushToken: token })
+        );
+      }
     };
 
     registerForPushNotificationsAsync();
-
     Notifications.setNotificationHandler({
       handleNotification: async () => ({
         shouldShowAlert: true,
