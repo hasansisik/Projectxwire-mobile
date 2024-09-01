@@ -235,7 +235,7 @@ const TaskDetails = ({ route, navigation }) => {
                   styles.messageContainer,
                   isSelected
                     ? { backgroundColor: "red" }
-                    : { backgroundColor: "hsla(22, 100%, 75%, 0.4)" },
+                    : { backgroundColor: "hsla(50, 0%, 82%, 0.4)" },
                 ]}
               >
                 {item.content && (
@@ -480,7 +480,7 @@ const styles = StyleSheet.create({
     margin: 10,
   },
   messageContainer: {
-    backgroundColor: "hsla(22, 100%, 75%, 0.4)",
+    backgroundColor: "hsla(50, 0%, 82%, 0.4)",
     padding: 8,
     marginVertical: 8,
     borderTopLeftRadius: 15,
