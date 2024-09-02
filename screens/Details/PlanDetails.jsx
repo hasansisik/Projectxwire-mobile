@@ -7,7 +7,7 @@ import {
   StyleSheet,
   ActivityIndicator,
   TouchableOpacity,
-  Dimensions,
+  FlatList,
   Image,
 } from "react-native";
 import { COLORS, SIZES } from "../../constants/theme";
@@ -20,11 +20,11 @@ import { useDispatch } from "react-redux";
 import { createPin, getPins } from "../../redux/actions/planActions";
 import { useFocusEffect } from "@react-navigation/native";
 import ModalTaskPlan from "../../components/Modals/ModalTaskPlan";
+import PinCard from "../../components/Tiles/Cards/PinCard";
 
 const PlanDetails = ({ route, navigation }) => {
   const { item } = route.params;
   const dispatch = useDispatch();
-
   const [taskId, setTaskId] = useState(null);
   const [pendingPin, setPendingPin] = useState(null);
   const [isZoomEnabled, setIsZoomEnabled] = useState(true);
@@ -154,7 +154,7 @@ const PlanDetails = ({ route, navigation }) => {
                     handlePinPress(pin);
                   }}
                 >
-                  <MaterialIcons name="person-pin" size={18} color="red" />
+                  <MaterialIcons name="person-pin" size={18} color={COLORS.orange} />
                 </TouchableOpacity>
               ))}
             </View>
@@ -174,7 +174,20 @@ const PlanDetails = ({ route, navigation }) => {
           />
         )}
       </GestureHandlerRootView>
-      <ToolBox onPin={handlePin} onToolPress={handleToolPress} />
+      <View style={styles.bottom}>
+        <ToolBox onPin={handlePin} onToolPress={handleToolPress} />
+        <View style={styles.line}></View>
+        <FlatList
+          data={item.pins}
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          keyExtractor={(item, index) => index.toString()}
+          contentContainerStyle={{ gap: SIZES.medium }}
+          renderItem={({ item }) => (
+            <PinCard item={item} navigation={navigation} />
+          )}
+        />
+      </View>
       <ModalTaskPlan
         showFilters={showModalTask}
         setShowFilters={setShowModalTask}
@@ -213,4 +226,18 @@ const styles = StyleSheet.create({
     width: SIZES.width,
     height: 60,
   },
+  bottom: {
+    gap: SIZES.xLarge,
+    paddingBottom: 20,
+    paddingTop: 20,
+    backgroundColor: COLORS.lightWhite,
+    padding: SIZES.padding,
+    flexDirection: "row",
+    justifyContent: "space-between",
+  },
+  line: {
+    height: "100%",
+    width: 1,
+    backgroundColor: COLORS.lightGrey,
+  }
 });

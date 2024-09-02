@@ -106,8 +106,6 @@ const ToolBox = ({
 
 const styles = StyleSheet.create({
   container: {
-    paddingBottom: 50,
-    paddingTop: 10,
     marginLeft: 8,
     backgroundColor: COLORS.lightWhite,
     flexDirection: "row",
@@ -120,9 +118,9 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     paddingHorizontal: 8,
-    paddingVertical: 5,
+    paddingVertical: 8,
     borderRadius: 10,
-    gap: 10,
+    gap: 5,
   },
   box: {
     alignItems: "center",
