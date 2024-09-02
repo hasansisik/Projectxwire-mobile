@@ -9,37 +9,38 @@ import styles from '../settings.style.js';
 const HelperFaq = ({ navigation }) => {
   const faqs = [
     {
-      question: "Sürücü kursuna kayıt için hangi belgelere ihtiyacım var?",
+      question: "Planwire uygulaması nasıl çalışır?",
       answer:
-        "Kimlik belgesi, sağlık raporu ve 2 adet vesikalık fotoğraf genellikle gereklidir.",
+        "Planwire, inşaat projelerinde sorun bildirme ve taleplerin yönetilmesi için geliştirilmiş bir mobil uygulamadır. Kullanıcılar, projeler üzerinde pin bırakabilir, çizim yapabilir, belgeleri imzalayıp saklayabilir ve ekip üyeleriyle iletişim kurabilir.",
     },
     {
-      question: "Sürücü kursu ücretleri ne kadar?",
+      question: "Planwire'da hangi özellikler mevcut?",
       answer:
-        "Ücretler, kursun süresine, içeriğine ve bulunduğunuz şehre göre değişebilir.",
+        "Planwire, sorun bildirimi, anında mesajlaşma, belge yönetimi, ve ekip yönetimi gibi bir dizi özellik sunar. Ayrıca, projeler üzerinde işaretleme yapabilir ve sorunları doğrudan projeye ekleyebilirsiniz.",
     },
     {
-      question: "Kursun süresi ne kadar?",
+      question: "Planwire'ı hangi cihazlarda kullanabilirim?",
       answer:
-        "Sürücü kurslarının süresi genellikle 1 ila 3 ay arasında değişebilir.",
+        "Planwire, Android ve iOS platformlarında kullanılabilir. Uygulama ayrıca web üzerinden de erişilebilir.",
     },
     {
-      question: "Kurs içeriği neleri kapsar?",
+      question: "Planwire ile ilgili nasıl destek alabilirim?",
       answer:
-        "Kurslar, teorik dersler, direksiyon eğitimleri, trafik kuralları, ilk yardım gibi konuları içerir.",
+        "Planwire uygulamasıyla ilgili sorunlarınızı uygulama içi destek bölümünden, web formu üzerinden veya destek e-postasıyla iletebilirsiniz.",
     },
     {
-      question: "Kurs sonunda hangi belgeleri alırım?",
+      question: "Planwire uygulamasını kullanırken verilerim güvende mi?",
       answer:
-        "Kursu tamamlayanlar sürücü belgesi ve kurs bitirme belgesi alırlar.",
+        "Evet, Planwire uygulaması kullanıcı verilerini korumak için en güncel güvenlik protokollerini kullanır. Tüm verileriniz şifrelenmiş olarak saklanır.",
     },
     {
-      question: "Kurs ücretini nasıl ödeyebilirim?",
+      question:
+        "Planwire uygulamasını kullanmak için internet bağlantısı gerekli mi?",
       answer:
-        "Kurs ücretini nakit, kredi kartı veya banka havalesi gibi yöntemlerle ödeyebilirsiniz.",
+        "Evet, Planwire uygulaması bulut tabanlı bir uygulama olduğundan, tüm işlevsellikler için aktif bir internet bağlantısı gereklidir.",
     },
-    
   ];
+
 
   return (
     <SafeAreaView

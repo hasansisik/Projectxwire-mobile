@@ -10,12 +10,12 @@ const styles = StyleSheet.create({
   },
   image: {
     resizeMode: "cover",
-    width: 60,
-    height: 60,
+    width: 65,
+    height: 65,
     borderRadius: 35,
   },
   profile: {
-    gap: 5,
+    gap: 10,
     paddingHorizontal: 20,
     flexDirection: "row",
     alignItems: "center",
@@ -26,6 +26,14 @@ const styles = StyleSheet.create({
     marginHorizontal: 15,
     borderWidth: 1,
     borderColor: COLORS.lightBorder,
+  },
+  editIcon: {
+    position: "absolute",
+    bottom: -5,
+    right: -5,
+    backgroundColor: COLORS.nagivationPrimary,
+    borderRadius: 15,
+    padding: 5,
   },
 });
 

@@ -4,19 +4,83 @@ import {
   StatusBar,
   SafeAreaView,
   Image,
+  TouchableOpacity,
 } from "react-native";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { COLORS, TEXT } from "../../constants/theme";
 import { AppBar, HeightSpacer, ReusableText } from "../../components";
 import styles from "./pages.style";
 import general from "../../components/general.style.js";
 import ReusableSettings from "../../components/Reusable/ReusableSettings";
 import { useDispatch, useSelector } from "react-redux";
-import { logout } from "../../redux/actions/userActions";
+import { logout, editProfile } from "../../redux/actions/userActions";
+import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
+import { storage } from "../../config";
+import * as ImagePicker from "expo-image-picker";
+import NoticeMessage from "../../components/Reusable/NoticeMessage.jsx";
+import { AntDesign, Ionicons } from "@expo/vector-icons";
 
 const Profile = ({ navigation }) => {
   const { user } = useSelector((state) => state.user);
   const dispatch = useDispatch();
+  const [status, setStatus] = useState(null);
+  const [message, setMessage] = useState(null);
+  const [image, setImage] = useState(user?.picture);
+
+  useEffect(() => {
+    (async () => {
+      if (Platform.OS !== "web") {
+        const { status } =
+          await ImagePicker.requestMediaLibraryPermissionsAsync();
+        if (status !== "granted") {
+          alert("Üzgünüz, galeri erişim izni gerekiyor!");
+        }
+      }
+    })();
+  }, []);
+
+  const pickImage = async () => {
+    let result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.All,
+      allowsEditing: true,
+      quality: 1,
+    });
+
+    if (result && !result.canceled) {
+      const uri = result.assets[0].uri;
+      setImage(uri);
+      await uploadImage(uri);
+    }
+  };
+
+  const uploadImage = async (uri) => {
+    if (!uri) {
+      return null;
+    }
+    const response = await fetch(uri);
+    const blob = await response.blob();
+    const date = new Date();
+    const formattedDate = date.toISOString().split(".")[0].replace("T", "-");
+    const filename = `${user.name}-${formattedDate}.jpg`;
+    const storageRef = ref(storage, `ProfilePictures/${filename}`);
+    await uploadBytes(storageRef, blob);
+    const url = await getDownloadURL(storageRef);
+    await updateProfilePicture(url);
+    return url;
+  };
+
+  const updateProfilePicture = async (url) => {
+    const actionResult = await dispatch(editProfile({ picture: url }));
+    if (editProfile.fulfilled.match(actionResult)) {
+      setStatus("success");
+      setMessage("Profil resmi güncellendi");
+    } else if (editProfile.rejected.match(actionResult)) {
+      const NoticeMessage = actionResult.payload;
+      setStatus("error");
+      setMessage(NoticeMessage);
+    }
+    setTimeout(() => setStatus(null), 3000);
+  };
 
   const logoutHandler = async () => {
     await dispatch(logout());
@@ -41,14 +105,14 @@ const Profile = ({ navigation }) => {
       </View>
       <View style={{ paddingHorizontal: 25 }}>
         <ReusableText
-          text={"Proje"}
+          text={"Uygulama"}
           family={"regular"}
           size={TEXT.xLarge}
           color={COLORS.description}
         />
         <ReusableText
           text={"Ayarları"}
-          family={"medium"}
+          family={"bold"}
           size={TEXT.xxLarge}
           color={COLORS.black}
         />
@@ -56,14 +120,19 @@ const Profile = ({ navigation }) => {
       <HeightSpacer height={25} />
       <View style={styles.profile}>
         {/* Profile Image */}
-        <Image
-          source={{
-            uri: user?.picture
-              ? user?.picture
-              : "https://cdn-icons-png.freepik.com/512/8188/8188362.png",
-          }}
-          style={styles.image}
-        />
+        <TouchableOpacity style={{ position: "relative" }} onPress={pickImage}>
+          <Image
+            source={{
+              uri: image
+                ? image
+                : "https://cdn-icons-png.freepik.com/512/8188/8188362.png",
+            }}
+            style={styles.image}
+          />
+          <View style={styles.editIcon}>
+            <AntDesign name="edit" size={15} color="black" />
+          </View>
+        </TouchableOpacity>
         <HeightSpacer height={5} />
         <View style={styles.name}>
           <ReusableText
@@ -154,6 +223,7 @@ const Profile = ({ navigation }) => {
           />
         </View>
       )}
+      {status && <NoticeMessage status={status} message={message} />}
     </SafeAreaView>
   );
 };
