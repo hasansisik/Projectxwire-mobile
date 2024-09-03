@@ -10,19 +10,24 @@ const WelcomeHeader = ({ user }) => {
   const navigation = useNavigation();
 
   return (
-    <View style={[general.row("space-between"), { paddingBottom: 20 , marginTop:10, alignItems:"center"}]}>
-        <ReusableText
-          text={user?.name ? `Merhaba ${user?.name} 👋` : "Hoşgeldiniz 👋"}
-          family={"medium"}
-          size={TEXT.large}
-          color={COLORS.black}
-        />
+    <View
+      style={[
+        general.row("space-between"),
+        { paddingBottom: 20, marginTop: 10, alignItems: "center" },
+      ]}
+    >
+      <ReusableText
+        text={user?.name ? `Merhaba ${user?.name} 👋` : "Hoşgeldiniz 👋"}
+        family={"medium"}
+        size={TEXT.large}
+        color={COLORS.black}
+      />
       <TouchableOpacity onPress={() => navigation.navigate("Profile")}>
         <Image
           source={{
             uri: user?.picture
               ? user?.picture
-              : "https://cdn-icons-png.freepik.com/512/8188/8188362.png",
+              : "https://firebasestorage.googleapis.com/v0/b/planwire-9e539.appspot.com/o/user.png?alt=media&token=dfe0ede5-7467-4e65-8752-1da262d7356b",
           }}
           style={styles.image}
         />

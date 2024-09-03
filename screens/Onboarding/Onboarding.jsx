@@ -14,14 +14,14 @@ const Onboarding = () => {
     {
       id: 2,
       image: "https://i.ibb.co/pXTrYCV/2.png",
-      header: "Discover the world",
-      title: "Discover the world",
+      header: "Planwire Hoşgeldiniz",
+      title: "Planwire ile Projelerinizin Kontrolü Sizde!",
     },
     {
       id: 3,
       image: "https://i.ibb.co/Hznpv2S/3.png",
-      header: "Find the best Hotels in the world",
-      title: "Find the best Hotels in the world",
+      header: "Planwire Hoşgeldiniz",
+      title: "Planwire ile Projelerinizin Kontrolü Sizde!",
     },
   ];
 

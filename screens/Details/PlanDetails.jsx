@@ -154,7 +154,11 @@ const PlanDetails = ({ route, navigation }) => {
                     handlePinPress(pin);
                   }}
                 >
-                  <MaterialIcons name="person-pin" size={18} color={COLORS.orange} />
+                  <MaterialIcons
+                    name="person-pin"
+                    size={18}
+                    color={COLORS.orange}
+                  />
                 </TouchableOpacity>
               ))}
             </View>
@@ -178,13 +182,19 @@ const PlanDetails = ({ route, navigation }) => {
         <ToolBox onPin={handlePin} onToolPress={handleToolPress} />
         <View style={styles.line}></View>
         <FlatList
-          data={item.pins}
+          data={pins}
           horizontal
           showsHorizontalScrollIndicator={false}
           keyExtractor={(item, index) => index.toString()}
           contentContainerStyle={{ gap: SIZES.medium }}
           renderItem={({ item }) => (
-            <PinCard item={item} navigation={navigation} />
+            <PinCard
+              item={item}
+              navigation={navigation}
+              onPress={() =>
+                navigation.navigate("TaskDetails", { item: item.task })
+              }
+            />
           )}
         />
       </View>
@@ -231,7 +241,7 @@ const styles = StyleSheet.create({
     paddingBottom: 20,
     paddingTop: 20,
     backgroundColor: COLORS.lightWhite,
-    padding: SIZES.padding,
+    padding: SIZES.small,
     flexDirection: "row",
     justifyContent: "space-between",
   },

@@ -1,18 +1,29 @@
-import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
-import React from 'react'
-import { COLORS, SIZES, TEXT } from '../../../constants/theme'
-import ReusableText from '../../Reusable/ReusableText';
-import { MaterialIcons } from '@expo/vector-icons';
+import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import React from "react";
+import { COLORS, SIZES, TEXT } from "../../../constants/theme";
+import ReusableText from "../../Reusable/ReusableText";
+
+const truncateText = (text, maxLength) => {
+  if (text.length > maxLength) {
+    return text.substring(0, maxLength) + "...";
+  }
+  return text;
+};
 
 const PinCard = ({ item, onPress }) => {
   return (
     <TouchableOpacity style={styles.container} onPress={onPress}>
-      <View style={[styles.icon, { backgroundColor: COLORS.lightInput }]}>
-        <MaterialIcons name="person-pin" size={24} color="black" />
-      </View>
+      <Image
+        source={{
+          uri: item?.task?.taskCreator?.picture
+            ? item?.task?.taskCreator?.picture
+            : "https://firebasestorage.googleapis.com/v0/b/planwire-9e539.appspot.com/o/user.png?alt=media&token=dfe0ede5-7467-4e65-8752-1da262d7356b",
+        }}
+        style={styles.icon}
+      />
       <ReusableText
-        text={"item.task"}
-        family={"medium"}
+        text={truncateText(item.task.taskTitle, 10)}
+        family={"regular"}
         size={TEXT.small}
         color={COLORS.black}
       />
@@ -20,7 +31,7 @@ const PinCard = ({ item, onPress }) => {
   );
 };
 
-export default PinCard
+export default PinCard;
 
 const styles = StyleSheet.create({
   container: {

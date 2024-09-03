@@ -125,7 +125,7 @@ const Profile = ({ navigation }) => {
             source={{
               uri: image
                 ? image
-                : "https://cdn-icons-png.freepik.com/512/8188/8188362.png",
+                : "https://firebasestorage.googleapis.com/v0/b/planwire-9e539.appspot.com/o/user.png?alt=media&token=dfe0ede5-7467-4e65-8752-1da262d7356b",
             }}
             style={styles.image}
           />

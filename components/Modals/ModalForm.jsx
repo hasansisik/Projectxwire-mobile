@@ -93,13 +93,13 @@ export default function ModalForm({ showFilters, setShowFilters, projectId }) {
         <HeightSpacer height={20} />
         <View>
           <ReusableText
-            text={"Görev Oluştur"}
+            text={"Form Oluştur"}
             family={"medium"}
             size={TEXT.medium}
             color={COLORS.black}
           />
           <ReusableText
-            text={"Görev oluşturmak için aşağıdaki alanları doldurunuz."}
+            text={"Form oluşturmak için aşağıdaki alanları doldurunuz."}
             family={"regular"}
             size={TEXT.xSmall}
             color={COLORS.description}

@@ -227,7 +227,7 @@ const TaskDetails = ({ route, navigation }) => {
               {!isCurrentUser && (
                 <Image
                   source={{ uri: item.sender.picture }}
-                  style={{ width: 30, height: 30 }}
+                  style={{ width: 40, height: 40, borderRadius: 20 }}
                 />
               )}
               <View
@@ -271,7 +271,7 @@ const TaskDetails = ({ route, navigation }) => {
               {isCurrentUser && (
                 <Image
                   source={{ uri: item.sender.picture }}
-                  style={{ width: 30, height: 30 }}
+                  style={{ width: 40, height: 40, borderRadius: 20 }}
                 />
               )}
             </View>
@@ -331,6 +331,24 @@ const TaskDetails = ({ route, navigation }) => {
               color={COLORS.description}
             />
           </View>
+          <ReusableText
+            text={formatDate(item.createdAt)}
+            family={"regular"}
+            size={TEXT.xSmall}
+            color={COLORS.description}
+          />
+          <ReusableText
+            text={`${item?.taskTitle}`}
+            family={"regular"}
+            size={TEXT.xSmall}
+            color={COLORS.description}
+          />
+          <ReusableText
+            text={`${item?.taskCreator?.name}`}
+            family={"regular"}
+            size={TEXT.xSmall}
+            color={COLORS.description}
+          />
         </TouchableOpacity>
         <FlatList
           ref={flatListRef}
@@ -496,7 +514,7 @@ const styles = StyleSheet.create({
   },
   info: {
     backgroundColor: COLORS.lightWhite,
-    marginTop: 10,
+    marginVertical: 7,
     paddingVertical: 3,
     paddingHorizontal: 10,
     borderRadius: 14,

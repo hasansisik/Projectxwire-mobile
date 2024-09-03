@@ -5,6 +5,13 @@ import { AntDesign, MaterialIcons } from "@expo/vector-icons";
 import ReusableText from "./ReusableText";
 import { COLORS, TEXT } from "../../constants/theme";
 
+const truncateText = (text, maxLength) => {
+  if (text.length > maxLength) {
+    return text.substring(0, maxLength) + "...";
+  }
+  return text;
+};
+
 const AppBar = ({
   color,
   title,
@@ -36,7 +43,7 @@ const AppBar = ({
 
         {!showDeleteIcon && (
           <ReusableText
-            text={title}
+            text={truncateText(title, 30)}
             family={"medium"}
             size={TEXT.large}
             color={showDeleteIcon ? COLORS.white : COLORS.black}

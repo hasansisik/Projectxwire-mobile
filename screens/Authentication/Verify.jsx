@@ -51,7 +51,9 @@ const Verify = ({ navigation, route }) => {
       {/* Content */}
       <View style={styles.container}>
         <Image
-          source={{ uri: "https://i.ibb.co/7S7sZHg/background-line.png" }}
+          source={{
+            uri: "https://firebasestorage.googleapis.com/v0/b/planwire-9e539.appspot.com/o/background-line.png?alt=media&token=33636fe2-271c-4ec3-bcd8-4074deaae563",
+          }}
           style={{
             position: "absolute",
             width: SIZES.width,
