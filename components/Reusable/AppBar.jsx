@@ -6,7 +6,7 @@ import ReusableText from "./ReusableText";
 import { COLORS, TEXT } from "../../constants/theme";
 
 const truncateText = (text, maxLength) => {
-  if (text.length > maxLength) {
+  if (text?.length > maxLength) {
     return text.substring(0, maxLength) + "...";
   }
   return text;
