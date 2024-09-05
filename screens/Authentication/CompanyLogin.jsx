@@ -49,12 +49,12 @@ const CompanyLogin = ({ navigation }) => {
 
   const handleForgotInfoPress = () => {
     Linking.openURL(
-      "mailto:destek@planwire.com?subject=Bilgilerimi Unuttum&body=Merhaba, bilgilerimi unuttum, yardımcı olabilir misiniz?"
+      "mailto:destek@Projectxwire.com?subject=Bilgilerimi Unuttum&body=Merhaba, bilgilerimi unuttum, yardımcı olabilir misiniz?"
     );
   };
   const handleApplyPress = () => {
     Linking.openURL(
-      "mailto:basvur@planwire.com?subject=Başvuru&body=Merhaba, şirket kodu başvurusunda bulunmak istiyorum."
+      "mailto:basvur@Projectxwire.com?subject=Başvuru&body=Merhaba, şirket kodu başvurusunda bulunmak istiyorum."
     );
   };
 
@@ -92,7 +92,7 @@ const CompanyLogin = ({ navigation }) => {
         <View style={styles.container}>
           <Image
             source={{
-              uri: "https://firebasestorage.googleapis.com/v0/b/planwire-9e539.appspot.com/o/background-line.png?alt=media&token=33636fe2-271c-4ec3-bcd8-4074deaae563",
+              uri: "https://firebasestorage.googleapis.com/v0/b/Projectxwire-9e539.appspot.com/o/background-line.png?alt=media&token=33636fe2-271c-4ec3-bcd8-4074deaae563",
             }}
             style={{
               position: "absolute",
@@ -112,7 +112,7 @@ const CompanyLogin = ({ navigation }) => {
               />
               <ReusableText
                 text={
-                  "Şirketinizin bilgilerine erişmek için lüfen size Planwire tarafından verilmiş olan bilgileri doldurun.\n\nŞirket Kodu kısmında büyük-küçük harf'e duyarlıdır."
+                  "Şirketinizin bilgilerine erişmek için lüfen size Projectxwire tarafından verilmiş olan bilgileri doldurun.\n\nŞirket Kodu kısmında büyük-küçük harf'e duyarlıdır."
                 }
                 family={"regular"}
                 size={TEXT.medium}

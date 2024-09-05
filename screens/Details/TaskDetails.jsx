@@ -110,7 +110,7 @@ const TaskDetails = ({ route, navigation }) => {
     const date = new Date();
     const formattedDate = date.toISOString().split(".")[0].replace("T", "-");
     const filename = `${projectId}-${formattedDate}.jpg`;
-    const storageRef = ref(storage, `PlanwireFile/${filename}`);
+    const storageRef = ref(storage, `ProjectxwireFile/${filename}`);
     await uploadBytes(storageRef, blob);
     return await getDownloadURL(storageRef);
   };

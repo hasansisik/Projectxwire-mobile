@@ -129,7 +129,7 @@ const Notification = ({ navigation }) => {
             }}
           >
             {"bir sorun var ise "}
-            <Text style={{ color: COLORS.orange }}>{"destek@planwire.app"}</Text>
+            <Text style={{ color: COLORS.orange }}>{"destek@projectxwire.com"}</Text>
             {" e-posta adresinden bizimle iletişime geçebilirsiniz."}
           </Text>
         </View>

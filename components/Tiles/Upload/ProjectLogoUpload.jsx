@@ -39,7 +39,7 @@ export default function ProjectLogoUpload({
     const date = new Date();
     const formattedDate = date.toISOString().split(".")[0].replace("T", "-");
     const filename = `${user.name}-${formattedDate}.jpg`;
-    const storageRef = ref(storage, `PlanwireProject/${filename}`);
+    const storageRef = ref(storage, `ProjectxwireProject/${filename}`);
     await uploadBytes(storageRef, blob);
     const url = await getDownloadURL(storageRef);
     onUploadComplete(url);

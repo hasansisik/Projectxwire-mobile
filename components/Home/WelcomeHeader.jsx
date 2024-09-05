@@ -27,7 +27,7 @@ const WelcomeHeader = ({ user }) => {
           source={{
             uri: user?.picture
               ? user?.picture
-              : "https://firebasestorage.googleapis.com/v0/b/planwire-9e539.appspot.com/o/user.png?alt=media&token=dfe0ede5-7467-4e65-8752-1da262d7356b",
+              : "https://firebasestorage.googleapis.com/v0/b/projectxwire-e951a.appspot.com/o/user.png?alt=media&token=1beeeb68-a4c5-4a9c-b0e1-b3bd437a37fc",
           }}
           style={styles.image}
         />

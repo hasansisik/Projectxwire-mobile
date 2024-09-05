@@ -28,7 +28,7 @@ const Auth = ({ navigation }) => {
     >
       <Image
         source={{
-          uri: "https://firebasestorage.googleapis.com/v0/b/planwire-9e539.appspot.com/o/WelcomeAuth.png?alt=media&token=caf475bf-d24f-421c-9199-69ceacc97c11",
+          uri: "https://firebasestorage.googleapis.com/v0/b/projectxwire-e951a.appspot.com/o/welcomeAuth.png?alt=media&token=05390942-e8a0-49f4-977b-62707ba6da84",
         }}
         style={{
           width: Dimensions.get("window").width - 40,
@@ -49,7 +49,7 @@ const Auth = ({ navigation }) => {
         <HeightSpacer height={15} />
         <ReusableText
           text={
-            "Planwire denemek veya kullanmak için kayıt ol veya giriş yapmayı dene"
+            "Projectxwire denemek veya kullanmak için kayıt ol veya giriş yapmayı dene"
           }
           family={"regular"}
           size={TEXT.medium}

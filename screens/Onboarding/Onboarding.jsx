@@ -8,20 +8,20 @@ const Onboarding = () => {
     {
       id: 1,
       image: "https://i.ibb.co/vjfWwf1/1.png",
-      header: "Planwire Hoşgeldiniz",
-      title: "Planwire ile Projelerinizin Kontrolü Sizde!",
+      header: "Projectxwire Hoşgeldiniz",
+      title: "Projectxwire ile Projelerinizin Kontrolü Sizde!",
     },
     {
       id: 2,
       image: "https://i.ibb.co/pXTrYCV/2.png",
-      header: "Planwire Hoşgeldiniz",
-      title: "Planwire ile Projelerinizin Kontrolü Sizde!",
+      header: "Projectxwire Hoşgeldiniz",
+      title: "Projectxwire ile Projelerinizin Kontrolü Sizde!",
     },
     {
       id: 3,
       image: "https://i.ibb.co/Hznpv2S/3.png",
-      header: "Planwire Hoşgeldiniz",
-      title: "Planwire ile Projelerinizin Kontrolü Sizde!",
+      header: "Projectxwire Hoşgeldiniz",
+      title: "Projectxwire ile Projelerinizin Kontrolü Sizde!",
     },
   ];
 

@@ -9,35 +9,35 @@ import styles from '../settings.style.js';
 const HelperFaq = ({ navigation }) => {
   const faqs = [
     {
-      question: "Planwire uygulaması nasıl çalışır?",
+      question: "Projectxwire uygulaması nasıl çalışır?",
       answer:
-        "Planwire, inşaat projelerinde sorun bildirme ve taleplerin yönetilmesi için geliştirilmiş bir mobil uygulamadır. Kullanıcılar, projeler üzerinde pin bırakabilir, çizim yapabilir, belgeleri imzalayıp saklayabilir ve ekip üyeleriyle iletişim kurabilir.",
+        "Projectxwire, inşaat projelerinde sorun bildirme ve taleplerin yönetilmesi için geliştirilmiş bir mobil uygulamadır. Kullanıcılar, projeler üzerinde pin bırakabilir, çizim yapabilir, belgeleri imzalayıp saklayabilir ve ekip üyeleriyle iletişim kurabilir.",
     },
     {
-      question: "Planwire'da hangi özellikler mevcut?",
+      question: "Projectxwire'da hangi özellikler mevcut?",
       answer:
-        "Planwire, sorun bildirimi, anında mesajlaşma, belge yönetimi, ve ekip yönetimi gibi bir dizi özellik sunar. Ayrıca, projeler üzerinde işaretleme yapabilir ve sorunları doğrudan projeye ekleyebilirsiniz.",
+        "Projectxwire, sorun bildirimi, anında mesajlaşma, belge yönetimi, ve ekip yönetimi gibi bir dizi özellik sunar. Ayrıca, projeler üzerinde işaretleme yapabilir ve sorunları doğrudan projeye ekleyebilirsiniz.",
     },
     {
-      question: "Planwire'ı hangi cihazlarda kullanabilirim?",
+      question: "Projectxwire'ı hangi cihazlarda kullanabilirim?",
       answer:
-        "Planwire, Android ve iOS platformlarında kullanılabilir. Uygulama ayrıca web üzerinden de erişilebilir.",
+        "Projectxwire, Android ve iOS platformlarında kullanılabilir. Uygulama ayrıca web üzerinden de erişilebilir.",
     },
     {
-      question: "Planwire ile ilgili nasıl destek alabilirim?",
+      question: "Projectxwire ile ilgili nasıl destek alabilirim?",
       answer:
-        "Planwire uygulamasıyla ilgili sorunlarınızı uygulama içi destek bölümünden, web formu üzerinden veya destek e-postasıyla iletebilirsiniz.",
+        "Projectxwire uygulamasıyla ilgili sorunlarınızı uygulama içi destek bölümünden, web formu üzerinden veya destek e-postasıyla iletebilirsiniz.",
     },
     {
-      question: "Planwire uygulamasını kullanırken verilerim güvende mi?",
+      question: "Projectxwire uygulamasını kullanırken verilerim güvende mi?",
       answer:
-        "Evet, Planwire uygulaması kullanıcı verilerini korumak için en güncel güvenlik protokollerini kullanır. Tüm verileriniz şifrelenmiş olarak saklanır.",
+        "Evet, Projectxwire uygulaması kullanıcı verilerini korumak için en güncel güvenlik protokollerini kullanır. Tüm verileriniz şifrelenmiş olarak saklanır.",
     },
     {
       question:
-        "Planwire uygulamasını kullanmak için internet bağlantısı gerekli mi?",
+        "Projectxwire uygulamasını kullanmak için internet bağlantısı gerekli mi?",
       answer:
-        "Evet, Planwire uygulaması bulut tabanlı bir uygulama olduğundan, tüm işlevsellikler için aktif bir internet bağlantısı gereklidir.",
+        "Evet, Projectxwire uygulaması bulut tabanlı bir uygulama olduğundan, tüm işlevsellikler için aktif bir internet bağlantısı gereklidir.",
     },
   ];
 
