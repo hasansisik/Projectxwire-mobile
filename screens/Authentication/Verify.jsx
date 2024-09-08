@@ -73,14 +73,14 @@ const Verify = ({ navigation, route }) => {
         <View style={{ padding: 20 }}>
           {/* Header */}
           <ReusableText
-            text={"Şifremi Unuttum"}
+            text={"Doğrulama Kodu"}
             family={"bold"}
             size={TEXT.xLarge}
             color={COLORS.orange}
           />
           {/* Description */}
           <ReusableText
-            text={"Şifrenizi sıfırlamak için mail adresinizi girin."}
+            text={"Mail adresinize gönderilen doğrulama kodunu giriniz."}
             family={"regular"}
             size={TEXT.medium}
             color={COLORS.description}
@@ -92,7 +92,7 @@ const Verify = ({ navigation, route }) => {
               handleTextChange={setVerificationCode}
               inputCount={4}
               keyboardType="numeric"
-              tintColor={COLORS.black} // tintColor siyah oldu
+              tintColor={COLORS.black} 
               offTintColor="#BBBCBE"
               backgroundColor={COLORS.white}
               textInputStyle={styles.OtpInput}

@@ -11,10 +11,11 @@ import {
 import { COLORS, SIZES, TEXT } from "../../constants/theme";
 import { useDispatch, useSelector } from "react-redux";
 import { useFormik } from "formik";
-import NoticeMessage from "../Reusable/NoticeMessage";
+import { useNavigation } from "@react-navigation/native";
 import { createTask } from "../../redux/actions/taskActions";
 import { Dropdown } from "react-native-element-dropdown";
 import { getAllUsers } from "../../redux/actions/userActions";
+import NoticeMessage from "../Reusable/NoticeMessage";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export default function ModalTaskPlan({
@@ -25,6 +26,8 @@ export default function ModalTaskPlan({
   planId,
 }) {
   const dispatch = useDispatch();
+  const navigation = useNavigation();
+
   const [status, setStatus] = useState(null);
   const [message, setMessage] = useState(null);
   const [selectedUserId, setSelectedUserId] = useState(null);
@@ -48,7 +51,7 @@ export default function ModalTaskPlan({
   }));
 
   const formik = useFormik({
-    initialValues: { taskCategory: "", taskTitle: "", taskDesc :""},
+    initialValues: { taskCategory: "", taskTitle: "", taskDesc: "" },
     onSubmit: async (values) => {
       const taskData = {
         taskTitle: values.taskTitle,
@@ -66,12 +69,15 @@ export default function ModalTaskPlan({
       );
       if (createTask.fulfilled.match(actionResult)) {
         setStatus("success");
-        setMessage("Görev başarıyla oluşturuldu.");
+        setMessage("Pin başarıyla oluşturuldu.");
         const taskId = actionResult.payload._id;
         setTaskId(taskId);
         onTaskCreated && onTaskCreated(taskId);
         setTimeout(() => {
           setShowFilters(false);
+          navigation.navigate("TaskDetails", {
+            item: actionResult.payload,
+          });
         }, 1500);
       } else if (createTask.rejected.match(actionResult)) {
         const errorMessage = actionResult.payload;
@@ -103,13 +109,13 @@ export default function ModalTaskPlan({
         <HeightSpacer height={15} />
         <View>
           <ReusableText
-            text={"Görev Oluştur"}
+            text={"Pin Oluştur"}
             family={"medium"}
             size={TEXT.medium}
             color={COLORS.black}
           />
           <ReusableText
-            text={"Görev oluşturmak için aşağıdaki alanları doldurunuz."}
+            text={"Pin oluşturarak, Plan üzerinde görev ekleyebilirsiniz."}
             family={"regular"}
             size={TEXT.xSmall}
             color={COLORS.description}
@@ -197,7 +203,7 @@ export default function ModalTaskPlan({
         </View>
         <HeightSpacer height={25} />
         <ReusableButton
-          btnText={"Plan Oluştur"}
+          btnText={"Pin Oluştur"}
           width={SIZES.width - 60}
           height={45}
           borderRadius={SIZES.small}
