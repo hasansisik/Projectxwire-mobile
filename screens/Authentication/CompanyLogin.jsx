@@ -92,7 +92,7 @@ const CompanyLogin = ({ navigation }) => {
         <View style={styles.container}>
           <Image
             source={{
-              uri: "https://firebasestorage.googleapis.com/v0/b/Projectxwire-9e539.appspot.com/o/background-line.png?alt=media&token=33636fe2-271c-4ec3-bcd8-4074deaae563",
+              uri: "https://firebasestorage.googleapis.com/v0/b/projectxwire-e951a.appspot.com/o/background-line.png?alt=media&token=6c1e4177-f00f-42f1-b76b-4bf6aa4f62b5",
             }}
             style={{
               position: "absolute",
