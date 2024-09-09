@@ -21,6 +21,7 @@ const Projects = () => {
   const [showModal, setShowModal] = useState(false);
   const [companyId, setCompanyId] = useState("");
   const { user } = useSelector((state) => state.user);
+  const userId = user?._id;
   const { projects } = useSelector((state) => state.projects);
 
   useEffect(() => {
@@ -38,11 +39,8 @@ const Projects = () => {
   );
   
   useEffect(() => {
-    const userId = user._id;
     registerForPushNotifications().then((expoPushToken) => {
-      console.log("expoPushToken", expoPushToken);
       if (expoPushToken) {
-        console.log("userId", userId);
         dispatch(sendPushNotification({ userId, expoPushToken }));
       }
     });
