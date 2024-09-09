@@ -41,6 +41,7 @@ const Projects = () => {
   useEffect(() => {
     const registerForPushNotificationsAsync = async () => {
       const { status } = await Notifications.getPermissionsAsync();
+      console.log("frontend status:",status);
       if (status !== "granted") {
         const { status } = await Notifications.requestPermissionsAsync();
         if (status !== "granted") {
@@ -49,9 +50,15 @@ const Projects = () => {
         }
       }
       const token = (await Notifications.getExpoPushTokenAsync()).data;
-      dispatch(
-        sendPushNotification({ userId: user._id, expoPushToken: token })
-      );
+      console.log("frontend token:",token);
+      dispatch(sendPushNotification({ userId: user._id, expoPushToken: token }))
+       .then((response) => {
+         console.log("Push notification response:", response);
+       })
+       .catch((error) => {
+         console.log("Push notification error:", error);
+       });
+
     };
 
     registerForPushNotificationsAsync();

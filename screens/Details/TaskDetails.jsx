@@ -34,7 +34,6 @@ import {
   LongPressGestureHandler,
   State,
   GestureHandlerRootView,
-  TouchableWithoutFeedback,
 } from "react-native-gesture-handler";
 
 const TaskDetails = ({ route, navigation }) => {
