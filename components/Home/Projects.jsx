@@ -12,8 +12,8 @@ import { getProjects } from "../../redux/actions/projectActions";
 import { useDispatch, useSelector } from "react-redux";
 import { useFocusEffect } from "@react-navigation/native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { sendPushNotification } from "../../redux/actions/userActions.js";
-import * as Notifications from "expo-notifications";
+import { registerForPushNotifications } from "../../helpers/registerForPushNotifications";
+import { sendPushNotification } from "../../redux/actions/userActions";
 
 const Projects = () => {
   const dispatch = useDispatch();
@@ -36,40 +36,17 @@ const Projects = () => {
       dispatch(getProjects(companyId));
     }, [dispatch, companyId])
   );
-
-  // Push notification
+  
   useEffect(() => {
-    const registerForPushNotificationsAsync = async () => {
-      const { status } = await Notifications.getPermissionsAsync();
-      console.log("frontend status:",status);
-      if (status !== "granted") {
-        const { status } = await Notifications.requestPermissionsAsync();
-        if (status !== "granted") {
-          alert("Failed to get push token for push notification!");
-          return;
-        }
+    const userId = user._id;
+    registerForPushNotifications().then((expoPushToken) => {
+      console.log("expoPushToken", expoPushToken);
+      if (expoPushToken) {
+        console.log("userId", userId);
+        dispatch(sendPushNotification({ userId, expoPushToken }));
       }
-      const token = (await Notifications.getExpoPushTokenAsync()).data;
-      console.log("frontend token:",token);
-      dispatch(sendPushNotification({ userId: user._id, expoPushToken: token }))
-       .then((response) => {
-         console.log("Push notification response:", response);
-       })
-       .catch((error) => {
-         console.log("Push notification error:", error);
-       });
-
-    };
-
-    registerForPushNotificationsAsync();
-    Notifications.setNotificationHandler({
-      handleNotification: async () => ({
-        shouldShowAlert: true,
-        shouldPlaySound: true,
-        shouldSetBadge: false,
-      }),
     });
-  }, [dispatch, user]);
+  }, []);
 
   return (
     <View style={general.column}>
