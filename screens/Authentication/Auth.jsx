@@ -24,8 +24,7 @@ const Auth = ({ navigation }) => {
       style={[
         general.container,
         { paddingTop: Platform.OS === "ios" ? 20 : StatusBar.currentHeight },
-      ]}
-    >
+      ]}>
       <Image
         source={{
           uri: "https://firebasestorage.googleapis.com/v0/b/projectxwire-e951a.appspot.com/o/welcomeAuth.png?alt=media&token=05390942-e8a0-49f4-977b-62707ba6da84",

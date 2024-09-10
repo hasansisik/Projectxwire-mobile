@@ -156,7 +156,7 @@ const PlanDetails = ({ route, navigation }) => {
                 >
                   <MaterialIcons
                     name="person-pin"
-                    size={10}
+                    size={9}
                     color={COLORS.orange}
                   />
                 </TouchableOpacity>

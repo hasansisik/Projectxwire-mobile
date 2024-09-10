@@ -12,8 +12,6 @@ import { getProjects } from "../../redux/actions/projectActions";
 import { useDispatch, useSelector } from "react-redux";
 import { useFocusEffect } from "@react-navigation/native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { registerForPushNotifications } from "../../helpers/registerForPushNotifications";
-import { sendPushNotification } from "../../redux/actions/userActions";
 
 const Projects = () => {
   const dispatch = useDispatch();
@@ -37,14 +35,6 @@ const Projects = () => {
       dispatch(getProjects(companyId));
     }, [dispatch, companyId])
   );
-  
-  useEffect(() => {
-    registerForPushNotifications().then((expoPushToken) => {
-      if (expoPushToken) {
-        dispatch(sendPushNotification({ userId, expoPushToken }));
-      }
-    });
-  }, []);
 
   return (
     <View style={general.column}>
