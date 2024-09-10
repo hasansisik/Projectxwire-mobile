@@ -22,14 +22,14 @@ const Tasks = ({ route, navigation }) => {
   const dispatch = useDispatch();
   const { projectId } = route.params;
 
-  useFocusEffect(
-    React.useCallback(() => {
-      dispatch(getTasks(projectId));
-    }, [dispatch, projectId])
-  );
+   useFocusEffect(
+     React.useCallback(() => {
+       dispatch(getTasks(projectId));
+     }, [dispatch, projectId])
+   );
 
   const { tasks } = useSelector((state) => state.tasks);
-
+ 
   return (
     <SafeAreaView
       style={[

@@ -16,7 +16,6 @@ import { createTask } from "../../redux/actions/taskActions";
 import { Dropdown } from "react-native-element-dropdown";
 import { getAllUsers } from "../../redux/actions/userActions";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import sendNotification from "../../helpers/sendNotification"; // Import the function
 
 export default function ModalTask({
   showFilters,
@@ -77,15 +76,6 @@ export default function ModalTask({
         const taskId = actionResult.payload._id;
         setTaskId(taskId);
         onTaskCreated && onTaskCreated(taskId);
-        // Bildirim gönderme
-        const expoPushToken = await AsyncStorage.getItem("expoPushToken");
-        if (expoPushToken) {
-          await sendNotification(
-            expoPushToken,
-            `Yeni bir göreve eklendiniz: ${values.taskTitle}`
-          );
-        }
-
         setTimeout(() => {
           setShowFilters(false);
         }, 1500);

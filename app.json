@@ -19,13 +19,7 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.Projectxwire.Projectxwire",
-      "permissions": [
-        "NOTIFICATIONS",
-        "WRITE_EXTERNAL_STORAGE",
-        "READ_EXTERNAL_STORAGE"
-      ],
-      "useNextNotificationsApi": true
+      "package": "com.Projectxwire.Projectxwire"
     },
     "web": {
       "favicon": "./assets/favicon.png"
