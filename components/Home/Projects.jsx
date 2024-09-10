@@ -21,7 +21,7 @@ const Projects = () => {
   const [showModal, setShowModal] = useState(false);
   const [companyId, setCompanyId] = useState("");
   const { user } = useSelector((state) => state.user);
-  const userId = user?._id;
+  const userId = user._id;
   const { projects } = useSelector((state) => state.projects);
 
   useEffect(() => {
