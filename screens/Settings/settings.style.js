@@ -14,8 +14,8 @@ const settings = StyleSheet.create({
         alignItems: "center",
         justifyContent: "center",
         position: "absolute",
-        paddingHorizontal:40,
-        bottom: 50,
+        paddingHorizontal:10,
+        bottom: 30,
         width: SIZES.width,
     },
     icon : {

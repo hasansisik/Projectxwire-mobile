@@ -117,7 +117,7 @@ const Profile = ({ navigation }) => {
           color={COLORS.black}
         />
       </View>
-      <HeightSpacer height={25} />
+      <HeightSpacer height={15} />
       <View style={styles.profile}>
         {/* Profile Image */}
         <TouchableOpacity style={{ position: "relative" }} onPress={pickImage}>
@@ -149,7 +149,7 @@ const Profile = ({ navigation }) => {
           />
         </View>
       </View>
-      <HeightSpacer height={30} />
+      <HeightSpacer height={20} />
       {!user ? null : (
         <>
           <View style={{ paddingHorizontal: 20, paddingBottom: 5 }}>
@@ -177,7 +177,7 @@ const Profile = ({ navigation }) => {
           </View>
         </>
       )}
-      <HeightSpacer height={30} />
+      <HeightSpacer height={20} />
       <View style={{ paddingHorizontal: 20, paddingBottom: 5 }}>
         <ReusableText
           text={"Politikalar ve Yardım"}
@@ -205,7 +205,7 @@ const Profile = ({ navigation }) => {
           onPress={() => navigation.navigate("Politicy")}
         />
       </View>
-      <HeightSpacer height={40} />
+      <HeightSpacer height={20} />
       {!user ? (
         <View style={styles.settingsBox}>
           <ReusableSettings

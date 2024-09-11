@@ -28,7 +28,7 @@ const Auth = ({ navigation }) => {
     >
       <Image
         source={{
-          uri: "https://firebasestorage.googleapis.com/v0/b/projectxwire-e951a.appspot.com/o/welcomeAuth.png?alt=media&token=05390942-e8a0-49f4-977b-62707ba6da84",
+          uri: "https://firebasestorage.googleapis.com/v0/b/projectxwire-e951a.appspot.com/o/authBuild.png?alt=media&token=33f5398b-9c53-41d1-8322-8ff7a44e3a9f",
         }}
         style={{
           width: Dimensions.get("window").width - 40,
@@ -52,7 +52,7 @@ const Auth = ({ navigation }) => {
             "Projectxwire denemek veya kullanmak için kayıt ol veya giriş yapmayı dene"
           }
           family={"regular"}
-          size={TEXT.medium}
+          size={TEXT.small}
           color={COLORS.description}
           align={"center"}
         />

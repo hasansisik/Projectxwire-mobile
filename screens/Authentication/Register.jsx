@@ -105,7 +105,7 @@ const Register = ({ navigation }) => {
         <View style={styles.container}>
           <Image
             source={{
-              uri: "https://firebasestorage.googleapis.com/v0/b/projectxwire-e951a.appspot.com/o/background-line.png?alt=media&token=6c1e4177-f00f-42f1-b76b-4bf6aa4f62b5",
+              uri: "https://firebasestorage.googleapis.com/v0/b/projectxwire-e951a.appspot.com/o/background-line.png?alt=media&token=a6b97028-2aa0-46fb-b2ae-6a67d374fe8d",
             }}
             style={{
               position: "absolute",
@@ -136,7 +136,7 @@ const Register = ({ navigation }) => {
               <ReusableText
                 text={"Kayıt olun ve uygulamamızı kullanmaya başlayın."}
                 family={"regular"}
-                size={TEXT.medium}
+                size={TEXT.small}
                 color={COLORS.description}
               />
             </View>
@@ -201,7 +201,7 @@ const Register = ({ navigation }) => {
             <ReusableText
               text={"Hesabınız yok mu ? "}
               family={"regular"}
-              size={TEXT.small}
+              size={TEXT.xSmall}
               color={COLORS.description}
               underline={true}
             />
@@ -209,7 +209,7 @@ const Register = ({ navigation }) => {
               <ReusableText
                 text={"Kayıt Olun"}
                 family={"bold"}
-                size={TEXT.small}
+                size={TEXT.xSmall}
                 color={COLORS.orange}
                 underline={true}
               />

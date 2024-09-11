@@ -56,7 +56,7 @@ const ForgotPassword = ({ navigation }) => {
       <View style={styles.container}>
         <Image
           source={{
-            uri: "https://firebasestorage.googleapis.com/v0/b/projectxwire-e951a.appspot.com/o/background-line.png?alt=media&token=6c1e4177-f00f-42f1-b76b-4bf6aa4f62b5",
+            uri: "https://firebasestorage.googleapis.com/v0/b/projectxwire-e951a.appspot.com/o/background-line.png?alt=media&token=a6b97028-2aa0-46fb-b2ae-6a67d374fe8d",
           }}
           style={{
             position: "absolute",

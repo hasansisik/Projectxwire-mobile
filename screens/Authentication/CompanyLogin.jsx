@@ -92,7 +92,7 @@ const CompanyLogin = ({ navigation }) => {
         <View style={styles.container}>
           <Image
             source={{
-              uri: "https://firebasestorage.googleapis.com/v0/b/projectxwire-e951a.appspot.com/o/background-line.png?alt=media&token=6c1e4177-f00f-42f1-b76b-4bf6aa4f62b5",
+              uri: "https://firebasestorage.googleapis.com/v0/b/projectxwire-e951a.appspot.com/o/background-line.png?alt=media&token=a6b97028-2aa0-46fb-b2ae-6a67d374fe8d",
             }}
             style={{
               position: "absolute",
@@ -115,7 +115,7 @@ const CompanyLogin = ({ navigation }) => {
                   "Şirketinizin bilgilerine erişmek için lüfen size Projectxwire tarafından verilmiş olan bilgileri doldurun.\n\nŞirket Kodu kısmında büyük-küçük harf'e duyarlıdır."
                 }
                 family={"regular"}
-                size={TEXT.medium}
+                size={TEXT.small}
                 color={COLORS.description}
               />
             </View>
@@ -158,7 +158,7 @@ const CompanyLogin = ({ navigation }) => {
               <ReusableText
                 text={"Bilgileri Unuttum ? "}
                 family={"bold"}
-                size={TEXT.small}
+                size={TEXT.xSmall}
                 color={COLORS.orange}
                 underline={true}
               />
@@ -166,7 +166,7 @@ const CompanyLogin = ({ navigation }) => {
             <ReusableText
               text={"Şirket Kodunuz yok mu ? "}
               family={"regular"}
-              size={TEXT.small}
+              size={TEXT.xSmall}
               color={COLORS.description}
               underline={true}
             />
@@ -174,7 +174,7 @@ const CompanyLogin = ({ navigation }) => {
               <ReusableText
                 text={"Başvur"}
                 family={"bold"}
-                size={TEXT.small}
+                size={TEXT.xSmall}
                 color={COLORS.orange}
                 underline={true}
               />

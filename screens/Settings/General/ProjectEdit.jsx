@@ -202,14 +202,14 @@ const ProjectEdit = ({ navigation }) => {
         </View>
         <View style={styles.info}>
           <ReusableText
-            text={"Para Birimi"}
+            text={"Tema"}
             family={"regular"}
             size={TEXT.small}
             color={COLORS.black}
           />
           <View style={general.row("")}>
             <ReusableText
-              text={"TRY"}
+              text={"Gündüz"}
               family={"regular"}
               size={TEXT.small}
               color={COLORS.description}
@@ -233,20 +233,6 @@ const ProjectEdit = ({ navigation }) => {
             />
             <Feather name="chevron-right" size={20} />
           </View>
-        </View>
-        <View style={styles.bottom}>
-          <Text
-            style={{
-              fontFamily: "regular",
-              fontSize: TEXT.xSmall,
-              color: COLORS.description,
-              textAlign: "center",
-            }}
-          >
-            {"bir sorun var ise "}
-            <Text style={{ color: COLORS.orange }}>{"destek@projectxwire.com"}</Text>
-            {" e-posta adresinden bizimle iletişime geçebilirsiniz."}
-          </Text>
         </View>
       </View>
       {status && <NoticeMessage status={status} message={message} />}

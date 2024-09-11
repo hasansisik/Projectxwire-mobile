@@ -18,7 +18,6 @@ const styles = StyleSheet.create({
     marginBottom: 50,
   },
   footer: {
-    paddingHorizontal: 20,
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",

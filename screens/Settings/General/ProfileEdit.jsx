@@ -201,7 +201,7 @@ const ProfileEdit = ({ navigation }) => {
             <Feather name="chevron-right" size={20} />
           </View>
         </TouchableOpacity>
-
+        <HeightSpacer height={30} />
         <View style={styles.bottom}>
           <Text
             style={{
@@ -212,7 +212,15 @@ const ProfileEdit = ({ navigation }) => {
             }}
           >
             {"bir sorun var ise "}
-            <Text style={{ color: COLORS.orange }}>{"destek@projectxwire.com"}</Text>
+            <Text
+              style={{
+                fontFamily: "regular",
+                fontSize: TEXT.xSmall,
+                color: COLORS.orange,
+              }}
+            >
+              {"destek@projectxwire.com"}
+            </Text >
             {" e-posta adresinden bizimle iletişime geçebilirsiniz."}
           </Text>
         </View>

@@ -11,7 +11,7 @@ const PlanCard = ({ item, navigation }) => {
       <View style={styles.card}>
         <Image
           source={{ uri: item.planImages}}
-          style={{ width: "100%", height: 150 }}
+          style={{ width: "100%", height: 150 , borderRadius: 5}}
         />
       </View>
       <View style={{ padding: 10 }}>

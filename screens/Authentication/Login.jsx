@@ -102,7 +102,7 @@ const Login = ({ navigation }) => {
         <View style={styles.container}>
           <Image
             source={{
-              uri: "https://firebasestorage.googleapis.com/v0/b/projectxwire-e951a.appspot.com/o/background-line.png?alt=media&token=6c1e4177-f00f-42f1-b76b-4bf6aa4f62b5",
+              uri: "https://firebasestorage.googleapis.com/v0/b/projectxwire-e951a.appspot.com/o/background-line.png?alt=media&token=a6b97028-2aa0-46fb-b2ae-6a67d374fe8d",
             }}
             style={{
               position: "absolute",
@@ -130,7 +130,7 @@ const Login = ({ navigation }) => {
             <ReusableText
               text={"Şirket Girişi Sayfası"}
               family={"medium"}
-              size={TEXT.small}
+              size={TEXT.xSmall}
               color={COLORS.black}
               underline={true}
             />
@@ -151,7 +151,7 @@ const Login = ({ navigation }) => {
                   "Giriş yaparak devam edebilirsiniz,veya bir hesap oluşturabilirsiniz."
                 }
                 family={"regular"}
-                size={TEXT.medium}
+                size={TEXT.small}
                 color={COLORS.description}
               />
             </View>
@@ -201,7 +201,7 @@ const Login = ({ navigation }) => {
               <ReusableText
                 text={"Şifremi Unuttum ? "}
                 family={"bold"}
-                size={TEXT.small}
+                size={TEXT.xSmall}
                 color={COLORS.orange}
                 underline={true}
               />
@@ -209,14 +209,14 @@ const Login = ({ navigation }) => {
             <ReusableText
               text={"Hesabınız yok mu ? "}
               family={"regular"}
-              size={TEXT.small}
+              size={TEXT.xSmall}
               color={COLORS.description}
             />
             <TouchableOpacity onPress={() => navigation.navigate("Register")}>
               <ReusableText
                 text={"Kayıt Olun"}
                 family={"bold"}
-                size={TEXT.small}
+                size={TEXT.xSmall}
                 color={COLORS.orange}
                 underline={true}
               />
