@@ -18,6 +18,16 @@ const styles = StyleSheet.create({
     alignItems: "center",
     flexDirection: "row",
   },
+  filterButton: {
+    height: 30,
+    borderWidth: 1,
+    borderRadius: 30,
+    paddingHorizontal: 7,
+    borderColor: COLORS.lightBorder,
+    justifyContent: "center",
+    alignItems: "center",
+    flexDirection: "row",
+  },
  
 });
 

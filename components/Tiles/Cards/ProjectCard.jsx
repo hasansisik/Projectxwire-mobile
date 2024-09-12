@@ -1,17 +1,19 @@
 import React from "react";
-import { StyleSheet, Text, View, TouchableOpacity ,Image} from "react-native";
+import { StyleSheet, View, TouchableOpacity, Image } from "react-native";
 import { COLORS, TEXT } from "../../../constants/theme";
 import ReusableText from "../../Reusable/ReusableText";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
-const FolderCard = ({ item, onPress }) => {
+const ProjectCard = ({ item, onPress }) => {
+  const backgroundColor = item.status ? COLORS.projectActive : COLORS.projectDeactive;
+
   return (
     <TouchableOpacity onPress={onPress}>
       <View style={styles.container}>
         <View style={styles.header}>
           <View style={styles.headerTop}></View>
-          <View style={styles.headerBottom}></View>
-          <View style={styles.headerTab}>
+          <View style={[styles.headerBottom, { backgroundColor }]}></View>
+          <View style={[styles.headerTab, { backgroundColor }]}>
             <View style={styles.circle}>
               <MaterialCommunityIcons
                 name="information-variant"
@@ -36,7 +38,7 @@ const FolderCard = ({ item, onPress }) => {
           </View>
         </View>
         {/* İçerik kısmı */}
-        <View style={styles.content}>
+        <View style={[styles.content, { backgroundColor }]}>
           <Image
             source={{ uri: item.logo }}
             resizeMode="contain"
@@ -108,7 +110,7 @@ const FolderCard = ({ item, onPress }) => {
   );
 };
 
-export default FolderCard;
+export default ProjectCard;
 
 const styles = StyleSheet.create({
   container: {
@@ -137,14 +139,12 @@ const styles = StyleSheet.create({
     left: 0,
     width: "100%",
     height: "50%",
-    backgroundColor: COLORS.projectActive,
   },
   headerTab: {
     width: "45%",
     height: "100%",
     justifyContent: "center",
     paddingHorizontal: 10,
-    backgroundColor: COLORS.projectActive,
     borderTopRightRadius: 15,
     borderTopLeftRadius: 15,
   },
@@ -162,7 +162,6 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 15,
     flexDirection: "row",
-    backgroundColor: COLORS.projectActive,
   },
   row: {
     gap: 5,

@@ -20,6 +20,7 @@ const Projects = () => {
   const navigation = useNavigation();
   const [showModal, setShowModal] = useState(false);
   const [companyId, setCompanyId] = useState("");
+  const [filter, setFilter] = useState("all");
   const { user } = useSelector((state) => state.user);
   const { projects } = useSelector((state) => state.projects);
 
@@ -67,6 +68,12 @@ const Projects = () => {
     });
   }, [dispatch, user]);
 
+  const filteredProjects = projects.filter((project) => {
+    if (filter === "active") return project.status === true;
+    if (filter === "inactive") return project.status === false;
+    return true;
+  });
+
   return (
     <View style={general.column}>
       <View style={[general.row("space-between"), { paddingBottom: 25 }]}>
@@ -83,8 +90,68 @@ const Projects = () => {
           <Ionicons name="add-outline" size={24} color="black" />
         </TouchableOpacity>
       </View>
+      <View style={general.row("space-between")}>
+        <TouchableOpacity
+          style={[
+            styles.filterButton,
+            {
+              backgroundColor: filter === "all" ? COLORS.orange : COLORS.white,
+            },
+          ]}
+          onPress={() => setFilter("all")}
+        >
+          <ReusableText
+            text={"Hepsi (" + projects.length + ")"}
+            family={"regular"}
+            size={TEXT.xSmall}
+            color={filter === "all" ? "white" : "black"}
+          />
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={[
+            styles.filterButton,
+            {
+              backgroundColor:
+                filter === "active" ? COLORS.orange : COLORS.white,
+            },
+          ]}
+          onPress={() => setFilter("active")}
+        >
+          <ReusableText
+            text={
+              "Aktif Projeler (" +
+              projects.filter((p) => p.status === true).length +
+              ")"
+            }
+            family={"regular"}
+            size={TEXT.xSmall}
+            color={filter === "active" ? "white" : "black"}
+          />
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={[
+            styles.filterButton,
+            {
+              backgroundColor:
+                filter === "inactive" ? COLORS.orange : COLORS.white,
+            },
+          ]}
+          onPress={() => setFilter("inactive")}
+        >
+          <ReusableText
+            text={
+              "Pasif Projeler (" +
+              projects.filter((p) => p.status === false).length +
+              ")"
+            }
+            family={"regular"}
+            size={TEXT.xSmall}
+            color={filter === "inactive" ? "white" : "black"}
+          />
+        </TouchableOpacity>
+      </View>
       <FlatList
-        data={projects}
+        data={filteredProjects}
         vertical
         showsVerticalScrollIndicator={false}
         keyExtractor={(item, index) => index.toString()}

@@ -27,7 +27,7 @@ const COLORS = {
   lightInput: "#F5F5F5",
   lightBorder: "#EDEDED",
   projectActive: "#383838",
-  projectDeactive: "#383838",
+  projectDeactive: "#9E9E9E",
 };
 
 
