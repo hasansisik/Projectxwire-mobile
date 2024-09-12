@@ -26,6 +26,8 @@ const COLORS = {
   description: "#71727A",
   lightInput: "#F5F5F5",
   lightBorder: "#EDEDED",
+  projectActive: "#383838",
+  projectDeactive: "#383838",
 };
 
 

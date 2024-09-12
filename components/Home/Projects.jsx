@@ -85,21 +85,15 @@ const Projects = () => {
       </View>
       <FlatList
         data={projects}
-        numColumns={2}
-        key={2}
         vertical
         showsVerticalScrollIndicator={false}
         keyExtractor={(item, index) => index.toString()}
         contentContainerStyle={{ gap: SIZES.medium }}
         renderItem={({ item }) => (
-          <View style={{ marginRight: SIZES.medium }}>
-            <ProjectCard
-              item={item}
-              onPress={() =>
-                navigation.navigate("BottomTabNavigation", item._id)
-              }
-            />
-          </View>
+          <ProjectCard
+            item={item}
+            onPress={() => navigation.navigate("BottomTabNavigation", item._id)}
+          />
         )}
       />
       {/* ModalProject */}
