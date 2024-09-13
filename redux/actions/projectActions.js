@@ -4,14 +4,18 @@ import { server } from "../../config"
 
 export const createProject = createAsyncThunk(
   "project/create",
-  async ({ projectName, projectCode, address, logo, companyId }, thunkAPI) => {
+  async (
+    { projectName, projectCode, address, logo, companyId, finishDate },
+    thunkAPI
+  ) => {
     try {
       const { data } = await axios.post(`${server}/project`, {
         projectName,
         projectCode,
         address,
         logo,
-        companyId
+        companyId,
+        finishDate,
       });
       return data.project;
     } catch (error) {

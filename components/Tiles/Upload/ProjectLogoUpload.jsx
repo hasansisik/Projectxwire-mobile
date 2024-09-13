@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Image, View, TouchableOpacity, Platform } from "react-native";
+import { View, TouchableOpacity, Platform } from "react-native";
 import * as ImagePicker from "expo-image-picker";
 import { COLORS, TEXT } from "../../../constants/theme";
 import { storage } from "../../../config";
@@ -12,6 +12,7 @@ export default function ProjectLogoUpload({
   setUploadFunction,
 }) {
   const [image, setImage] = useState(null);
+  const [imageName, setImageName] = useState("Galeriden Seçmek İçin Tıkla");
   const { user } = useSelector((state) => state.user);
 
   useEffect(() => {
@@ -55,7 +56,9 @@ export default function ProjectLogoUpload({
 
     if (result && !result.canceled) {
       const uri = result.assets[0].uri;
+      const name = result.assets[0].fileName || "Seçilen Görsel";
       setImage(uri);
+      setImageName(name);
     }
   };
 
@@ -78,16 +81,12 @@ export default function ProjectLogoUpload({
       >
         <View style={{ alignItems: "center", justifyContent: "center" }}>
           <ReusableText
-            text={"Galeriden Seçmek İçin Tıkla"}
+            text={imageName}
             family={"regular"}
             size={TEXT.xSmall}
             color={COLORS.description}
           />
         </View>
-        <Image
-          source={{ uri: image }}
-          style={{ width: 50, height: 50, marginTop: 10 }}
-        />
       </TouchableOpacity>
     </View>
   );

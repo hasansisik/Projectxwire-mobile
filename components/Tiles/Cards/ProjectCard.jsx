@@ -7,6 +7,29 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 const ProjectCard = ({ item, onPress }) => {
   const backgroundColor = item.status ? COLORS.projectActive : COLORS.projectDeactive;
 
+  const formatDate = (date) => {
+    if (!date) return "Belirtilmedi";
+    const options = { day: "2-digit", month: "2-digit", year: "numeric" };
+    return new Date(date).toLocaleDateString("tr-TR", options);
+  };
+
+  const calculateRemainingTime = (startDate, endDate) => {
+    const start = new Date(startDate);
+    const end = new Date(endDate);
+    const diffTime = Math.abs(end - start);
+    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+
+    const years = Math.floor(diffDays / 365);
+    const months = Math.floor((diffDays % 365) / 30);
+    const days = diffDays % 30;
+
+    let remainingTime = '';
+    if (years > 0) remainingTime += `${years} Yıl `;
+    if (months > 0) remainingTime += `${months} Ay `;
+    if (days > 0) remainingTime += `${days} Gün `;
+    return remainingTime.trim() === '' ? 'Süre Doldu' : remainingTime;
+  };
+
   return (
     <TouchableOpacity onPress={onPress}>
       <View style={styles.container}>
@@ -53,7 +76,7 @@ const ProjectCard = ({ item, onPress }) => {
                 color={COLORS.white}
               />
               <ReusableText
-                text={"10.10.2024"}
+                text={calculateRemainingTime(item.createdAt, item.finishDate)}
                 family={"regular"}
                 size={TEXT.xxSmall}
                 color={COLORS.white}
@@ -74,7 +97,7 @@ const ProjectCard = ({ item, onPress }) => {
                   color={COLORS.white}
                 />
                 <ReusableText
-                  text={"10.10.2024"}
+                  text={formatDate(item.createdAt)}
                   family={"regular"}
                   size={TEXT.xxSmall}
                   color={COLORS.white}
@@ -96,7 +119,7 @@ const ProjectCard = ({ item, onPress }) => {
                   color={COLORS.white}
                 />
                 <ReusableText
-                  text={"10.10.2024"}
+                  text={formatDate(item.finishDate)}
                   family={"regular"}
                   size={TEXT.xxSmall}
                   color={COLORS.white}

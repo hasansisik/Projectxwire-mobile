@@ -75,7 +75,7 @@ const Projects = () => {
   });
 
   return (
-    <View style={general.column}>
+    <View style={{ height :"100%" , paddingBottom:20}}>
       <View style={[general.row("space-between"), { paddingBottom: 25 }]}>
         <View style={general.row("space-between")}>
           <AntDesign name="appstore1" size={18} color="black" />
@@ -155,13 +155,14 @@ const Projects = () => {
         vertical
         showsVerticalScrollIndicator={false}
         keyExtractor={(item, index) => index.toString()}
-        contentContainerStyle={{ gap: SIZES.medium }}
+        contentContainerStyle={{ gap: SIZES.medium, paddingBottom: 25 }}
         renderItem={({ item }) => (
           <ProjectCard
             item={item}
             onPress={() => navigation.navigate("BottomTabNavigation", item._id)}
           />
         )}
+        style={{ flexGrow: 1 }}
       />
       {/* ModalProject */}
       <ModalProject

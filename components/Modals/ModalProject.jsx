@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { TouchableOpacity, StyleSheet, View } from "react-native";
+import { TouchableOpacity, StyleSheet, View, Platform } from "react-native";
 import Modal from "react-native-modal";
 import { AntDesign } from "@expo/vector-icons";
+import DateTimePicker from "@react-native-community/datetimepicker";
 import ReusableText from "../Reusable/ReusableText";
 import HeightSpacer from "../Reusable/HeightSpacer";
 import ReusableInput from "../Inputs/ReusableInput";
@@ -25,6 +26,8 @@ export default function ModalProject({
   const [message, setMessage] = useState(null);
   const [uploadFunction, setUploadFunction] = useState(null);
   const [companyId, setCompanyId] = useState("");
+  const [finishDate, setFinishDate] = useState(new Date());
+  const [showDatePicker, setShowDatePicker] = useState(false);
 
   useEffect(() => {
     const fetchCompanyId = async () => {
@@ -40,7 +43,7 @@ export default function ModalProject({
   };
 
   const formik = useFormik({
-    initialValues: { projectName: "", projectCode: "" },
+    initialValues: { projectName: "", projectCode: "", finishDate: new Date() },
     validationSchema: projectCreateSchema,
     onSubmit: async (values) => {
       const actionResult = await dispatch(
@@ -49,6 +52,7 @@ export default function ModalProject({
           projectCode: values.projectCode,
           logo: values.logo,
           companyId,
+          finishDate: values.finishDate,
         })
       );
       if (createProject.fulfilled.match(actionResult)) {
@@ -86,12 +90,18 @@ export default function ModalProject({
     }
   };
 
+  const formatDate = (date) => {
+    if (!date) return "Teslim Tarihi Seçin";
+    const options = { day: "2-digit", month: "2-digit", year: "numeric" };
+    return date.toLocaleDateString("tr-TR", options);
+  };
+
   return (
     <Modal
       isVisible={showFilters}
       onSwipeComplete={() => setShowFilters(false)}
       swipeDirection="down"
-      style={{ justifyContent: "flex-end", margin: 0}}
+      style={{ justifyContent: "flex-end", margin: 0 }}
     >
       <View style={styles.modalView}>
         <TouchableOpacity onPress={() => setShowFilters(!showFilters)}>
@@ -145,6 +155,38 @@ export default function ModalProject({
             error={formik.errors.projectCode}
           />
         </View>
+        <View style={{ gap: 5 }}>
+          <ReusableText
+            text={"Teslim Tarihi:"}
+            family={"medium"}
+            size={TEXT.small}
+            color={COLORS.black}
+          />
+          <TouchableOpacity
+            style={styles.dateSelect}
+            onPress={() => setShowDatePicker(true)}
+          >
+            <ReusableText
+              text={formatDate(finishDate)}
+              family={"regular"}
+              size={TEXT.xSmall}
+              color={COLORS.description}
+            />
+          </TouchableOpacity>
+          {showDatePicker && (
+            <DateTimePicker
+              value={finishDate}
+              mode="date"
+              display="default"
+              onChange={(event, selectedDate) => {
+                const currentDate = selectedDate || finishDate;
+                setShowDatePicker(Platform.OS === "ios");
+                setFinishDate(currentDate);
+                formik.setFieldValue("finishDate", currentDate);
+              }}
+            />
+          )}
+        </View>
         <HeightSpacer height={5} />
         <ReusableText
           text={"Proje Logo :"}
@@ -186,5 +228,17 @@ const styles = StyleSheet.create({
     borderTopRightRadius: 25,
     padding: 30,
     paddingBottom: 40,
+  },
+  dateSelect: {
+    borderRadius: 10,
+    paddingHorizontal: 20,
+    paddingVertical: 10,
+    marginBottom: 20,
+    marginTop: 5,
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundColor: "#FCFCFC",
+    borderColor: COLORS.lightGrey,
+    borderWidth: 1,
   },
 });
