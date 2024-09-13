@@ -75,7 +75,7 @@ const Projects = () => {
   });
 
   return (
-    <View style={{ height :"100%" , paddingBottom:20}}>
+    <View style={{ height: "100%", paddingBottom: 20 }}>
       <View style={[general.row("space-between"), { paddingBottom: 25 }]}>
         <View style={general.row("space-between")}>
           <AntDesign name="appstore1" size={18} color="black" />
@@ -90,7 +90,7 @@ const Projects = () => {
           <Ionicons name="add-outline" size={24} color="black" />
         </TouchableOpacity>
       </View>
-      <View style={general.row("space-between")}>
+      <View style={[general.row("space-between"), { paddingBottom: 10 }]}>
         <TouchableOpacity
           style={[
             styles.filterButton,
