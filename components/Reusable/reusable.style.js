@@ -29,6 +29,7 @@ const reusable = StyleSheet.create({
     paddingVertical: 15,
     paddingHorizontal: 20,
   },
+
 });
 
 export default reusable

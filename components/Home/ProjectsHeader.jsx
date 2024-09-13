@@ -6,7 +6,7 @@ import styles from "../../screens/Home/home.style";
 import general from "../general.style";
 import { useNavigation } from "@react-navigation/native";
 
-const WelcomeHeader = ({ user }) => {
+const ProjectsHeader = ({ user }) => {
   const navigation = useNavigation();
 
   return (
@@ -16,24 +16,27 @@ const WelcomeHeader = ({ user }) => {
         { paddingBottom: 20, marginTop: 10, alignItems: "center" },
       ]}
     >
-      <ReusableText
-        text={user?.name ? `Merhaba, ${user?.name} 👋` : "Hoşgeldiniz 👋"}
-        family={"medium"}
-        size={TEXT.medium}
-        color={COLORS.black}
-      />
-      <TouchableOpacity onPress={() => navigation.navigate("Profile")}>
+      <TouchableOpacity
+        onPress={() => navigation.navigate("Profile")}
+        style={styles.headerBox}
+      >
         <Image
           source={{
             uri: user?.picture
               ? user?.picture
               : "https://firebasestorage.googleapis.com/v0/b/projectxwire-e951a.appspot.com/o/user.png?alt=media&token=1beeeb68-a4c5-4a9c-b0e1-b3bd437a37fc",
           }}
-          style={styles.image}
+          style={styles.image2}
+        />
+        <ReusableText
+          text={user?.name ? `${user?.name}` : "Misafir"}
+          family={"regular"}
+          size={TEXT.xSmall}
+          color={COLORS.black}
         />
       </TouchableOpacity>
     </View>
   );
 };
 
-export default WelcomeHeader;
+export default ProjectsHeader;

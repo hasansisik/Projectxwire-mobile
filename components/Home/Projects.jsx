@@ -159,7 +159,7 @@ const Projects = () => {
         renderItem={({ item }) => (
           <ProjectCard
             item={item}
-            onPress={() => navigation.navigate("BottomTabNavigation", item._id)}
+            onPress={() => navigation.navigate("Projects", item._id)}
           />
         )}
         style={{ flexGrow: 1 }}

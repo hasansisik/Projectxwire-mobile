@@ -28,7 +28,22 @@ const styles = StyleSheet.create({
     alignItems: "center",
     flexDirection: "row",
   },
- 
+  headerBox: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    gap: 10,
+    backgroundColor: COLORS.lightInput,
+    paddingHorizontal: 8,
+    paddingVertical: 5,
+    borderRadius: 30,
+  },
+  image2: {
+    width: 30,
+    height: 30,
+    borderRadius: 15,
+    borderColor: COLORS.lightGrey,
+  },
 });
 
 export default styles;

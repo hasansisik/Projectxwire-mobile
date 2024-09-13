@@ -42,6 +42,7 @@ import {
   TaskSearch,
   Form,
   ChatMain,
+  Projects,
 } from "./screens/index.js";
 //navigatin
 import BottomTabNavigation from "./navigation/BottomTabNavigation";
@@ -150,6 +151,11 @@ export default function App() {
             <Stack.Screen
               name="Home"
               component={Home}
+              options={{ headerShown: false }}
+            />
+            <Stack.Screen
+              name="Projects"
+              component={Projects}
               options={{ headerShown: false }}
             />
             <Stack.Screen

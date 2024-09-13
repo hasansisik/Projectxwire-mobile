@@ -35,6 +35,7 @@ import PlanSearch from "./Search/PlanSearch";
 import TaskSearch from "./Search/TaskSearch";
 import Form from "./Pages/Form";
 import ChatMain from "./Chat/ChatMain";
+import Projects from "./Pages/Projects";
 
 export {
   Onboarding,
@@ -73,5 +74,6 @@ export {
   PlanSearch,
   TaskSearch,
   Form,
-  ChatMain
+  ChatMain,
+  Projects,
 };

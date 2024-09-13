@@ -159,9 +159,10 @@ const styles = StyleSheet.create({
   headerBottom: {
     position: "absolute",
     bottom: 0,
-    left: 0,
-    width: "100%",
-    height: "50%",
+    left: "45%",
+    width: "4%",
+    height: "28%",
+    borderTopRightRadius: 20,
   },
   headerTab: {
     width: "45%",
