@@ -1,32 +1,19 @@
 import { FlatList, View } from "react-native";
-import React, {  useState } from "react";
+import React from "react";
 import { COLORS } from "../../constants/theme";
 import general from "../general.style";
-import { useFocusEffect, useNavigation } from "@react-navigation/native";
+import { useNavigation } from "@react-navigation/native";
 import CategoryCard from "../Tiles/Cards/CategoryCard";
-import { useDispatch, useSelector } from "react-redux";
-import { getProjects } from "../../redux/actions/projectActions";
+import { useSelector } from "react-redux";
 
-const ProjectsContent = ({ siteId,companyId }) => {
-  const dispatch = useDispatch();
+const ProjectsContent = ({ filter }) => {
+  const navigation = useNavigation();
   const { projects } = useSelector((state) => state.projects);
-  const [filter, setFilter] = useState("all");
 
   const filteredProjects = projects.filter((project) => {
-    if (filter === "active") return project.status === true;
-    if (filter === "inactive") return project.status === false;
-    return true;
+    if (filter === "Hepsi") return true;
+    return project.projectCategory === filter;
   });
-
-  const navigation = useNavigation();
-
-   useFocusEffect(
-     React.useCallback(() => {
-       if (companyId && siteId) {
-         dispatch(getProjects({ companyId, siteId }));
-       }
-     }, [dispatch, companyId, siteId])
-   );
 
   return (
     <View
