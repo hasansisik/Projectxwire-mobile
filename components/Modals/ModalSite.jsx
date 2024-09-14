@@ -10,17 +10,16 @@ import ReusableButton from "../Buttons/ReusableButton";
 import { COLORS, SIZES, TEXT } from "../../constants/theme";
 import { useDispatch } from "react-redux";
 import { useFormik } from "formik";
-import { createProject } from "../../redux/actions/projectActions";
-import { projectCreateSchema } from "../../utils/validation";
-import { Dropdown } from "react-native-element-dropdown";
+import { siteCreateSchema } from "../../utils/validation";
 import NoticeMessage from "../Reusable/NoticeMessage";
+import ProjectLogoUpload from "../Tiles/Upload/ProjectLogoUpload";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { createSite } from "../../redux/actions/siteActions";
 
-export default function ModalProject({
+export default function ModalSite({
   showFilters,
   setShowFilters,
   onProjectCreated,
-  siteId,
 }) {
   const dispatch = useDispatch();
   const [status, setStatus] = useState(null);
@@ -38,34 +37,32 @@ export default function ModalProject({
     fetchCompanyId();
   }, []);
 
+  const handleUploadComplete = (url) => {
+    formik.setFieldValue("logo", url);
+    formik.handleSubmit();
+  };
+
   const formik = useFormik({
-    initialValues: {
-      projectName: "",
-      projectCode: "",
-      projectCategory: "",
-      finishDate: new Date(),
-    },
-    validationSchema: projectCreateSchema,
+    initialValues: { siteName: "", siteCode: "", finishDate: new Date() },
+    validationSchema: siteCreateSchema,
     onSubmit: async (values) => {
       const actionResult = await dispatch(
-        createProject({
-          projectName: values.projectName,
-          projectCode: values.projectCode,
-          projectCategory: values.projectCategory,
+        createSite({
+          siteName: values.siteName,
+          siteCode: values.siteCode,
           logo: values.logo,
           companyId,
-          siteId,
           finishDate: values.finishDate,
         })
       );
-      if (createProject.fulfilled.match(actionResult)) {
+      if (createSite.fulfilled.match(actionResult)) {
         setStatus("success");
-        setMessage("Proje başarıyla oluşturuldu.");
+        setMessage("Şantiye başarıyla oluşturuldu.");
         onProjectCreated();
         setTimeout(() => {
           setShowFilters(false);
         }, 1500);
-      } else if (createProject.rejected.match(actionResult)) {
+      } else if (createSite.rejected.match(actionResult)) {
         const errorMessage = actionResult.payload;
         setStatus("error");
         setMessage(errorMessage);
@@ -99,13 +96,6 @@ export default function ModalProject({
     return date.toLocaleDateString("tr-TR", options);
   };
 
-  const categories = [
-    { label: "Mimari", value: "Mimari" },
-    { label: "Statik", value: "Statik" },
-    { label: "Elektirik", value: "Elektirik" },
-    { label: "Peyzaj", value: "Peyzaj" },
-  ];
-
   return (
     <Modal
       isVisible={showFilters}
@@ -120,13 +110,13 @@ export default function ModalProject({
         <HeightSpacer height={10} />
         <View>
           <ReusableText
-            text={"Proje Oluştur"}
+            text={"Şantiye Oluştur"}
             family={"medium"}
             size={TEXT.medium}
             color={COLORS.black}
           />
           <ReusableText
-            text={"Proje oluşturmak için aşağıdaki alanları doldurunuz."}
+            text={"Şantiye oluşturmak için aşağıdaki alanları doldurunuz."}
             family={"regular"}
             size={TEXT.xSmall}
             color={COLORS.description}
@@ -135,53 +125,34 @@ export default function ModalProject({
         <HeightSpacer height={5} />
         <View style={{ gap: 5 }}>
           <ReusableText
-            text={"Proje Adı:"}
+            text={"Şantiye Adı:"}
             family={"medium"}
             size={TEXT.small}
             color={COLORS.black}
           />
           <ReusableInput
-            label="Proje Adı"
+            label="Şantiye Adı"
             theme={{ colors: { primary: "black" } }}
-            value={formik.values.projectName}
-            onChangeText={formik.handleChange("projectName")}
-            touched={formik.touched.projectName}
-            error={formik.errors.projectName}
+            value={formik.values.siteName}
+            onChangeText={formik.handleChange("siteName")}
+            touched={formik.touched.siteName}
+            error={formik.errors.siteName}
           />
         </View>
         <View style={{ gap: 5 }}>
           <ReusableText
-            text={"Proje Kodu:"}
+            text={"Şantiye Kodu:"}
             family={"medium"}
             size={TEXT.small}
             color={COLORS.black}
           />
           <ReusableInput
-            label="Proje Kodu"
+            label="Şantiye Kodu"
             theme={{ colors: { primary: "black" } }}
-            value={formik.values.projectCode}
-            onChangeText={formik.handleChange("projectCode")}
-            touched={formik.touched.projectCode}
-            error={formik.errors.projectCode}
-          />
-        </View>
-        <View style={{ gap: 5 }}>
-          <ReusableText
-            text={"Proje Kategorisi:"}
-            family={"medium"}
-            size={TEXT.small}
-            color={COLORS.black}
-          />
-          <Dropdown
-            style={styles.dropdown}
-            data={categories}
-            labelField="label"
-            valueField="value"
-            placeholder="Kategori Seçin"
-            value={formik.values.projectCategory}
-            onChange={(item) =>
-              formik.setFieldValue("projectCategory", item.value)
-            }
+            value={formik.values.siteCode}
+            onChangeText={formik.handleChange("siteCode")}
+            touched={formik.touched.siteCode}
+            error={formik.errors.siteCode}
           />
         </View>
         <View style={{ gap: 5 }}>
@@ -216,8 +187,19 @@ export default function ModalProject({
             />
           )}
         </View>
+        <HeightSpacer height={5} />
+        <ReusableText
+          text={"Şantiye Logo :"}
+          family={"medium"}
+          size={TEXT.small}
+          color={COLORS.black}
+        />
+        <ProjectLogoUpload
+          onUploadComplete={handleUploadComplete}
+          setUploadFunction={setUploadFunction}
+        />
         <ReusableButton
-          btnText={"Proje Ekle"}
+          btnText={"Şantiye Oluştur"}
           width={SIZES.width - 60}
           height={45}
           borderRadius={SIZES.small}
@@ -258,14 +240,5 @@ const styles = StyleSheet.create({
     backgroundColor: "#FCFCFC",
     borderColor: COLORS.lightGrey,
     borderWidth: 1,
-  },
-  dropdown: {
-    height: 50,
-    borderColor: COLORS.lightGrey,
-    borderWidth: 1,
-    borderRadius: 8,
-    paddingHorizontal: 8,
-    backgroundColor: "#FCFCFC",
-    marginBottom: 10,
   },
 });

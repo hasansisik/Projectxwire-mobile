@@ -1,28 +1,28 @@
 import { FlatList, TouchableOpacity, View } from "react-native";
 import React, { useEffect, useState } from "react";
-import { COLORS, SIZES, TEXT } from "../../constants/theme";
-import styles from "../../screens/Home/home.style";
-import general from "../general.style";
+import { COLORS, SIZES, TEXT } from "../../constants/theme.js";
+import styles from "../../screens/Home/home.style.js";
+import general from "../general.style.js";
 import { AntDesign, Ionicons } from "@expo/vector-icons";
-import ProjectCard from "../Tiles/Cards/ProjectCard";
+import SiteCard from "../Tiles/Cards/SiteCard.jsx";
 import { useNavigation } from "@react-navigation/native";
-import ModalProject from "../Modals/ModalProject";
-import ReusableText from "../Reusable/ReusableText";
-import { getProjects } from "../../redux/actions/projectActions";
+import ModalSite from "../Modals/ModalSite.jsx";
+import ReusableText from "../Reusable/ReusableText.jsx";
 import { useDispatch, useSelector } from "react-redux";
 import { useFocusEffect } from "@react-navigation/native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { sendPushNotification } from "../../redux/actions/userActions.js";
 import * as Notifications from "expo-notifications";
+import { getSites } from "../../redux/actions/siteActions.js";
 
-const Projects = () => {
+const Sites = () => {
   const dispatch = useDispatch();
   const navigation = useNavigation();
   const [showModal, setShowModal] = useState(false);
   const [companyId, setCompanyId] = useState("");
   const [filter, setFilter] = useState("all");
   const { user } = useSelector((state) => state.user);
-  const { projects } = useSelector((state) => state.projects);
+  const { sites } = useSelector((state) => state.sites);
 
   useEffect(() => {
     const fetchCompanyId = async () => {
@@ -34,7 +34,7 @@ const Projects = () => {
 
   useFocusEffect(
     React.useCallback(() => {
-      dispatch(getProjects(companyId));
+      dispatch(getSites(companyId));
     }, [dispatch, companyId])
   );
 
@@ -51,7 +51,6 @@ const Projects = () => {
       }
       const token = (await Notifications.getExpoPushTokenAsync()).data;
       if (!user.expoPushToken || user.expoPushToken !== token) {
-        console.log(user.expoPushToken);
         dispatch(
           sendPushNotification({ userId: user._id, expoPushToken: token })
         );
@@ -68,9 +67,9 @@ const Projects = () => {
     });
   }, [dispatch, user]);
 
-  const filteredProjects = projects.filter((project) => {
-    if (filter === "active") return project.status === true;
-    if (filter === "inactive") return project.status === false;
+  const filteredSites = sites.filter((site) => {
+    if (filter === "active") return site.status === true;
+    if (filter === "inactive") return site.status === false;
     return true;
   });
 
@@ -80,7 +79,7 @@ const Projects = () => {
         <View style={general.row("space-between")}>
           <AntDesign name="appstore1" size={18} color="black" />
           <ReusableText
-            text={"Projeler"}
+            text={"Şantiyeler"}
             family={"medium"}
             size={TEXT.large}
             color={COLORS.black}
@@ -101,7 +100,7 @@ const Projects = () => {
           onPress={() => setFilter("all")}
         >
           <ReusableText
-            text={"Hepsi (" + projects.length + ")"}
+            text={"Hepsi (" + sites.length + ")"}
             family={"regular"}
             size={TEXT.xSmall}
             color={filter === "all" ? "white" : "black"}
@@ -119,8 +118,8 @@ const Projects = () => {
         >
           <ReusableText
             text={
-              "Aktif Projeler (" +
-              projects.filter((p) => p.status === true).length +
+              "Aktif Şantiyeler (" +
+              sites.filter((p) => p.status === true).length +
               ")"
             }
             family={"regular"}
@@ -140,8 +139,8 @@ const Projects = () => {
         >
           <ReusableText
             text={
-              "Pasif Projeler (" +
-              projects.filter((p) => p.status === false).length +
+              "Pasif Şantiyeler (" +
+              sites.filter((p) => p.status === false).length +
               ")"
             }
             family={"regular"}
@@ -151,27 +150,27 @@ const Projects = () => {
         </TouchableOpacity>
       </View>
       <FlatList
-        data={filteredProjects}
+        data={filteredSites}
         vertical
         showsVerticalScrollIndicator={false}
         keyExtractor={(item, index) => index.toString()}
         contentContainerStyle={{ gap: SIZES.medium, paddingBottom: 25 }}
         renderItem={({ item }) => (
-          <ProjectCard
+          <SiteCard
             item={item}
             onPress={() => navigation.navigate("Projects", item._id)}
           />
         )}
         style={{ flexGrow: 1 }}
       />
-      {/* ModalProject */}
-      <ModalProject
+      {/* ModalSite */}
+      <ModalSite
         showFilters={showModal}
         setShowFilters={setShowModal}
-        onProjectCreated={() => dispatch(getProjects(companyId))}
+        onProjectCreated={() => dispatch(getSites(companyId))}
       />
     </View>
   );
 };
 
-export default Projects;
+export default Sites;

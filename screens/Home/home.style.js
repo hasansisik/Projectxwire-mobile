@@ -44,6 +44,26 @@ const styles = StyleSheet.create({
     borderRadius: 15,
     borderColor: COLORS.lightGrey,
   },
+  category: {
+    height: 40,
+    paddingHorizontal: 5,
+    borderRadius: 30,
+    backgroundColor: COLORS.lightInput,
+    flexDirection: "row",
+    alignContent: "center",
+    alignItems: "center",
+  },
+  projectBox: {
+    height: 30,
+    borderRadius: 30,
+    flexDirection: "row",
+    marginRight: 10,
+    paddingHorizontal: 10,
+    paddingHorizontal: 15,
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundColor: COLORS.lightWhite,
+  },
 });
 
 export default styles;

@@ -75,7 +75,7 @@ const ProjectEdit = ({ navigation }) => {
             }}
             placeholder="Proje Seçin"
             touchableWrapperProps={{
-              activeOpacity: 1, // Bileşene tıklandığında opaklık değişimi olmaz
+              activeOpacity: 1, 
             }}
           />
         </View>

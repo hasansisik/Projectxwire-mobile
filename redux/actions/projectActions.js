@@ -5,15 +5,17 @@ import { server } from "../../config"
 export const createProject = createAsyncThunk(
   "project/create",
   async (
-    { projectName, projectCode, address, logo, companyId, finishDate },
+    { projectName, projectCode,projectCategory, address, logo,siteId, companyId, finishDate },
     thunkAPI
   ) => {
     try {
       const { data } = await axios.post(`${server}/project`, {
         projectName,
         projectCode,
+        projectCategory,
         address,
         logo,
+        siteId,
         companyId,
         finishDate,
       });
@@ -26,9 +28,12 @@ export const createProject = createAsyncThunk(
 
 export const getProjects = createAsyncThunk(
   "project/getAll",
-  async (companyId, thunkAPI) => {
+  async ({companyId, siteId}, thunkAPI) => {
     try {
-      const { data } = await axios.post(`${server}/project/gets`, { companyId });
+      const { data } = await axios.post(`${server}/project/gets`, {
+        companyId,
+        siteId,
+      });
       return data.projects;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.response.data.message);

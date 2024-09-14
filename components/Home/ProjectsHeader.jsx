@@ -1,19 +1,25 @@
 import { Image, TouchableOpacity, View } from "react-native";
-import React from "react";
+import React, { useState } from "react";
 import { COLORS, TEXT } from "../../constants/theme";
 import ReusableText from "../Reusable/ReusableText";
 import styles from "../../screens/Home/home.style";
 import general from "../general.style";
 import { useNavigation } from "@react-navigation/native";
+import { Ionicons } from "@expo/vector-icons";
+import ModalProject from "../Modals/ModalProject";
+import { getProjects } from "../../redux/actions/projectActions";
+import { useDispatch } from "react-redux";
 
-const ProjectsHeader = ({ user }) => {
+const ProjectsHeader = ({ user, siteId, companyId }) => {
+  const dispatch = useDispatch();
   const navigation = useNavigation();
+  const [showModal, setShowModal] = useState(false);
 
   return (
     <View
       style={[
         general.row("space-between"),
-        { paddingBottom: 20, marginTop: 10, alignItems: "center" },
+        { paddingBottom: 20, marginTop: 20, alignItems: "center" },
       ]}
     >
       <TouchableOpacity
@@ -35,6 +41,16 @@ const ProjectsHeader = ({ user }) => {
           color={COLORS.black}
         />
       </TouchableOpacity>
+      <TouchableOpacity style={styles.box} onPress={() => setShowModal(true)}>
+        <Ionicons name="add-outline" size={24} color="black" />
+      </TouchableOpacity>
+      {/* ModalProject */}
+      <ModalProject
+        showFilters={showModal}
+        setShowFilters={setShowModal}
+        siteId={siteId}
+        onProjectCreated={() => dispatch(getProjects({ companyId, siteId }))}
+      />
     </View>
   );
 };

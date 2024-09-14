@@ -96,6 +96,13 @@ export const companyUpdateSchema = Yup.object({
 export const projectCreateSchema = Yup.object({
   projectName: Yup.string().required("Zorunlu alan"),
   projectCode: Yup.string().required("Zorunlu alan"),
+  projectCategory: Yup.string().required("Zorunlu alan"),
+  finishDate: Yup.string().required("Zorunlu alan"),
+});
+
+export const siteCreateSchema = Yup.object({
+  siteName: Yup.string().required("Zorunlu alan"),
+  siteCode: Yup.string().required("Zorunlu alan"),
 });
 
 export const planCreateSchema = Yup.object({

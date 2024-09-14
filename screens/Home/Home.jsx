@@ -2,7 +2,7 @@ import { View, SafeAreaView, Platform, StatusBar } from "react-native";
 import React from "react";
 import general from "../../components/general.style";
 import { COLORS } from "../../constants/theme";
-import { DailyInfo, Projects, WelcomeHeader } from "../../components";
+import { DailyInfo, Sites, WelcomeHeader } from "../../components";
 import { useSelector } from "react-redux";
 
 const Home = () => {
@@ -23,11 +23,11 @@ const Home = () => {
         ]}
       >
         {/* Welcome Header */}
-        <WelcomeHeader user={user}/>
+        <WelcomeHeader user={user} />
         {/* Details */}
         <DailyInfo />
         {/* Project */}
-        <Projects />
+        <Sites />
       </View>
     </SafeAreaView>
   );

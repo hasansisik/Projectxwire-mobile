@@ -4,8 +4,10 @@ import { COLORS, TEXT } from "../../../constants/theme";
 import ReusableText from "../../Reusable/ReusableText";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
-const ProjectCard = ({ item, onPress }) => {
-  const backgroundColor = item.status ? COLORS.projectActive : COLORS.projectDeactive;
+const SiteCard = ({ item, onPress }) => {
+  const backgroundColor = item.status
+    ? COLORS.projectActive
+    : COLORS.projectDeactive;
 
   const formatDate = (date) => {
     if (!date) return "Belirtilmedi";
@@ -23,11 +25,11 @@ const ProjectCard = ({ item, onPress }) => {
     const months = Math.floor((diffDays % 365) / 30);
     const days = diffDays % 30;
 
-    let remainingTime = '';
+    let remainingTime = "";
     if (years > 0) remainingTime += `${years} Yıl `;
     if (months > 0) remainingTime += `${months} Ay `;
     if (days > 0) remainingTime += `${days} Gün `;
-    return remainingTime.trim() === '' ? 'Süre Doldu' : remainingTime;
+    return remainingTime.trim() === "" ? "Süre Doldu" : remainingTime;
   };
 
   return (
@@ -44,7 +46,7 @@ const ProjectCard = ({ item, onPress }) => {
                 color={COLORS.white}
               />
               <ReusableText
-                text={item.projectCode}
+                text={item.siteCode}
                 family={"medium"}
                 size={TEXT.xxSmall}
                 color={COLORS.white}
@@ -53,7 +55,7 @@ const ProjectCard = ({ item, onPress }) => {
           </View>
           <View style={styles.headerTab2}>
             <ReusableText
-              text={item.projectName}
+              text={item.siteName}
               family={"medium"}
               size={TEXT.xxSmall}
               color={COLORS.lightBlack}
@@ -133,7 +135,7 @@ const ProjectCard = ({ item, onPress }) => {
   );
 };
 
-export default ProjectCard;
+export default SiteCard;
 
 const styles = StyleSheet.create({
   container: {

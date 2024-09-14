@@ -7,11 +7,12 @@ import ReusableCheckbox from "./Reusable/ReusableCheckbox";
 import AppBar from "./Reusable/AppBar";
 import WelcomeHeader from "./Home/WelcomeHeader";
 import DailyInfo from "./Home/DailyInfo";
-import Projects from "./Home/Projects";
+import Sites from "./Home/Sites";
 import PlanCard from "./Tiles/Cards/PlanCard";
 import TaskCard from "./Tiles/Cards/TaskCard";
-import ProjectCard from "./Tiles/Cards/ProjectCard";
+import SiteCard from "./Tiles/Cards/SiteCard";
 import FormCard from "./Tiles/Cards/FormCard";
+import CategoryCard from "./Tiles/Cards/CategoryCard";
 
 export {
   ReusableText,
@@ -23,9 +24,10 @@ export {
   AppBar,
   WelcomeHeader,
   DailyInfo,
-  Projects,
+  Sites,
   PlanCard,
   TaskCard,
-  ProjectCard,
+  SiteCard,
   FormCard,
+  CategoryCard,
 };
