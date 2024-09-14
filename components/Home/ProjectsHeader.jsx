@@ -41,8 +41,8 @@ const ProjectsHeader = ({ user, siteId, companyId }) => {
           color={COLORS.black}
         />
       </TouchableOpacity>
-      <TouchableOpacity style={styles.box} onPress={() => setShowModal(true)}>
-        <Ionicons name="add-outline" size={24} color="black" />
+      <TouchableOpacity style={styles.box2} onPress={() => setShowModal(true)}>
+        <Ionicons name="add-outline" size={20} color={COLORS.white}/>
       </TouchableOpacity>
       {/* ModalProject */}
       <ModalProject

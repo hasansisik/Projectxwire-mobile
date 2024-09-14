@@ -85,8 +85,8 @@ const Sites = () => {
             color={COLORS.black}
           />
         </View>
-        <TouchableOpacity style={styles.box} onPress={() => setShowModal(true)}>
-          <Ionicons name="add-outline" size={24} color="black" />
+        <TouchableOpacity style={styles.box2} onPress={() => setShowModal(true)}>
+          <Ionicons name="add-outline" size={24} color={COLORS.white} />
         </TouchableOpacity>
       </View>
       <View style={[general.row("space-between"), { paddingBottom: 10 }]}>
