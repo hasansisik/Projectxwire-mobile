@@ -10,7 +10,8 @@ const styles = StyleSheet.create({
   },
   box: {
     borderRadius: 30,
-    padding: 10,
+    paddingVertical: 5,
+    paddingHorizontal: 15,
     gap: 10,
     backgroundColor: COLORS.lightInput,
     justifyContent: "center",

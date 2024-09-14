@@ -14,12 +14,14 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import { sendPushNotification } from "../../redux/actions/userActions.js";
 import * as Notifications from "expo-notifications";
 import { getSites } from "../../redux/actions/siteActions.js";
+import SitesCategory from "./SitesCategory.jsx";
 
 const Sites = () => {
   const dispatch = useDispatch();
   const navigation = useNavigation();
   const [showModal, setShowModal] = useState(false);
   const [companyId, setCompanyId] = useState("");
+  const [filteredSites, setFilteredSites] = useState([]);
   const [filter, setFilter] = useState("all");
   const { user } = useSelector((state) => state.user);
   const { sites } = useSelector((state) => state.sites);
@@ -67,11 +69,15 @@ const Sites = () => {
     });
   }, [dispatch, user]);
 
-  const filteredSites = sites.filter((site) => {
-    if (filter === "active") return site.status === true;
-    if (filter === "inactive") return site.status === false;
-    return true;
-  });
+  useEffect(() => {
+    if (filter === "hepsi") {
+      setFilteredSites(sites);
+    } else if (filter === "aktif") {
+      setFilteredSites(sites.filter((site) => site.status === true));
+    } else if (filter === "pasif") {
+      setFilteredSites(sites.filter((site) => site.status === false));
+    }
+  }, [filter, sites]);
 
   return (
     <View style={{ height: "100%", paddingBottom: 20 }}>
@@ -79,75 +85,21 @@ const Sites = () => {
         <View style={general.row("space-between")}>
           <AntDesign name="appstore1" size={18} color="black" />
           <ReusableText
-            text={"Şantiyeler"}
+            text={"ŞANTİYELER"}
             family={"medium"}
-            size={TEXT.large}
-            color={COLORS.black}
+            size={TEXT.small}
+            color={COLORS.lightBlack}
           />
         </View>
-        <TouchableOpacity style={styles.box2} onPress={() => setShowModal(true)}>
+        <TouchableOpacity
+          style={styles.box2}
+          onPress={() => setShowModal(true)}
+        >
           <Ionicons name="add-outline" size={24} color={COLORS.white} />
         </TouchableOpacity>
       </View>
       <View style={[general.row("space-between"), { paddingBottom: 10 }]}>
-        <TouchableOpacity
-          style={[
-            styles.filterButton,
-            {
-              backgroundColor: filter === "all" ? COLORS.orange : COLORS.white,
-            },
-          ]}
-          onPress={() => setFilter("all")}
-        >
-          <ReusableText
-            text={"Hepsi (" + sites.length + ")"}
-            family={"regular"}
-            size={TEXT.xSmall}
-            color={filter === "all" ? "white" : "black"}
-          />
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={[
-            styles.filterButton,
-            {
-              backgroundColor:
-                filter === "active" ? COLORS.orange : COLORS.white,
-            },
-          ]}
-          onPress={() => setFilter("active")}
-        >
-          <ReusableText
-            text={
-              "Aktif Şantiyeler (" +
-              sites.filter((p) => p.status === true).length +
-              ")"
-            }
-            family={"regular"}
-            size={TEXT.xSmall}
-            color={filter === "active" ? "white" : "black"}
-          />
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={[
-            styles.filterButton,
-            {
-              backgroundColor:
-                filter === "inactive" ? COLORS.orange : COLORS.white,
-            },
-          ]}
-          onPress={() => setFilter("inactive")}
-        >
-          <ReusableText
-            text={
-              "Pasif Şantiyeler (" +
-              sites.filter((p) => p.status === false).length +
-              ")"
-            }
-            family={"regular"}
-            size={TEXT.xSmall}
-            color={filter === "inactive" ? "white" : "black"}
-          />
-        </TouchableOpacity>
+        <SitesCategory filter={filter} setFilter={setFilter} sites={sites} />
       </View>
       <FlatList
         data={filteredSites}
