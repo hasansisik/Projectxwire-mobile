@@ -10,10 +10,10 @@ import {
   FlatList,
   Image,
 } from "react-native";
-import { COLORS, SIZES, TEXT } from "../../constants/theme";
+import { COLORS, SIZES } from "../../constants/theme";
 import ImageViewer from "react-native-image-zoom-viewer";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
-import { AppBar, ReusableButton } from "../../components";
+import { AppBar } from "../../components";
 import ToolBox from "../../components/Reusable/ToolBox";
 import { MaterialIcons } from "@expo/vector-icons";
 import { useDispatch } from "react-redux";
@@ -114,9 +114,10 @@ const PlanDetails = ({ route, navigation }) => {
     setPendingPin(newPin);
   };
 
-  const handleSearch = () => {
+  const handleSearch = (query) => {
+    const searchQuery = query || searchKey;
     const filteredPins = pins.filter((pin) =>
-      pin.task.taskTitle.toLowerCase().includes(searchKey.toLowerCase())
+      pin.task.taskTitle.toLowerCase().includes(searchQuery.toLowerCase())
     );
     setSearchResults(filteredPins);
   };
@@ -148,23 +149,10 @@ const PlanDetails = ({ route, navigation }) => {
               placeholder="Görev Ara..."
               onChangeText={(query) => {
                 setSearchKey(query);
-                if (!query) {
-                  setSearchResults([]);
-                }
+                handleSearch(query);
               }}
               value={searchKey}
               onSubmitEditing={handleSearch}
-            />
-            <ReusableButton
-              btnText="Ara"
-              onPress={handleSearch}
-              width={60}
-              height={45}
-              borderRadius={SIZES.xSmall}
-              backgroundColor={COLORS.orange}
-              textColor={COLORS.white}
-              textFontSize={TEXT.small}
-              textFontFamily={"medium"}
             />
           </View>
         )}
