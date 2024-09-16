@@ -116,10 +116,14 @@ const PlanDetails = ({ route, navigation }) => {
 
   const handleSearch = (query) => {
     const searchQuery = query || searchKey;
-    const filteredPins = pins.filter((pin) =>
-      pin.task.taskTitle.toLowerCase().includes(searchQuery.toLowerCase())
-    );
-    setSearchResults(filteredPins);
+    if (searchQuery) {
+      const filteredPins = pins.filter((pin) =>
+        pin.task.taskTitle.toLowerCase().includes(searchQuery.toLowerCase())
+      );
+      setSearchResults(filteredPins);
+    } else {
+      setSearchResults([]);
+    }
   };
 
   const pinsToDisplay = searchKey ? searchResults : pins;
@@ -152,7 +156,7 @@ const PlanDetails = ({ route, navigation }) => {
                 handleSearch(query);
               }}
               value={searchKey}
-              onSubmitEditing={handleSearch}
+              onSubmitEditing={() => handleSearch(searchKey)} // searchKey parametresini geç
             />
           </View>
         )}
