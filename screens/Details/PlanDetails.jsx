@@ -10,10 +10,10 @@ import {
   FlatList,
   Image,
 } from "react-native";
-import { COLORS, SIZES } from "../../constants/theme";
+import { COLORS, SIZES, TEXT } from "../../constants/theme";
 import ImageViewer from "react-native-image-zoom-viewer";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
-import { AppBar } from "../../components";
+import { AppBar, ReusableButton } from "../../components";
 import ToolBox from "../../components/Reusable/ToolBox";
 import { MaterialIcons } from "@expo/vector-icons";
 import { useDispatch } from "react-redux";
@@ -21,6 +21,7 @@ import { createPin, getPins } from "../../redux/actions/planActions";
 import { useFocusEffect } from "@react-navigation/native";
 import ModalTaskPlan from "../../components/Modals/ModalTaskPlan";
 import PinCard from "../../components/Tiles/Cards/PinCard";
+import { Searchbar } from "react-native-paper";
 
 const PlanDetails = ({ route, navigation }) => {
   const { item } = route.params;
@@ -32,6 +33,9 @@ const PlanDetails = ({ route, navigation }) => {
   const [showModalTask, setShowModalTask] = useState(false);
   const [pins, setPins] = useState([]);
   const [imageSize, setImageSize] = useState({ width: 0, height: 0 });
+  const [searchKey, setSearchKey] = useState("");
+  const [searchResults, setSearchResults] = useState([]);
+  const [isSearchVisible, setIsSearchVisible] = useState(false);
 
   const images = [
     {
@@ -110,6 +114,15 @@ const PlanDetails = ({ route, navigation }) => {
     setPendingPin(newPin);
   };
 
+  const handleSearch = () => {
+    const filteredPins = pins.filter((pin) =>
+      pin.task.taskTitle.toLowerCase().includes(searchKey.toLowerCase())
+    );
+    setSearchResults(filteredPins);
+  };
+
+  const pinsToDisplay = searchKey ? searchResults : pins;
+
   return (
     <SafeAreaView
       style={[
@@ -125,7 +138,36 @@ const PlanDetails = ({ route, navigation }) => {
           title={item.planCode}
           color={COLORS.white}
           onPress={() => navigation.goBack()}
+          showSearchIcon={true}
+          onSearchPress={() => setIsSearchVisible(!isSearchVisible)}
         />
+        {isSearchVisible && (
+          <View style={styles.searchContainer}>
+            <Searchbar
+              style={styles.inputPlan}
+              placeholder="Görev Ara..."
+              onChangeText={(query) => {
+                setSearchKey(query);
+                if (!query) {
+                  setSearchResults([]);
+                }
+              }}
+              value={searchKey}
+              onSubmitEditing={handleSearch}
+            />
+            <ReusableButton
+              btnText="Ara"
+              onPress={handleSearch}
+              width={60}
+              height={45}
+              borderRadius={SIZES.xSmall}
+              backgroundColor={COLORS.orange}
+              textColor={COLORS.white}
+              textFontSize={TEXT.small}
+              textFontFamily={"medium"}
+            />
+          </View>
+        )}
       </View>
       <GestureHandlerRootView style={{ flex: 1 }}>
         {/* ImageViewer */}
@@ -141,7 +183,7 @@ const PlanDetails = ({ route, navigation }) => {
           renderImage={(props) => (
             <View>
               <Image {...props} />
-              {pins.map((pin, index) => (
+              {pinsToDisplay.map((pin, index) => (
                 <TouchableOpacity
                   key={index}
                   style={{
@@ -182,7 +224,7 @@ const PlanDetails = ({ route, navigation }) => {
         <ToolBox onPin={handlePin} onToolPress={handleToolPress} />
         <View style={styles.line}></View>
         <FlatList
-          data={pins}
+          data={pinsToDisplay}
           horizontal
           showsHorizontalScrollIndicator={false}
           keyExtractor={(item, index) => index.toString()}
@@ -234,20 +276,31 @@ const styles = StyleSheet.create({
     backgroundColor: COLORS.lightWhite,
     zIndex: 1,
     width: SIZES.width,
-    height: 60,
+    height: 90,
   },
   bottom: {
     gap: SIZES.xLarge,
-    paddingBottom: 20,
-    paddingTop: 20,
+    paddingTop: 25,
     backgroundColor: COLORS.lightWhite,
     padding: SIZES.small,
     flexDirection: "row",
     justifyContent: "space-between",
   },
   line: {
-    height: "100%",
+    height: "80%",
     width: 1,
     backgroundColor: COLORS.lightGrey,
-  }
+  },
+  searchContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+    paddingHorizontal: 15,
+    marginTop: 100,
+    height: 50,
+  },
+  inputPlan: {
+    flex: 1,
+    marginRight: 10,
+    backgroundColor: COLORS.lightInput,
+  },
 });

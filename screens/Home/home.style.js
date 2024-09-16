@@ -27,6 +27,15 @@ const styles = StyleSheet.create({
     alignItems: "center",
     flexDirection: "row",
   },
+  box3: {
+    borderRadius: 20,
+    padding: 5,
+    gap: 10,
+    backgroundColor: COLORS.lightInput,
+    justifyContent: "center",
+    alignItems: "center",
+    flexDirection: "row",
+  },
   filterButton: {
     height: 30,
     borderWidth: 1,

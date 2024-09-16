@@ -1,4 +1,4 @@
-import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { Image, StyleSheet, TouchableOpacity } from "react-native";
 import React from "react";
 import { COLORS, SIZES, TEXT } from "../../../constants/theme";
 import ReusableText from "../../Reusable/ReusableText";
@@ -39,12 +39,12 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     borderRadius: SIZES.radius,
-    gap: 8,
+    gap: 5,
   },
   icon: {
-    borderRadius: 30,
-    width: 60,
-    height: 60,
+    borderRadius: 25,
+    width: 50,
+    height: 50,
     justifyContent: "center",
     alignItems: "center",
     borderColor: "#E7E7E7",

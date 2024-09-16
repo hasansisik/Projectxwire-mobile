@@ -58,7 +58,7 @@ const Plans = ({ route, navigation }) => {
           <View style={general.row("")}>
             {/* Search Button */}
             <TouchableOpacity
-              style={styles.box}
+              style={styles.box3}
               onPress={() => navigation.navigate("PlanSearch", { projectId })}
             >
               <AntDesign name="search1" size={20} color="black" />
@@ -66,7 +66,7 @@ const Plans = ({ route, navigation }) => {
             <WidthSpacer width={5} />
             {/* Add Button */}
             <TouchableOpacity
-              style={styles.box}
+              style={styles.box3}
               onPress={() => setShowModal(true)}
             >
               <Ionicons name="add-outline" size={24} color="black" />

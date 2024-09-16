@@ -49,7 +49,7 @@ const Form = ({ route }) => {
           </View>
           <View style={general.row("")}>
             <TouchableOpacity
-              style={styles.box}
+              style={styles.box3}
               onPress={() => setShowModal(true)}
             >
               <Ionicons name="add-outline" size={24} color="black" />

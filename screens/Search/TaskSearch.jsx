@@ -11,7 +11,6 @@ import { server } from "../../config";
 const TaskSearch = ({ route, navigation }) => {
   const [searchKey, setSearchKey] = useState("");
   const [searchResults, setSearchResults] = useState([]);
-  const [showFilters, setShowFilters] = useState(false);
   const { projectId } = route.params;
 
   const handleSearch = async () => {
@@ -63,18 +62,6 @@ const TaskSearch = ({ route, navigation }) => {
             value={searchKey}
             onSubmitEditing={handleSearch}
           />
-          {/* <TouchableOpacity
-            style={styles.filter}
-            onPress={() => setShowFilters(!showFilters)}
-          >
-            <FontAwesome5 name="filter" size={17} color={COLORS.lightBlack} />
-            <ReusableText
-              text={"FİLTRELE"}
-              family={"regular"}
-              size={TEXT.xSmall}
-              color={COLORS.lightBlack}
-            />
-          </TouchableOpacity> */}
         </View>
         <HeightSpacer height={50} />
         {searchResults.length === 0 ? (

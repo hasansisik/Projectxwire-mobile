@@ -49,14 +49,14 @@ const Tasks = ({ route, navigation }) => {
           </View>
           <View style={general.row("")}>
             <TouchableOpacity
-              style={styles.box}
+              style={styles.box3}
               onPress={() => navigation.navigate("TaskSearch", { projectId })}
             >
               <AntDesign name="search1" size={20} color="black" />
             </TouchableOpacity>
             <WidthSpacer width={5} />
             <TouchableOpacity
-              style={styles.box}
+              style={styles.box3}
               onPress={() => setShowModal(true)}
             >
               <Ionicons name="add-outline" size={24} color="black" />

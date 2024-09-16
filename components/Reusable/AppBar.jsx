@@ -26,6 +26,8 @@ const AppBar = ({
   onDeletePress,
   showDeleteIcon,
   onCloseDeleteIcon,
+  onSearchPress,
+  showSearchIcon,
 }) => {
   return (
     <View style={styles.overlay(top, left, right, showDeleteIcon)}>
@@ -60,6 +62,11 @@ const AppBar = ({
           {showDeleteIcon && (
             <TouchableOpacity style={styles.deleteIcon} onPress={onDeletePress}>
               <MaterialIcons name="delete" size={24} color={COLORS.white} />
+            </TouchableOpacity>
+          )}
+          {showSearchIcon && (
+            <TouchableOpacity style={styles.searchIcon} onPress={onSearchPress}>
+              <AntDesign name="search1" size={24} color={COLORS.black} />
             </TouchableOpacity>
           )}
         </View>
@@ -100,6 +107,9 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   deleteIcon: {
+    marginLeft: 10,
+  },
+  searchIcon: {
     marginLeft: 10,
   },
 });
