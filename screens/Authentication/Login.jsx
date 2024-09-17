@@ -201,7 +201,7 @@ const Login = ({ navigation }) => {
               <ReusableText
                 text={t("forgotPassword")}
                 family={"bold"}
-                size={TEXT.xSmall}
+                size={TEXT.xxSmall}
                 color={COLORS.orange}
                 underline={true}
               />
@@ -209,14 +209,14 @@ const Login = ({ navigation }) => {
             <ReusableText
               text={t("noAccount")}
               family={"regular"}
-              size={TEXT.xSmall}
+              size={TEXT.xxSmall}
               color={COLORS.description}
             />
             <TouchableOpacity onPress={() => navigation.navigate("Register")}>
               <ReusableText
                 text={t("registerButton")}
                 family={"bold"}
-                size={TEXT.xSmall}
+                size={TEXT.xxSmall}
                 color={COLORS.orange}
                 underline={true}
               />
