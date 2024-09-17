@@ -13,7 +13,7 @@ import { formReducer } from "./reducers/formReducer";
 const persistConfig = {
   key: "root",
   storage: AsyncStorage,
-  whitelist: ["user", "company"],
+  whitelist: ["user", "company", "sites", "projects", "plans", "tasks", "forms"],
 };
 
 const rootReducer = combineReducers({
