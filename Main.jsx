@@ -35,6 +35,7 @@ import {
   UserCompany,
   ProjectName,
   ProjectCode,
+  ProjectLocales,
   ProjectAdress,
   PoliticyPage,
   HelperFaq,
@@ -266,6 +267,11 @@ export default function App() {
             <Stack.Screen
               name="ProjectAdress"
               component={ProjectAdress}
+              options={{ headerShown: false }}
+            />
+            <Stack.Screen
+              name="ProjectLocales"
+              component={ProjectLocales}
               options={{ headerShown: false }}
             />
             <Stack.Screen

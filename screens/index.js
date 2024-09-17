@@ -28,6 +28,7 @@ import UserNumber from "./Settings/Edit/UserNumber";
 import UserCompany from "./Settings/Edit/UserCompany";
 import ProjectName from "./Settings/Edit/ProjectName";
 import ProjectCode from "./Settings/Edit/ProjectCode";
+import ProjectLocales from "./Settings/Edit/ProjectLocales";
 import ProjectAdress from "./Settings/Edit/ProjectAdress";
 import PoliticyPage from "./Settings/Edit/PoliticyPage";
 import HelperFaq from "./Settings/Edit/HelperFaq";
@@ -68,6 +69,7 @@ export {
   UserCompany,
   ProjectName,
   ProjectCode,
+  ProjectLocales,
   ProjectAdress,
   PoliticyPage,
   HelperFaq,

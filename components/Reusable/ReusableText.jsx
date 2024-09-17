@@ -17,6 +17,6 @@ const styles = StyleSheet.create({
     fontSize: size,
     color: color,
     textAlign: align,
-    textDecorationLine: underline ? "underline" : "none", // underline prop'u burada kontrol ediliyor
+    textDecorationLine: underline ? "underline" : "none",
   }),
 });

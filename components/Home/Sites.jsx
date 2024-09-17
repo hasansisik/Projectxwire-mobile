@@ -15,6 +15,7 @@ import { sendPushNotification } from "../../redux/actions/userActions.js";
 import * as Notifications from "expo-notifications";
 import { getSites } from "../../redux/actions/siteActions.js";
 import SitesCategory from "./SitesCategory.jsx";
+import { useTranslation } from "react-i18next";
 
 const Sites = () => {
   const dispatch = useDispatch();
@@ -25,6 +26,7 @@ const Sites = () => {
   const [filter, setFilter] = useState("all");
   const { user } = useSelector((state) => state.user);
   const { sites } = useSelector((state) => state.sites);
+  const { t } = useTranslation();
 
   useEffect(() => {
     const fetchCompanyId = async () => {
@@ -85,7 +87,7 @@ const Sites = () => {
         <View style={general.row("space-between")}>
           <AntDesign name="appstore1" size={18} color="black" />
           <ReusableText
-            text={"ŞANTİYELER"}
+            text={t("sites")}
             family={"medium"}
             size={TEXT.small}
             color={COLORS.lightBlack}

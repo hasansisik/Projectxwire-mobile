@@ -75,7 +75,7 @@ const ProjectEdit = ({ navigation }) => {
             }}
             placeholder="Proje Seçin"
             touchableWrapperProps={{
-              activeOpacity: 1, 
+              activeOpacity: 1,
             }}
           />
         </View>
@@ -175,7 +175,6 @@ const ProjectEdit = ({ navigation }) => {
             <Feather name="chevron-right" size={20} />
           </View>
         </TouchableOpacity>
-
         <HeightSpacer height={50} />
         <ReusableText
           text={"Birimler"}
@@ -217,23 +216,25 @@ const ProjectEdit = ({ navigation }) => {
             <Feather name="chevron-right" size={20} />
           </View>
         </View>
-        <View style={styles.info}>
-          <ReusableText
-            text={"Dil"}
-            family={"regular"}
-            size={TEXT.small}
-            color={COLORS.black}
-          />
-          <View style={general.row("")}>
+        <TouchableOpacity onPress={() => navigation.navigate("ProjectLocales")}>
+          <View style={styles.info}>
             <ReusableText
-              text={"Türkçe"}
+              text={"Dil"}
               family={"regular"}
               size={TEXT.small}
-              color={COLORS.description}
+              color={COLORS.black}
             />
-            <Feather name="chevron-right" size={20} />
+            <View style={general.row("")}>
+              <ReusableText
+                text={"Türkçe"}
+                family={"regular"}
+                size={TEXT.small}
+                color={COLORS.description}
+              />
+              <Feather name="chevron-right" size={20} />
+            </View>
           </View>
-        </View>
+        </TouchableOpacity>
       </View>
       {status && <NoticeMessage status={status} message={message} />}
     </SafeAreaView>

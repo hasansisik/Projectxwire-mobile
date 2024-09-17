@@ -19,7 +19,6 @@ const DailyInfo = () => {
   });
 
   useEffect(() => {
-    // Tarih bilgisini almak için
     const today = new Date();
     const days = [
       "Pazar",
@@ -52,9 +51,8 @@ const DailyInfo = () => {
       year: today.getFullYear(),
     });
 
-    // Hava durumu bilgisini almak için
-    const apiKey = "baad69bbb07b855c625780ef8b555fc5"; // OpenWeatherMap API keyinizi buraya ekleyin
-    const city = "Istanbul"; // Örnek şehir
+    const apiKey = "baad69bbb07b855c625780ef8b555fc5"; 
+    const city = "Istanbul"; 
 
     axios
       .get(
@@ -63,7 +61,7 @@ const DailyInfo = () => {
       .then((response) => {
         const weatherData = response.data;
         setWeatherInfo({
-          temp: Math.round(weatherData.main.temp), // Sıcaklık değerini yuvarlama
+          temp: Math.round(weatherData.main.temp),
           condition: weatherData.weather[0].main,
         });
       })
