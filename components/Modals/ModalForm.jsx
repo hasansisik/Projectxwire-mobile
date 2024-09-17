@@ -16,15 +16,16 @@ import { Dropdown } from "react-native-element-dropdown";
 import { getAllUsers } from "../../redux/actions/userActions";
 import { createForm } from "../../redux/actions/formActions";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { useTranslation } from "react-i18next";
 
 export default function ModalForm({ showFilters, setShowFilters, projectId }) {
   const dispatch = useDispatch();
   const [status, setStatus] = useState(null);
   const [message, setMessage] = useState(null);
   const [selectedUserId, setSelectedUserId] = useState(null);
-
   const { users } = useSelector((state) => state.user);
   const { user } = useSelector((state) => state.user);
+  const { t } = useTranslation();
 
   useEffect(() => {
     const fetchUsers = async () => {
@@ -93,13 +94,13 @@ export default function ModalForm({ showFilters, setShowFilters, projectId }) {
         <HeightSpacer height={20} />
         <View>
           <ReusableText
-            text={"Form Oluştur"}
+            text={t("createForm")}
             family={"medium"}
             size={TEXT.medium}
             color={COLORS.black}
           />
           <ReusableText
-            text={"Form oluşturmak için aşağıdaki alanları doldurunuz."}
+            text={t("createFormPrompt")}
             family={"regular"}
             size={TEXT.xSmall}
             color={COLORS.description}
@@ -109,13 +110,13 @@ export default function ModalForm({ showFilters, setShowFilters, projectId }) {
         <HeightSpacer height={15} />
         <View style={{ gap: 5 }}>
           <ReusableText
-            text={"Form Kategorisi :"}
+            text={t("formCategory")}
             family={"medium"}
             size={TEXT.small}
             color={COLORS.black}
           />
           <ReusableInput
-            label="Form Kategorisi"
+            label={t("formCategory")}
             theme={{ colors: { primary: "black" } }}
             value={formik.values.formCategory}
             onChangeText={formik.handleChange("formCategory")}
@@ -126,13 +127,13 @@ export default function ModalForm({ showFilters, setShowFilters, projectId }) {
         {/* Form Title Input */}
         <View style={{ gap: 5 }}>
           <ReusableText
-            text={"Form Başlığı :"}
+            text={t("formTitle")}
             family={"medium"}
             size={TEXT.small}
             color={COLORS.black}
           />
           <ReusableInput
-            label="Form Başlığı"
+            label={t("formTitle")}
             theme={{ colors: { primary: "black" } }}
             value={formik.values.formTitle}
             onChangeText={formik.handleChange("formTitle")}
@@ -143,13 +144,13 @@ export default function ModalForm({ showFilters, setShowFilters, projectId }) {
         {/* Form Desc Input */}
         <View style={{ gap: 5 }}>
           <ReusableText
-            text={"Form Açıklaması :"}
+            text={t("formDescription")}
             family={"medium"}
             size={TEXT.small}
             color={COLORS.black}
           />
           <ReusableInput
-            label="Form Açıklaması"
+            label={t("formDescription")}
             theme={{ colors: { primary: "black" } }}
             value={formik.values.formDescription}
             onChangeText={formik.handleChange("formDescription")}
@@ -160,7 +161,7 @@ export default function ModalForm({ showFilters, setShowFilters, projectId }) {
         {/* User Selected */}
         <View style={{ gap: 5 }}>
           <ReusableText
-            text={"İlgili Kişi Seç:"}
+            text={t("selectPerson")}
             family={"medium"}
             size={TEXT.small}
             color={COLORS.black}
@@ -180,13 +181,13 @@ export default function ModalForm({ showFilters, setShowFilters, projectId }) {
               onChange={(item) => {
                 setSelectedUserId(item.userId);
               }}
-              placeholder="Kişi Seçin"
+              placeholder={t("selectPerson")}
             />
           </View>
         </View>
         <HeightSpacer height={25} />
         <ReusableButton
-          btnText={"Form Oluştur"}
+          btnText={t("createForm")}
           width={SIZES.width - 60}
           height={45}
           borderRadius={SIZES.small}
