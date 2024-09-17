@@ -72,14 +72,14 @@ const Sites = () => {
   }, [dispatch, user]);
 
   useEffect(() => {
-    if (filter === "hepsi") {
+    if (filter === "all" || filter === t("all").toLowerCase()) {
       setFilteredSites(sites);
-    } else if (filter === "aktif") {
+    } else if (filter === "inprogress" || filter === t("inProgress").toLowerCase()) {
       setFilteredSites(sites.filter((site) => site.status === true));
-    } else if (filter === "pasif") {
+    } else if (filter === "completed" || filter === t("completed").toLowerCase()) {
       setFilteredSites(sites.filter((site) => site.status === false));
     }
-  }, [filter, sites]);
+  }, [filter, sites, t]);
 
   return (
     <View style={{ height: "100%", paddingBottom: 20 }}>
@@ -101,7 +101,7 @@ const Sites = () => {
         </TouchableOpacity>
       </View>
       <View style={[general.row("space-between"), { paddingBottom: 10 }]}>
-        <SitesCategory filter={filter} setFilter={setFilter} sites={sites} />
+        <SitesCategory setFilter={setFilter} sites={sites} />
       </View>
       <FlatList
         data={filteredSites}

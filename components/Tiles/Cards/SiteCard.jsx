@@ -3,8 +3,11 @@ import { StyleSheet, View, TouchableOpacity, Image } from "react-native";
 import { COLORS, TEXT } from "../../../constants/theme";
 import ReusableText from "../../Reusable/ReusableText";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { useTranslation } from "react-i18next";
 
 const SiteCard = ({ item, onPress }) => {
+  const { t } = useTranslation();
+
   const backgroundColor = item.status
     ? COLORS.projectActive
     : COLORS.projectDeactive;
@@ -72,7 +75,7 @@ const SiteCard = ({ item, onPress }) => {
           <View style={styles.row}>
             <View>
               <ReusableText
-                text={"Kalan Süre"}
+                text={t("remainingTime")}
                 family={"regular"}
                 size={TEXT.xxSmall}
                 color={COLORS.white}
@@ -87,7 +90,7 @@ const SiteCard = ({ item, onPress }) => {
             <View style={styles.separator} />
             <View>
               <ReusableText
-                text={"Başlangıç T."}
+                text={t("startDate")}
                 family={"regular"}
                 size={TEXT.xxSmall}
                 color={COLORS.white}
@@ -109,7 +112,7 @@ const SiteCard = ({ item, onPress }) => {
             <View style={styles.separator} />
             <View>
               <ReusableText
-                text={"Teslim T."}
+                text={t("endDate")}
                 family={"regular"}
                 size={TEXT.xxSmall}
                 color={COLORS.white}

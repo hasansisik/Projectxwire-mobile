@@ -5,9 +5,11 @@ import ReusableText from "../Reusable/ReusableText";
 import styles from "../../screens/Home/home.style";
 import general from "../general.style";
 import { useNavigation } from "@react-navigation/native";
+import { useTranslation } from "react-i18next";
 
 const WelcomeHeader = ({ user }) => {
   const navigation = useNavigation();
+  const { t } = useTranslation();
 
   return (
     <View
@@ -17,7 +19,9 @@ const WelcomeHeader = ({ user }) => {
       ]}
     >
       <ReusableText
-        text={user?.name ? `Merhaba, ${user?.name} 👋` : "Hoşgeldiniz 👋"}
+        text={
+          user?.name ? `${t("hello")}, ${user?.name} 👋` : `${t("welcome")} 👋`
+        }
         family={"medium"}
         size={TEXT.medium}
         color={COLORS.black}
