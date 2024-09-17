@@ -16,11 +16,13 @@ import ModalForm from "../../components/Modals/ModalForm";
 import { useDispatch, useSelector } from "react-redux";
 import { getForms } from "../../redux/actions/formActions";
 import { useFocusEffect } from "@react-navigation/native";
+import { useTranslation } from "react-i18next";
 
 const Form = ({ route }) => {
   const dispatch = useDispatch();
   const [showModal, setShowModal] = useState(false);
   const { projectId } = route.params;
+  const { t } = useTranslation();
 
   useFocusEffect(
     React.useCallback(() => {
@@ -41,7 +43,7 @@ const Form = ({ route }) => {
         <View style={[general.row("space-between"), { paddingBottom: 25 }]}>
           <View style={general.row("space-between")}>
             <ReusableText
-              text={"Formlar"}
+              text={t("forms")}
               family={"medium"}
               size={TEXT.large}
               color={COLORS.black}

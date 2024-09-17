@@ -16,6 +16,7 @@ import ModalPlan from "../../components/Modals/ModalPlan";
 import { useDispatch, useSelector } from "react-redux";
 import { clearPlans, getPlans } from "../../redux/actions/planActions";
 import { useFocusEffect } from "@react-navigation/native";
+import { useTranslation } from "react-i18next";
 
 const Plans = ({ route, navigation }) => {
   const [showModal, setShowModal] = useState(false);
@@ -24,6 +25,7 @@ const Plans = ({ route, navigation }) => {
   const { projectId } = route.params;
   const allCategories = [...new Set(plans.map((plan) => plan.planCategory))];
   const [openCategories, setOpenCategories] = useState([...allCategories]);
+  const { t } = useTranslation();
 
   useFocusEffect(
     React.useCallback(() => {
@@ -50,7 +52,7 @@ const Plans = ({ route, navigation }) => {
         <View style={[general.row("space-between"), { paddingBottom: 25 }]}>
           <View style={general.row("space-between")}>
             <ReusableText
-              text={"Planlar"}
+              text={t("plans")}
               family={"medium"}
               size={TEXT.large}
               color={COLORS.black}

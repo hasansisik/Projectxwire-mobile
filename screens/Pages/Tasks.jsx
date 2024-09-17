@@ -16,20 +16,22 @@ import styles from "../../screens/Home/home.style";
 import { useDispatch, useSelector } from "react-redux";
 import { getTasks } from "../../redux/actions/taskActions";
 import { useFocusEffect } from "@react-navigation/native";
+import { useTranslation } from "react-i18next";
 
 const Tasks = ({ route, navigation }) => {
   const [showModal, setShowModal] = useState(false);
   const dispatch = useDispatch();
   const { projectId } = route.params;
+  const { t } = useTranslation();
 
-   useFocusEffect(
-     React.useCallback(() => {
-       dispatch(getTasks(projectId));
-     }, [dispatch, projectId])
-   );
+  useFocusEffect(
+    React.useCallback(() => {
+      dispatch(getTasks(projectId));
+    }, [dispatch, projectId])
+  );
 
   const { tasks } = useSelector((state) => state.tasks);
- 
+
   return (
     <SafeAreaView
       style={[
@@ -41,7 +43,7 @@ const Tasks = ({ route, navigation }) => {
         <View style={[general.row("space-between"), { paddingBottom: 25 }]}>
           <View style={general.row("space-between")}>
             <ReusableText
-              text={"Görevler"}
+              text={t("tasks")}
               family={"medium"}
               size={TEXT.large}
               color={COLORS.black}

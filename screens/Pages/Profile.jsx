@@ -18,7 +18,8 @@ import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { storage } from "../../config";
 import * as ImagePicker from "expo-image-picker";
 import NoticeMessage from "../../components/Reusable/NoticeMessage.jsx";
-import { AntDesign, Ionicons } from "@expo/vector-icons";
+import { AntDesign } from "@expo/vector-icons";
+import { useTranslation } from "react-i18next";
 
 const Profile = ({ navigation }) => {
   const { user } = useSelector((state) => state.user);
@@ -26,6 +27,7 @@ const Profile = ({ navigation }) => {
   const [status, setStatus] = useState(null);
   const [message, setMessage] = useState(null);
   const [image, setImage] = useState(user?.picture);
+  const { t } = useTranslation();
 
   useEffect(() => {
     (async () => {

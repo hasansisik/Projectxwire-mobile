@@ -7,14 +7,15 @@ import { ReusableText } from "../../components";
 import general from "../../components/general.style";
 import { getFiles } from "../../redux/actions/taskActions";
 import { useDispatch, useSelector } from "react-redux";
+import { useTranslation } from "react-i18next";
 
 const Files = ({ route }) => {
  const [currentImageIndex, setCurrentImageIndex] = useState(0);
  const [isVisible, setIsVisible] = useState(false);
- const [showModal, setShowModal] = useState(false);
  const dispatch = useDispatch();
  const { projectId } = route.params;
  const { files} = useSelector((state) => state.tasks);
+ const { t } = useTranslation();
 
  useEffect(() => {
    dispatch(getFiles(projectId));
@@ -30,7 +31,7 @@ const Files = ({ route }) => {
       <View style={general.page}>
         <View style={[general.row("space-between"), { paddingBottom: 25 }]}>
           <ReusableText
-            text={"Dosyalar"}
+            text={t("files")}
             family={"medium"}
             size={TEXT.large}
             color={COLORS.black}

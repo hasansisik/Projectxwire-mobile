@@ -4,6 +4,7 @@ import { Plans, Tasks, Files, Form } from "../screens";
 import { Ionicons } from "@expo/vector-icons";
 import { COLORS } from "../constants/theme";
 import { useRoute } from "@react-navigation/native";
+import { useTranslation } from "react-i18next";
 
 const Tab = createBottomTabNavigator();
 
@@ -16,6 +17,7 @@ const tabBarStyle = {
 };
 
 const BottomTabNavigation = () => {
+  const { t } = useTranslation();
   const route = useRoute();
   const projectId = route.params;
 
@@ -35,7 +37,7 @@ const BottomTabNavigation = () => {
         options={{
           tabBarStyle: tabBarStyle,
           tabBarShowLabel: true,
-          tabBarLabel: "PLANLAR",
+          tabBarLabel: t("plans"),
           tabBarLabelStyle: {
             color: COLORS.black,
             fontSize: 12,
@@ -57,7 +59,7 @@ const BottomTabNavigation = () => {
         options={{
           tabBarStyle: tabBarStyle,
           tabBarShowLabel: true,
-          tabBarLabel: "GÖREVLER",
+          tabBarLabel: t("tasks"),
           tabBarLabelStyle: {
             color: COLORS.black,
             fontSize: 12,
@@ -79,7 +81,7 @@ const BottomTabNavigation = () => {
         options={{
           tabBarStyle: tabBarStyle,
           tabBarShowLabel: true,
-          tabBarLabel: "FORM",
+          tabBarLabel: t("form"),
           tabBarLabelStyle: {
             color: COLORS.black,
             fontSize: 12,
@@ -101,7 +103,7 @@ const BottomTabNavigation = () => {
         options={{
           tabBarStyle: tabBarStyle,
           tabBarShowLabel: true,
-          tabBarLabel: "DOSYALAR",
+          tabBarLabel: t("files"),
           tabBarLabelStyle: {
             color: COLORS.black,
             fontSize: 12,
