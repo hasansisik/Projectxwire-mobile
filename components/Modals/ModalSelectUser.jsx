@@ -11,6 +11,7 @@ import { addPersonToTask } from "../../redux/actions/taskActions";
 import { Dropdown } from "react-native-element-dropdown";
 import { getAllUsers } from "../../redux/actions/userActions";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { useTranslation } from "react-i18next";
 
 export default function ModalSelectUser({
   showFilters,
@@ -24,6 +25,7 @@ export default function ModalSelectUser({
   const [selectedUserId, setSelectedUserId] = useState(null);
   const [selectedUserName, setSelectedUserName] = useState("");
   const { users } = useSelector((state) => state.user);
+  const { t } = useTranslation();
 
   useEffect(() => {
     const fetchUsers = async () => {
@@ -56,7 +58,7 @@ export default function ModalSelectUser({
       if (addPersonToTask.fulfilled.match(actionResult)) {
         setStatus("success");
         setMessage("Kullanıcı göreve başarıyla eklendi.");
-        onUserSelected(selectedUserName); // Call here after successful addition
+        onUserSelected(selectedUserName); 
         setTimeout(() => {
           setShowFilters(false);
         }, 1500);
@@ -91,13 +93,13 @@ export default function ModalSelectUser({
         <HeightSpacer height={25} />
         <View>
           <ReusableText
-            text={"Görev'e Kişi Ekle"}
+            text={t("addPersonToTask")}
             family={"medium"}
             size={TEXT.medium}
             color={COLORS.black}
           />
           <ReusableText
-            text={"Görev oluşturmak için ilgili kişiyi seçin."}
+            text={t("createTaskPrompt")}
             family={"regular"}
             size={TEXT.xSmall}
             color={COLORS.description}
@@ -107,7 +109,7 @@ export default function ModalSelectUser({
         <HeightSpacer height={30} />
         <View style={{ gap: 5 }}>
           <ReusableText
-            text={"İlgili Kişi Seç:"}
+            text={t("selectPerson")}
             family={"medium"}
             size={TEXT.small}
             color={COLORS.black}
@@ -125,15 +127,15 @@ export default function ModalSelectUser({
               value={selectedUserId}
               onChange={(item) => {
                 setSelectedUserId(item.userId);
-                setSelectedUserName(item.userName); // Store the selected user name
+                setSelectedUserName(item.userName);
               }}
-              placeholder="Kişi Seçin"
+              placeholder={t("selectPerson")}
             />
           </View>
         </View>
         <HeightSpacer height={50} />
         <ReusableButton
-          btnText={"Göreve Kişi Ekle"}
+          btnText={t("addPersonToTask")}
           width={SIZES.width - 60}
           height={50}
           borderRadius={SIZES.small}

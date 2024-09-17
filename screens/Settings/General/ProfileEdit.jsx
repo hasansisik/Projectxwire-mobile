@@ -50,7 +50,7 @@ const ProfileEdit = ({ navigation }) => {
         />
         <HeightSpacer height={75} />
         <ReusableText
-          text={"Kişisel Bilgiler"}
+          text={t("personalInfo")}
           family={"medium"}
           size={TEXT.medium}
           color={COLORS.black}
@@ -61,7 +61,7 @@ const ProfileEdit = ({ navigation }) => {
           style={styles.info}
         >
           <ReusableText
-            text={"Kullanıcı Adı"}
+            text={t("username")}
             family={"regular"}
             size={TEXT.small}
             color={COLORS.black}
@@ -79,7 +79,7 @@ const ProfileEdit = ({ navigation }) => {
         {/* UserJob */}
         <TouchableOpacity style={styles.info}>
           <ReusableText
-            text={"İş Pozisyonu"}
+            text={t("jobPosition")}
             family={"regular"}
             size={TEXT.small}
             color={COLORS.black}
@@ -100,7 +100,7 @@ const ProfileEdit = ({ navigation }) => {
           style={styles.info}
         >
           <ReusableText
-            text={"Adres"}
+            text={t("address")}
             family={"regular"}
             size={TEXT.small}
             color={COLORS.black}
@@ -118,7 +118,7 @@ const ProfileEdit = ({ navigation }) => {
         {/* UserCompany */}
         <TouchableOpacity style={styles.info}>
           <ReusableText
-            text={"Şirket Adı"}
+            text={t("companyName")}
             family={"regular"}
             size={TEXT.small}
             color={COLORS.black}
@@ -135,7 +135,7 @@ const ProfileEdit = ({ navigation }) => {
         </TouchableOpacity>
         <HeightSpacer height={50} />
         <ReusableText
-          text={"Güvenlik ve İletişim Bilgileri"}
+          text={t("securityAndContactInfo")}
           family={"medium"}
           size={TEXT.medium}
           color={COLORS.black}
@@ -146,7 +146,7 @@ const ProfileEdit = ({ navigation }) => {
           style={styles.info}
         >
           <ReusableText
-            text={"Şifre"}
+            text={t("password")}
             family={"regular"}
             size={TEXT.small}
             color={COLORS.black}
@@ -167,7 +167,7 @@ const ProfileEdit = ({ navigation }) => {
           style={styles.info}
         >
           <ReusableText
-            text={"Telefon Numarası"}
+            text={t("phoneNumber")}
             family={"regular"}
             size={TEXT.small}
             color={COLORS.black}
@@ -188,7 +188,7 @@ const ProfileEdit = ({ navigation }) => {
           style={styles.info}
         >
           <ReusableText
-            text={"Mail Adresi"}
+            text={t("email")}
             family={"regular"}
             size={TEXT.small}
             color={COLORS.black}
@@ -213,7 +213,7 @@ const ProfileEdit = ({ navigation }) => {
               textAlign: "center",
             }}
           >
-            {"bir sorun var ise "}
+            {t("contactUsIfIssue")}
             <Text
               style={{
                 fontFamily: "regular",
@@ -222,8 +222,8 @@ const ProfileEdit = ({ navigation }) => {
               }}
             >
               {"destek@projectxwire.com"}
-            </Text >
-            {" e-posta adresinden bizimle iletişime geçebilirsiniz."}
+            </Text>
+            {t("contactUsByEmail")}
           </Text>
         </View>
       </View>

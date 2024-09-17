@@ -6,6 +6,7 @@ import { AntDesign, Feather, Ionicons } from "@expo/vector-icons";
 import Svg, { Polyline } from "react-native-svg";
 import ReusableText from "../../Reusable/ReusableText";
 import ViewShot from "react-native-view-shot";
+import { useTranslation } from "react-i18next";
 
 export default function MessagesFile({ onImageSelected, onImageSend }) {
   const [image, setImage] = useState(null);
@@ -14,6 +15,7 @@ export default function MessagesFile({ onImageSelected, onImageSend }) {
   const [currentDrawing, setCurrentDrawing] = useState([]);
   const [isDrawing, setIsDrawing] = useState(false);
   const viewShotRef = useRef(null);
+  const { t } = useTranslation();
 
   useEffect(() => {
     (async () => {
@@ -171,7 +173,7 @@ export default function MessagesFile({ onImageSelected, onImageSend }) {
             onPress={handleImageSelected}
           >
             <ReusableText
-              text="Seçilen Fotoğrafı Gönder"
+              text={t("sendSelectedPhoto")}
               family={"medium"}
               size={TEXT.xSmall}
               color={COLORS.white}
