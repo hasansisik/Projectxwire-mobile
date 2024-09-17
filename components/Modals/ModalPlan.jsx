@@ -15,12 +15,14 @@ import { planCreateSchema } from "../../utils/validation";
 import { createPlan } from "../../redux/actions/planActions";
 import PlanImageUpload from "../Tiles/Upload/PlanImageUpload";
 import NoticeMessage from "../Reusable/NoticeMessage";
+import { useTranslation } from "react-i18next";
 
 export default function ModalPlan({ showFilters, setShowFilters, projectId }) {
   const dispatch = useDispatch();
   const [status, setStatus] = useState(null);
   const [message, setMessage] = useState(null);
   const [planImage, setPlanImage] = useState(null);
+  const { t } = useTranslation();
 
   const formik = useFormik({
     initialValues: { planName: "", planCode: "", planCategory: "" },
@@ -71,13 +73,13 @@ export default function ModalPlan({ showFilters, setShowFilters, projectId }) {
         <HeightSpacer height={25} />
         <View>
           <ReusableText
-            text={"Plan Oluştur"}
+            text={t("createPlan")}
             family={"medium"}
             size={TEXT.medium}
             color={COLORS.black}
           />
           <ReusableText
-            text={"Plan oluşturmak için aşağıdaki alanları doldurunuz."}
+            text={t("createPlanPrompt")}
             family={"regular"}
             size={TEXT.xSmall}
             color={COLORS.description}
@@ -86,13 +88,13 @@ export default function ModalPlan({ showFilters, setShowFilters, projectId }) {
         <HeightSpacer height={15} />
         <View style={{ gap: 5 }}>
           <ReusableText
-            text={"Plan İsmi :"}
+            text={t("planName")}
             family={"medium"}
             size={TEXT.small}
             color={COLORS.black}
           />
           <ReusableInput
-            label="Plan Adı"
+            label={t("planName")}
             theme={{ colors: { primary: "black" } }}
             value={formik.values.planName}
             onChangeText={formik.handleChange("planName")}
@@ -102,13 +104,13 @@ export default function ModalPlan({ showFilters, setShowFilters, projectId }) {
         </View>
         <View style={{ gap: 5 }}>
           <ReusableText
-            text={"Plan Kodu :"}
+            text={t("planCode")}
             family={"medium"}
             size={TEXT.small}
             color={COLORS.black}
           />
           <ReusableInput
-            label="Plan Kodu"
+            label={t("planCode")}
             theme={{ colors: { primary: "black" } }}
             value={formik.values.planCode}
             onChangeText={formik.handleChange("planCode")}
@@ -118,13 +120,13 @@ export default function ModalPlan({ showFilters, setShowFilters, projectId }) {
         </View>
         <View style={{ gap: 5 }}>
           <ReusableText
-            text={"Plan Kategorisi :"}
+            text={t("planCategory")}
             family={"medium"}
             size={TEXT.small}
             color={COLORS.black}
           />
           <ReusableInput
-            label="Plan Kategorisi"
+            label={t("planCategory")}
             theme={{ colors: { primary: "black" } }}
             value={formik.values.planCategory}
             onChangeText={formik.handleChange("planCategory")}
@@ -133,14 +135,14 @@ export default function ModalPlan({ showFilters, setShowFilters, projectId }) {
           />
         </View>
         <ReusableText
-          text={"Plan Görselleri :"}
+          text={t("planImages")}
           family={"medium"}
           size={TEXT.small}
           color={COLORS.black}
         />
         <PlanImageUpload onUpload={setPlanImage} />
         <ReusableButton
-          btnText={"Plan Oluştur"}
+          btnText={t("createPlan")}
           width={SIZES.width - 60}
           height={45}
           borderRadius={SIZES.small}

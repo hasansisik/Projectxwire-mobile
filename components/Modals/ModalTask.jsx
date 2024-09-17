@@ -16,6 +16,7 @@ import { createTask } from "../../redux/actions/taskActions";
 import { Dropdown } from "react-native-element-dropdown";
 import { getAllUsers } from "../../redux/actions/userActions";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { useTranslation } from "react-i18next";
 
 export default function ModalTask({
   showFilters,
@@ -32,6 +33,7 @@ export default function ModalTask({
   const { plans } = useSelector((state) => state.plans);
   const { users } = useSelector((state) => state.user);
   const { user } = useSelector((state) => state.user);
+  const { t } = useTranslation();
 
   useEffect(() => {
     const fetchUsers = async () => {
@@ -109,13 +111,13 @@ export default function ModalTask({
         <HeightSpacer height={20} />
         <View>
           <ReusableText
-            text={"Görev Oluştur"}
+            text={t("createTask")}
             family={"medium"}
             size={TEXT.medium}
             color={COLORS.black}
           />
           <ReusableText
-            text={"Görev oluşturmak için aşağıdaki alanları doldurunuz."}
+            text={t("createTaskPrompt")}
             family={"regular"}
             size={TEXT.xSmall}
             color={COLORS.description}
@@ -125,13 +127,13 @@ export default function ModalTask({
         <HeightSpacer height={15} />
         <View style={{ gap: 5 }}>
           <ReusableText
-            text={"Görev Konusu :"}
+            text={t("taskSubject")}
             family={"medium"}
             size={TEXT.small}
             color={COLORS.black}
           />
           <ReusableInput
-            label="Görev Konusu"
+            label={t("taskSubject")}
             theme={{ colors: { primary: "black" } }}
             value={formik.values.taskDesc}
             onChangeText={formik.handleChange("taskDesc")}
@@ -142,13 +144,13 @@ export default function ModalTask({
         {/* Task Category Input */}
         <View style={{ gap: 5 }}>
           <ReusableText
-            text={"Görev Kategorisi :"}
+            text={t("taskCategory")}
             family={"medium"}
             size={TEXT.small}
             color={COLORS.black}
           />
           <ReusableInput
-            label="Görev Kategorisi"
+            label={t("taskCategory")}
             theme={{ colors: { primary: "black" } }}
             value={formik.values.taskCategory}
             onChangeText={formik.handleChange("taskCategory")}
@@ -159,13 +161,13 @@ export default function ModalTask({
         {/* Task Title Input */}
         <View style={{ gap: 5 }}>
           <ReusableText
-            text={"Görev Başlığı :"}
+            text={t("taskTitle")}
             family={"medium"}
             size={TEXT.small}
             color={COLORS.black}
           />
           <ReusableInput
-            label="Görev Başlığı"
+            label={t("taskTitle")}
             theme={{ colors: { primary: "black" } }}
             value={formik.values.taskTitle}
             onChangeText={formik.handleChange("taskTitle")}
@@ -176,7 +178,7 @@ export default function ModalTask({
         {/* Plan Selected */}
         <View style={{ gap: 5 }}>
           <ReusableText
-            text={"Plan Seç:"}
+            text={t("selectPlan")}
             family={"medium"}
             size={TEXT.small}
             color={COLORS.black}
@@ -196,7 +198,7 @@ export default function ModalTask({
               onChange={(item) => {
                 setSelectedPlanId(item.planId);
               }}
-              placeholder="Plan Seçin"
+              placeholder={t("selectPlan")}
             />
           </View>
         </View>
@@ -204,7 +206,7 @@ export default function ModalTask({
         <HeightSpacer height={20} />
         <View style={{ gap: 5 }}>
           <ReusableText
-            text={"İlgili Kişi Seç:"}
+            text={t("selectPerson")}
             family={"medium"}
             size={TEXT.small}
             color={COLORS.black}
@@ -224,13 +226,13 @@ export default function ModalTask({
               onChange={(item) => {
                 setSelectedUserId(item.userId);
               }}
-              placeholder="Kişi Seçin"
+              placeholder={t("selectPerson")}
             />
           </View>
         </View>
         <HeightSpacer height={25} />
         <ReusableButton
-          btnText={"Görev Oluştur"}
+          btnText={t("createTask")}
           width={SIZES.width - 60}
           height={45}
           borderRadius={SIZES.small}

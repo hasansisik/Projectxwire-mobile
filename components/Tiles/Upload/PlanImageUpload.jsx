@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import { View, TouchableOpacity, Text, Alert } from "react-native";
 import * as DocumentPicker from "expo-document-picker";
+import { useTranslation } from "react-i18next";
 
 export default function PlanImageUpload({ onUpload }) {
-  const [fileName, setFileName] = useState("PDF veya Görsel Seçmek İçin Tıkla");
+  const { t } = useTranslation();
+  const [fileName, setFileName] = useState(t("selectPDFOrImage"));
 
   const pickFile = async () => {
     try {
@@ -13,7 +15,6 @@ export default function PlanImageUpload({ onUpload }) {
 
       if (!result.canceled && result.assets && result.assets.length > 0) {
         const { uri, name, mimeType } = result.assets[0];
-
         // `uri`, `name`, ve `mimeType`
         setFileName(name);
         onUpload({
