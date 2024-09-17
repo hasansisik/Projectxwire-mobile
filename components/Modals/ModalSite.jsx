@@ -15,6 +15,7 @@ import NoticeMessage from "../Reusable/NoticeMessage";
 import ProjectLogoUpload from "../Tiles/Upload/ProjectLogoUpload";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { createSite } from "../../redux/actions/siteActions";
+import { useTranslation } from "react-i18next";
 
 export default function ModalSite({
   showFilters,
@@ -28,6 +29,7 @@ export default function ModalSite({
   const [companyId, setCompanyId] = useState("");
   const [finishDate, setFinishDate] = useState(new Date());
   const [showDatePicker, setShowDatePicker] = useState(false);
+  const { t } = useTranslation();
 
   useEffect(() => {
     const fetchCompanyId = async () => {
@@ -110,13 +112,13 @@ export default function ModalSite({
         <HeightSpacer height={10} />
         <View>
           <ReusableText
-            text={"Şantiye Oluştur"}
+            text={t("createSite")}
             family={"medium"}
             size={TEXT.medium}
             color={COLORS.black}
           />
           <ReusableText
-            text={"Şantiye oluşturmak için aşağıdaki alanları doldurunuz."}
+            text={t("createSiteDescription")}
             family={"regular"}
             size={TEXT.xSmall}
             color={COLORS.description}
@@ -125,13 +127,13 @@ export default function ModalSite({
         <HeightSpacer height={5} />
         <View style={{ gap: 5 }}>
           <ReusableText
-            text={"Şantiye Adı:"}
+            text={t("siteName")}
             family={"medium"}
             size={TEXT.small}
             color={COLORS.black}
           />
           <ReusableInput
-            label="Şantiye Adı"
+            label={t("siteName")}
             theme={{ colors: { primary: "black" } }}
             value={formik.values.siteName}
             onChangeText={formik.handleChange("siteName")}
@@ -141,13 +143,13 @@ export default function ModalSite({
         </View>
         <View style={{ gap: 5 }}>
           <ReusableText
-            text={"Şantiye Kodu:"}
+            text={t("siteCode")}
             family={"medium"}
             size={TEXT.small}
             color={COLORS.black}
           />
           <ReusableInput
-            label="Şantiye Kodu"
+            label={t("siteCode")}
             theme={{ colors: { primary: "black" } }}
             value={formik.values.siteCode}
             onChangeText={formik.handleChange("siteCode")}
@@ -157,7 +159,7 @@ export default function ModalSite({
         </View>
         <View style={{ gap: 5 }}>
           <ReusableText
-            text={"Teslim Tarihi:"}
+            text={t("deliveryDate")}
             family={"medium"}
             size={TEXT.small}
             color={COLORS.black}
@@ -189,7 +191,7 @@ export default function ModalSite({
         </View>
         <HeightSpacer height={5} />
         <ReusableText
-          text={"Şantiye Logo :"}
+          text={t("siteLogo")}
           family={"medium"}
           size={TEXT.small}
           color={COLORS.black}
@@ -200,7 +202,7 @@ export default function ModalSite({
         />
         <HeightSpacer height={10} />
         <ReusableButton
-          btnText={"Şantiye Oluştur"}
+          btnText={t("createSiteButton")}
           width={SIZES.width - 60}
           height={45}
           borderRadius={SIZES.small}

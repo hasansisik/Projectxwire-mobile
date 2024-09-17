@@ -15,6 +15,7 @@ import { projectCreateSchema } from "../../utils/validation";
 import { Dropdown } from "react-native-element-dropdown";
 import NoticeMessage from "../Reusable/NoticeMessage";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { useTranslation } from "react-i18next";
 
 export default function ModalProject({
   showFilters,
@@ -29,6 +30,7 @@ export default function ModalProject({
   const [companyId, setCompanyId] = useState("");
   const [finishDate, setFinishDate] = useState(new Date());
   const [showDatePicker, setShowDatePicker] = useState(false);
+  const { t } = useTranslation();
 
   useEffect(() => {
     const fetchCompanyId = async () => {
@@ -94,16 +96,16 @@ export default function ModalProject({
   };
 
   const formatDate = (date) => {
-    if (!date) return "Teslim Tarihi Seçin";
+    if (!date) return t("deliveryDate");
     const options = { day: "2-digit", month: "2-digit", year: "numeric" };
     return date.toLocaleDateString("tr-TR", options);
   };
 
   const categories = [
-    { label: "Mimari", value: "architecture" },
-    { label: "Statik", value: "static" },
-    { label: "Elektirik", value: "electricity" },
-    { label: "Peyzaj", value: "landscape" },
+    { label: t("architecture"), value: "architecture" },
+    { label: t("static"), value: "static" },
+    { label: t("electricity"), value: "electricity" },
+    { label: t("landscape"), value: "landscape" },
   ];
 
   return (
@@ -120,13 +122,13 @@ export default function ModalProject({
         <HeightSpacer height={10} />
         <View>
           <ReusableText
-            text={"Proje Oluştur"}
+            text={t("createProject")}
             family={"medium"}
             size={TEXT.medium}
             color={COLORS.black}
           />
           <ReusableText
-            text={"Proje oluşturmak için aşağıdaki alanları doldurunuz."}
+            text={t("createProjectDescription")}
             family={"regular"}
             size={TEXT.xSmall}
             color={COLORS.description}
@@ -135,13 +137,13 @@ export default function ModalProject({
         <HeightSpacer height={5} />
         <View style={{ gap: 5 }}>
           <ReusableText
-            text={"Proje Adı:"}
+            text={t("projectName")}
             family={"medium"}
             size={TEXT.small}
             color={COLORS.black}
           />
           <ReusableInput
-            label="Proje Adı"
+            label={t("projectName")}
             theme={{ colors: { primary: "black" } }}
             value={formik.values.projectName}
             onChangeText={formik.handleChange("projectName")}
@@ -151,13 +153,13 @@ export default function ModalProject({
         </View>
         <View style={{ gap: 5 }}>
           <ReusableText
-            text={"Proje Kodu:"}
+            text={t("projectCode")}
             family={"medium"}
             size={TEXT.small}
             color={COLORS.black}
           />
           <ReusableInput
-            label="Proje Kodu"
+            label={t("projectCode")}
             theme={{ colors: { primary: "black" } }}
             value={formik.values.projectCode}
             onChangeText={formik.handleChange("projectCode")}
@@ -167,7 +169,7 @@ export default function ModalProject({
         </View>
         <View style={{ gap: 5 }}>
           <ReusableText
-            text={"Proje Kategorisi:"}
+            text={t("projectCategory")}
             family={"medium"}
             size={TEXT.small}
             color={COLORS.black}
@@ -177,7 +179,7 @@ export default function ModalProject({
             data={categories}
             labelField="label"
             valueField="value"
-            placeholder="Kategori Seçin"
+            placeholder={t("selectCategory")}
             value={formik.values.projectCategory}
             onChange={(item) =>
               formik.setFieldValue("projectCategory", item.value)
@@ -186,7 +188,7 @@ export default function ModalProject({
         </View>
         <View style={{ gap: 5 }}>
           <ReusableText
-            text={"Teslim Tarihi:"}
+            text={t("deliveryDate")}
             family={"medium"}
             size={TEXT.small}
             color={COLORS.black}
@@ -217,7 +219,7 @@ export default function ModalProject({
           )}
         </View>
         <ReusableButton
-          btnText={"Proje Ekle"}
+          btnText={t("addProjectButton")}
           width={SIZES.width - 60}
           height={45}
           borderRadius={SIZES.small}
