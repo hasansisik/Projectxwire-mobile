@@ -62,7 +62,7 @@ const SiteCard = ({ item, onPress }) => {
             />
           </View>
         </View>
-        {/* İçerik kısmı */}
+        {/* Content */}
         <View style={[styles.content, { backgroundColor }]}>
           <Image
             source={{ uri: item.logo }}
