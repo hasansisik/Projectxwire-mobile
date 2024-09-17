@@ -4,32 +4,29 @@ import { COLORS, TEXT } from "../../constants/theme";
 import ReusableText from "../Reusable/ReusableText";
 import styles from "../../screens/Home/home.style";
 import { useSelector } from "react-redux";
+import { useTranslation } from "react-i18next";
 
 const ProjectsCategory = ({ setFilter }) => {
   const { projects } = useSelector((state) => state.projects);
   const [categories, setCategories] = useState([]);
-  const [selectedCategory, setSelectedCategory] = useState("Hepsi");
+  const [selectedCategory, setSelectedCategory] = useState("all");
+  const { t } = useTranslation();
 
   useEffect(() => {
-    const categoryCounts = projects.reduce((acc, project) => {
-      acc[project.projectCategory] = (acc[project.projectCategory] || 0) + 1;
-      return acc;
-    }, {});
+    const predefinedCategories = [
+      { id: 0, text: `${t("all")} (${projects.length})`, filter: "all" },
+      { id: 1, text: `${t("architecture")} (${projects.filter(p => p.projectCategory === "architecture").length})`, filter: "architecture" },
+      { id: 2, text: `${t("electricity")} (${projects.filter(p => p.projectCategory === "electricity").length})`, filter: "electricity" },
+      { id: 3, text: `${t("static")} (${projects.filter(p => p.projectCategory === "static").length})`, filter: "static" },
+      { id: 4, text: `${t("landscape")} (${projects.filter(p => p.projectCategory === "landscape").length})`, filter: "landscape" },
+    ];
 
-    const categoriesArray = Object.keys(categoryCounts).map((key, index) => ({
-      id: index + 1,
-      text: `${key} (${categoryCounts[key]})`,
-    }));
+    setCategories(predefinedCategories);
+  }, [projects, t]);
 
-    setCategories([
-      { id: 0, text: `Hepsi (${projects.length})` },
-      ...categoriesArray,
-    ]);
-  }, [projects]);
-
-  const handleCategoryPress = (category) => {
-    setSelectedCategory(category);
-    setFilter(category.split(" ")[0]);
+  const handleCategoryPress = (categoryId, filter) => {
+    setSelectedCategory(categoryId);
+    setFilter(filter);
   };
 
   return (
@@ -38,14 +35,12 @@ const ProjectsCategory = ({ setFilter }) => {
         {categories.map((category) => (
           <TouchableOpacity
             key={category.id}
-            onPress={() => handleCategoryPress(category.text)}
+            onPress={() => handleCategoryPress(category.id, category.filter)}
             style={[
               styles.projectBox,
               {
                 backgroundColor:
-                  selectedCategory === category.text ||
-                  (selectedCategory === "Hepsi" &&
-                    category.text.startsWith("Hepsi"))
+                  selectedCategory === category.id
                     ? COLORS.lightWhite
                     : COLORS.lightInput,
               },

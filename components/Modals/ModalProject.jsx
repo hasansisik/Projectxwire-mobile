@@ -100,10 +100,10 @@ export default function ModalProject({
   };
 
   const categories = [
-    { label: "Mimari", value: "Mimari" },
-    { label: "Statik", value: "Statik" },
-    { label: "Elektirik", value: "Elektirik" },
-    { label: "Peyzaj", value: "Peyzaj" },
+    { label: "Mimari", value: "architecture" },
+    { label: "Statik", value: "static" },
+    { label: "Elektirik", value: "electricity" },
+    { label: "Peyzaj", value: "landscape" },
   ];
 
   return (
