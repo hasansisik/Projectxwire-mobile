@@ -20,10 +20,9 @@ const ProjectsContent = ({ filter }) => {
       style={[
         general.row("space-between"),
         {
-          marginTop: 25,
+          marginTop: 20,
           paddingVertical: 2,
           alignItems: "center",
-          backgroundColor: COLORS.lightInput,
         },
       ]}
     >

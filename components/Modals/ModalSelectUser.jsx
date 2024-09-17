@@ -161,6 +161,6 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
     borderRadius: 20,
     padding: 30,
-    paddingBottom: 40,
+    paddingBottom: 20,
   },
 });

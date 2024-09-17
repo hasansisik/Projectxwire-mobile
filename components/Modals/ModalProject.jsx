@@ -245,7 +245,7 @@ const styles = StyleSheet.create({
     borderTopLeftRadius: 25,
     borderTopRightRadius: 25,
     padding: 30,
-    paddingBottom: 40,
+    paddingBottom: 20,
   },
   dateSelect: {
     borderRadius: 10,

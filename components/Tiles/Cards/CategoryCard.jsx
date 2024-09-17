@@ -68,7 +68,10 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     gap: 5,
     padding: 10,
+    paddingBottom: 25,
     backgroundColor: COLORS.lightWhite,
+    borderBottomColor: COLORS.lightGrey,
+    borderBottomWidth: 1,
   },
   details: {
     alignSelf: "flex-start",

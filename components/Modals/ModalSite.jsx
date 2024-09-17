@@ -198,6 +198,7 @@ export default function ModalSite({
           onUploadComplete={handleUploadComplete}
           setUploadFunction={setUploadFunction}
         />
+        <HeightSpacer height={10} />
         <ReusableButton
           btnText={"Şantiye Oluştur"}
           width={SIZES.width - 60}
@@ -227,7 +228,7 @@ const styles = StyleSheet.create({
     borderTopLeftRadius: 25,
     borderTopRightRadius: 25,
     padding: 30,
-    paddingBottom: 40,
+    paddingBottom: 20,
   },
   dateSelect: {
     borderRadius: 10,

@@ -45,8 +45,8 @@ const SIZES = {
 const TEXT = {
     xxSmall: 11,
     xSmall: 13,
-    small: 15,
-    medium: 17,
+    small: 14,
+    medium: 16,
     large: 19,
     xLarge: 24,
     xxLarge: 27,

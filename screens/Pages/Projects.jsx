@@ -8,7 +8,7 @@ import ProjectsCategory from "../../components/Home/ProjectsCategory.jsx";
 import ProjectsContent from "../../components/Home/ProjectsContent.jsx";
 import { useFocusEffect, useRoute } from "@react-navigation/native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { getProjects } from "../../redux/actions/projectActions.js";
+import { clearProjects, getProjects } from "../../redux/actions/projectActions.js";
 
 const Projects = () => {
   const route = useRoute();
@@ -29,6 +29,7 @@ const Projects = () => {
   useFocusEffect(
     React.useCallback(() => {
       if (companyId && siteId) {
+        dispatch(clearProjects());
         dispatch(getProjects({ companyId, siteId }));
       }
     }, [dispatch, companyId, siteId])
