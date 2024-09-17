@@ -9,14 +9,19 @@
   "password": "Şifre",
   "loginButton": "Giriş Yap",
   "registerButton": "Kayıt Ol",
-  "forgotInfo": "Bilgileri Unuttum ? ",
-  "noCompanyCode": "Şirket Kodunuz yok mu ? ",
+  "forgotInfo": "Bilgileri Unuttum? ",
+  "noCompanyCode": "Şirket Kodunuz yok mu? ",
   "applyNow": "Başvur şimdi",
   "authDescription": "Projectxwire denemek veya kullanmak için kayıt ol veya giriş yapmayı dene",
   "companyLoginPage": "Şirket Giriş Sayfası",
   "welcomeBackMessage": "Merhaba,\nTekrar Hoşgeldiniz! 👋",
   "continueOrCreateAccount": "Giriş yaparak devam edebilirsiniz, veya bir hesap oluşturabilirsiniz.",
   "email": "E-mail",
-  "forgotPassword": "Şifremi Unuttum ? ",
-  "noAccount": "Hesabınız yok mu ? "
+  "forgotPassword": "Şifremi Unuttum?",
+  "noAccount": "Hesabınız yok mu?",
+  "joinUsMessage": "Merhaba,\nBize Katılın! 👋",
+  "startUsingApp": "Kayıt olun ve uygulamamızı kullanmaya başlayın.",
+  "fullName": "İsim Soyisim",
+  "confirmPassword": "Şifre Tekrar",
+  "alreadyHaveAccount": "Zaten hesabınız var mı?"
 }

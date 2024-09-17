@@ -70,7 +70,7 @@ const Auth = ({ navigation }) => {
           textFontFamily={"medium"}
           onPress={() => navigation.navigate("Login")}
         />
-        <HeightSpacer height={20} />
+        <HeightSpacer height={15} />
         <ReusableButton
           btnText={t("registerButton")}
           width={SIZES.width - 40}
@@ -81,7 +81,7 @@ const Auth = ({ navigation }) => {
           textFontFamily={"medium"}
           onPress={() => navigation.navigate("Register")}
         />
-        <HeightSpacer height={25} />
+        <HeightSpacer height={15} />
         <TouchableOpacity onPress={CompanyLogin}>
           <ReusableText
             text={t("companyLoginPage")}

@@ -17,6 +17,11 @@
   "welcomeBackMessage": "Bonjour,\nBienvenue à nouveau! 👋",
   "continueOrCreateAccount": "Vous pouvez continuer en vous connectant, ou créer un compte.",
   "email": "E-mail",
-  "forgotPassword": "Mot de passe oublié ? ",
-  "noAccount": "Vous n'avez pas de compte ? "
+  "forgotPassword": "Mot de passe oublié?",
+  "noAccount": "Vous n'avez pas de compte?",
+  "joinUsMessage": "Bonjour,\nRejoignez-nous! 👋",
+  "startUsingApp": "Inscrivez-vous et commencez à utiliser notre application.",
+  "fullName": "Nom Complet",
+  "confirmPassword": "Confirmer le Mot de Passe",
+  "alreadyHaveAccount": "Vous avez déjà un compte?"
 }

@@ -9,14 +9,19 @@
   "password": "Passwort",
   "loginButton": "Anmelden",
   "registerButton": "Registrieren",
-  "forgotInfo": "Informationen vergessen ? ",
-  "noCompanyCode": "Haben Sie keinen Unternehmenscode ?",
+  "forgotInfo": "Informationen vergessen?",
+  "noCompanyCode": "Haben Sie keinen Unternehmenscode?",
   "applyNow": "Jetzt bewerben",
   "authDescription": "Melden Sie sich an oder versuchen Sie es mit der Anmeldung, um Projectxwire zu nutzen oder zu testen",
   "companyLoginPage": "Unternehmens-Login-Seite",
   "welcomeBackMessage": "Hallo,\nWillkommen zurück! 👋",
   "continueOrCreateAccount": "Sie können fortfahren, indem Sie sich anmelden oder ein Konto erstellen.",
   "email": "E-Mail",
-  "forgotPassword": "Passwort vergessen ? ",
-  "noAccount": "Haben Sie kein Konto ? "
+  "forgotPassword": "Passwort vergessen?",
+  "noAccount": "Haben Sie kein Konto?",
+  "joinUsMessage": "Hallo,\nSchließen Sie sich uns an! 👋",
+  "startUsingApp": "Melden Sie sich an und beginnen Sie, unsere App zu nutzen.",
+  "fullName": "Vollständiger Name",
+  "confirmPassword": "Passwort bestätigen",
+  "alreadyHaveAccount": "Haben Sie bereits ein Konto?"
 }

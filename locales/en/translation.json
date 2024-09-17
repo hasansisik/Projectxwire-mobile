@@ -9,14 +9,19 @@
   "password": "Password",
   "loginButton": "Login",
   "registerButton": "Register",
-  "forgotInfo": "Forgot Information ? ",
-  "noCompanyCode": "Don't have a Company Code ? ",
+  "forgotInfo": "Forgot Information?",
+  "noCompanyCode": "Don't have a Company Code?",
   "applyNow": "Apply Now",
   "authDescription": "Sign up or try logging in to use or test Projectxwire",
   "companyLoginPage": "Company Login Page",
   "welcomeBackMessage": "Hello,\nWelcome Back! 👋",
   "continueOrCreateAccount": "You can continue by logging in, or create an account.",
   "email": "Email",
-  "forgotPassword": "Forgot Password ? ",
-  "noAccount": "Don't have an account ? "
+  "forgotPassword": "Forgot Password?",
+  "noAccount": "Don't have an account?",
+  "joinUsMessage": "Hello,\nJoin Us! 👋",
+  "startUsingApp": "Sign up and start using our app.",
+  "fullName": "Full Name",
+  "confirmPassword": "Confirm Password",
+  "alreadyHaveAccount": "Already have an account?"
 }

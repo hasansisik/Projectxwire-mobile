@@ -25,6 +25,7 @@ import { registerSchema } from "../../utils/validation";
 import { register } from "../../redux/actions/userActions";
 import NoticeMessage from "../../components/Reusable/NoticeMessage";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { useTranslation } from "react-i18next";
 
 const Register = ({ navigation }) => {
   const dispatch = useDispatch();
@@ -32,6 +33,7 @@ const Register = ({ navigation }) => {
   const [message, setMessage] = useState(null);
   const [companyId, setCompanyId] = useState("");
   const [isKeyboardVisible, setKeyboardVisible] = useState(false);
+  const { t } = useTranslation();
 
   useEffect(() => {
     const fetchCompanyId = async () => {
@@ -127,14 +129,14 @@ const Register = ({ navigation }) => {
             <View style={{ padding: 20 }}>
               {/* Header */}
               <ReusableText
-                text={"Merhaba,\nBize Katılın! 👋"}
+                text={t("joinUsMessage")}
                 family={"bold"}
                 size={TEXT.xLarge}
                 color={COLORS.orange}
               />
               {/* Description */}
               <ReusableText
-                text={"Kayıt olun ve uygulamamızı kullanmaya başlayın."}
+                text={t("startUsingApp")}
                 family={"regular"}
                 size={TEXT.small}
                 color={COLORS.description}
@@ -148,7 +150,7 @@ const Register = ({ navigation }) => {
           <View>
             {/* Username Input */}
             <ReusableInput
-              label="İsim Soyisim"
+              label={t("fullName")}
               theme={{ colors: { primary: "black" } }}
               value={formik.values.name}
               onChangeText={formik.handleChange("name")}
@@ -157,7 +159,7 @@ const Register = ({ navigation }) => {
             />
             {/* Email Input */}
             <ReusableInput
-              label="E-mail"
+              label={t("email")}
               theme={{ colors: { primary: "black" } }}
               value={formik.values.email}
               onChangeText={formik.handleChange("email")}
@@ -166,7 +168,7 @@ const Register = ({ navigation }) => {
             />
             {/* Password Input */}
             <ReusableInput
-              label="Şifre"
+              label={t("password")}
               theme={{ colors: { primary: "black" } }}
               value={formik.values.password}
               onChangeText={formik.handleChange("password")}
@@ -175,7 +177,7 @@ const Register = ({ navigation }) => {
             />
             {/* Confirm Password Input */}
             <ReusableInput
-              label="Şifre Tekrar"
+              label={t("confirmPassword")}
               theme={{ colors: { primary: "black" } }}
               value={formik.values.confirmPassword}
               onChangeText={formik.handleChange("confirmPassword")}
@@ -184,7 +186,7 @@ const Register = ({ navigation }) => {
             />
             {/* Register Button */}
             <ReusableButton
-              btnText={"Kayıt Ol"}
+              btnText={t("registerButton")}
               width={SIZES.width - 40}
               height={50}
               borderRadius={SIZES.small}
@@ -199,15 +201,15 @@ const Register = ({ navigation }) => {
           {/* Footer */}
           <View style={styles.footer}>
             <ReusableText
-              text={"Hesabınız yok mu ? "}
+              text={t("alreadyHaveAccount")}
               family={"regular"}
               size={TEXT.xSmall}
               color={COLORS.description}
               underline={true}
             />
-            <TouchableOpacity onPress={() => navigation.navigate("Register")}>
+            <TouchableOpacity onPress={() => navigation.navigate("Login")}>
               <ReusableText
-                text={"Kayıt Olun"}
+                text={t("loginButton")}
                 family={"bold"}
                 size={TEXT.xSmall}
                 color={COLORS.orange}
