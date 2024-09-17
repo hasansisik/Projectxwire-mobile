@@ -107,13 +107,13 @@ const Profile = ({ navigation }) => {
       </View>
       <View style={{ paddingHorizontal: 25 }}>
         <ReusableText
-          text={"Uygulama"}
+          text={t("application")}
           family={"regular"}
           size={TEXT.xLarge}
           color={COLORS.description}
         />
         <ReusableText
-          text={"Ayarları"}
+          text={t("settings")}
           family={"bold"}
           size={TEXT.xxLarge}
           color={COLORS.black}
@@ -156,7 +156,7 @@ const Profile = ({ navigation }) => {
         <>
           <View style={{ paddingHorizontal: 20, paddingBottom: 5 }}>
             <ReusableText
-              text={"Genel"}
+              text={t("general")}
               family={"regular"}
               size={TEXT.small}
               color={COLORS.description}
@@ -165,7 +165,7 @@ const Profile = ({ navigation }) => {
           <View style={styles.settingsBox}>
             <ReusableSettings
               icon={"person-outline"}
-              title={"Profili Düzenle"}
+              title={t("editProfile")}
               onPress={() => navigation.navigate("ProfileEdit")}
             />
             <View
@@ -173,7 +173,7 @@ const Profile = ({ navigation }) => {
             />
             <ReusableSettings
               icon={"clipboard-outline"}
-              title={"Projeyi Düzenle"}
+              title={t("editProject")}
               onPress={() => navigation.navigate("ProjectEdit")}
             />
           </View>
@@ -182,7 +182,7 @@ const Profile = ({ navigation }) => {
       <HeightSpacer height={20} />
       <View style={{ paddingHorizontal: 20, paddingBottom: 5 }}>
         <ReusableText
-          text={"Politikalar ve Yardım"}
+          text={t("policiesAndHelp")}
           family={"regular"}
           size={TEXT.small}
           color={COLORS.description}
@@ -191,19 +191,19 @@ const Profile = ({ navigation }) => {
       <View style={styles.settingsBox}>
         <ReusableSettings
           icon={"notifications-outline"}
-          title={"Bildirimler"}
+          title={t("notifications")}
           onPress={() => navigation.navigate("Notification")}
         />
         <View style={{ borderTopWidth: 1, borderColor: COLORS.lightBorder }} />
         <ReusableSettings
           icon={"trail-sign-outline"}
-          title={"Yardım ve Destek"}
+          title={t("helpAndSupport")}
           onPress={() => navigation.navigate("Helpers")}
         />
         <View style={{ borderTopWidth: 1, borderColor: COLORS.lightBorder }} />
         <ReusableSettings
           icon={"clipboard-outline"}
-          title={"Politikalar ve Gizlilik"}
+          title={t("policiesAndPrivacy")}
           onPress={() => navigation.navigate("Politicy")}
         />
       </View>
@@ -212,7 +212,7 @@ const Profile = ({ navigation }) => {
         <View style={styles.settingsBox}>
           <ReusableSettings
             icon={"log-in-outline"}
-            title={"Giriş Yap"}
+            title={t("loginButton")}
             onPress={() => navigation.navigate("Login")}
           />
         </View>
@@ -220,7 +220,7 @@ const Profile = ({ navigation }) => {
         <View style={styles.settingsBox}>
           <ReusableSettings
             icon={"log-out-outline"}
-            title={"Çıkış Yap"}
+            title={t("logout")}
             onPress={logoutHandler}
           />
         </View>
