@@ -13,12 +13,15 @@ import general from "../../components/general.style";
 import { COLORS, SIZES, TEXT } from "../../constants/theme";
 import { HeightSpacer, ReusableText, ReusableButton } from "../../components";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { useTranslation } from "react-i18next";
 
 const Auth = ({ navigation }) => {
-    const CompanyLogin = async () => {
-      await AsyncStorage.removeItem("companyId");
-      navigation.navigate("CompanyLoginAgain");
-    };
+  const { t } = useTranslation();
+
+  const CompanyLogin = async () => {
+    await AsyncStorage.removeItem("companyId");
+    navigation.navigate("CompanyLoginAgain");
+  };
   return (
     <SafeAreaView
       style={[
@@ -41,16 +44,14 @@ const Auth = ({ navigation }) => {
       />
       <View style={styles.context}>
         <ReusableText
-          text={"Hoşgeldiniz"}
+          text={t("welcome")}
           family={"bold"}
           size={TEXT.xLarge}
           color={COLORS.black}
         />
         <HeightSpacer height={15} />
         <ReusableText
-          text={
-            "Projectxwire denemek veya kullanmak için kayıt ol veya giriş yapmayı dene"
-          }
+          text={t("authDescription")}
           family={"regular"}
           size={TEXT.small}
           color={COLORS.description}
@@ -59,7 +60,7 @@ const Auth = ({ navigation }) => {
       </View>
       <View style={styles.context}>
         <ReusableButton
-          btnText={"Giriş Yap"}
+          btnText={t("loginButton")}
           width={SIZES.width - 40}
           height={45}
           borderRadius={SIZES.small}
@@ -71,7 +72,7 @@ const Auth = ({ navigation }) => {
         />
         <HeightSpacer height={20} />
         <ReusableButton
-          btnText={"Kayıt Ol"}
+          btnText={t("registerButton")}
           width={SIZES.width - 40}
           height={45}
           borderRadius={SIZES.small}
@@ -80,11 +81,10 @@ const Auth = ({ navigation }) => {
           textFontFamily={"medium"}
           onPress={() => navigation.navigate("Register")}
         />
-        <HeightSpacer height={35} />
-
+        <HeightSpacer height={25} />
         <TouchableOpacity onPress={CompanyLogin}>
           <ReusableText
-            text={"Şirket Girişi Sayfası"}
+            text={t("companyLoginPage")}
             family={"regular"}
             size={TEXT.small}
             color={COLORS.description}

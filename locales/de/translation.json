@@ -1,0 +1,22 @@
+{
+  "welcome": "Willkommen",
+  "login": "Anmelden",
+  "register": "Registrieren",
+  "sites": "BAUSTELLEN",
+  "welcomeMessage": "Hallo,\nWillkommen! 👋\n",
+  "companyInfo": "Bitte füllen Sie die von Projectxwire bereitgestellten Informationen aus, um auf die Details Ihres Unternehmens zuzugreifen.\n\nDas Feld Unternehmenscode ist Groß- und Kleinschreibung empfindlich.",
+  "companyCode": "Unternehmenscode",
+  "password": "Passwort",
+  "loginButton": "Anmelden",
+  "registerButton": "Registrieren",
+  "forgotInfo": "Informationen vergessen ? ",
+  "noCompanyCode": "Haben Sie keinen Unternehmenscode ?",
+  "applyNow": "Jetzt bewerben",
+  "authDescription": "Melden Sie sich an oder versuchen Sie es mit der Anmeldung, um Projectxwire zu nutzen oder zu testen",
+  "companyLoginPage": "Unternehmens-Login-Seite",
+  "welcomeBackMessage": "Hallo,\nWillkommen zurück! 👋",
+  "continueOrCreateAccount": "Sie können fortfahren, indem Sie sich anmelden oder ein Konto erstellen.",
+  "email": "E-Mail",
+  "forgotPassword": "Passwort vergessen ? ",
+  "noAccount": "Haben Sie kein Konto ? "
+}

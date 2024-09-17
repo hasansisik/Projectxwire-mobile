@@ -25,6 +25,7 @@ import { loginSchema } from "../../utils/validation";
 import { login } from "../../redux/actions/userActions";
 import NoticeMessage from "../../components/Reusable/NoticeMessage";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { useTranslation } from "react-i18next";
 
 const Login = ({ navigation }) => {
   const dispatch = useDispatch();
@@ -32,6 +33,7 @@ const Login = ({ navigation }) => {
   const [message, setMessage] = useState(null);
   const [companyId, setCompanyId] = useState("");
   const [isKeyboardVisible, setKeyboardVisible] = useState(false);
+  const { t } = useTranslation();
 
   useEffect(() => {
     const fetchCompanyId = async () => {
@@ -128,7 +130,7 @@ const Login = ({ navigation }) => {
             onPress={CompanyLogin}
           >
             <ReusableText
-              text={"Şirket Girişi Sayfası"}
+              text={t("companyLoginPage")}
               family={"medium"}
               size={TEXT.xSmall}
               color={COLORS.black}
@@ -140,16 +142,14 @@ const Login = ({ navigation }) => {
             <View style={{ padding: 20 }}>
               {/* Header */}
               <ReusableText
-                text={"Merhaba,\nTekrar Hoşgeldiniz! 👋"}
+                text={t("welcomeBackMessage")}
                 family={"bold"}
                 size={TEXT.xLarge}
                 color={COLORS.orange}
               />
               {/* Description */}
               <ReusableText
-                text={
-                  "Giriş yaparak devam edebilirsiniz,veya bir hesap oluşturabilirsiniz."
-                }
+                text={t("continueOrCreateAccount")}
                 family={"regular"}
                 size={TEXT.small}
                 color={COLORS.description}
@@ -162,7 +162,7 @@ const Login = ({ navigation }) => {
           <View>
             {/*Mail Input*/}
             <ReusableInput
-              label="E-mail"
+              label={t("email")}
               theme={{ colors: { primary: "black" } }}
               value={formik.values.email}
               onChangeText={formik.handleChange("email")}
@@ -171,7 +171,7 @@ const Login = ({ navigation }) => {
             />
             {/*Password Input*/}
             <ReusableInput
-              label="Şifre"
+              label={t("password")}
               secureTextEntry={true}
               theme={{ colors: { primary: "black" } }}
               value={formik.values.password}
@@ -181,7 +181,7 @@ const Login = ({ navigation }) => {
             />
             {/* Login Button */}
             <ReusableButton
-              btnText={"Giriş Yap"}
+              btnText={t("loginButton")}
               width={SIZES.width - 40}
               height={50}
               borderRadius={SIZES.small}
@@ -199,7 +199,7 @@ const Login = ({ navigation }) => {
               onPress={() => navigation.navigate("ForgotPassword")}
             >
               <ReusableText
-                text={"Şifremi Unuttum ? "}
+                text={t("forgotPassword")}
                 family={"bold"}
                 size={TEXT.xSmall}
                 color={COLORS.orange}
@@ -207,14 +207,14 @@ const Login = ({ navigation }) => {
               />
             </TouchableOpacity>
             <ReusableText
-              text={"Hesabınız yok mu ? "}
+              text={t("noAccount")}
               family={"regular"}
               size={TEXT.xSmall}
               color={COLORS.description}
             />
             <TouchableOpacity onPress={() => navigation.navigate("Register")}>
               <ReusableText
-                text={"Kayıt Olun"}
+                text={t("registerButton")}
                 family={"bold"}
                 size={TEXT.xSmall}
                 color={COLORS.orange}

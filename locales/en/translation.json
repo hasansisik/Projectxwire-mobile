@@ -2,5 +2,21 @@
   "welcome": "Welcome",
   "login": "Login",
   "register": "Register",
-  "sites": "SITES"
+  "sites": "SITES",
+  "welcomeMessage": "Hello,\nWelcome! 👋\n",
+  "companyInfo": "Please fill in the information provided by Projectxwire to access your company's details.\n\nThe Company Code field is case-sensitive.",
+  "companyCode": "Company Code",
+  "password": "Password",
+  "loginButton": "Login",
+  "registerButton": "Register",
+  "forgotInfo": "Forgot Information ? ",
+  "noCompanyCode": "Don't have a Company Code ? ",
+  "applyNow": "Apply Now",
+  "authDescription": "Sign up or try logging in to use or test Projectxwire",
+  "companyLoginPage": "Company Login Page",
+  "welcomeBackMessage": "Hello,\nWelcome Back! 👋",
+  "continueOrCreateAccount": "You can continue by logging in, or create an account.",
+  "email": "Email",
+  "forgotPassword": "Forgot Password ? ",
+  "noAccount": "Don't have an account ? "
 }

@@ -1,5 +1,22 @@
 {
   "welcome": "Bienvenue",
   "login": "Connexion",
-  "register": "Inscription"
+  "register": "Inscription",
+  "sites": "CHANTIERS",
+  "welcomeMessage": "Bonjour,\nBienvenue! 👋\n",
+  "companyInfo": "Veuillez remplir les informations fournies par Projectxwire pour accéder aux détails de votre entreprise.\n\nLe champ Code de l'entreprise est sensible à la casse.",
+  "companyCode": "Code de l'entreprise",
+  "password": "Mot de passe",
+  "loginButton": "Se connecter",
+  "registerButton": "S'inscrire",
+  "forgotInfo": "Informations oubliées?",
+  "noCompanyCode": "Vous n'avez pas de Code d'entreprise?",
+  "applyNow": "Postuler maintenant",
+  "authDescription": "Inscrivez-vous ou essayez de vous connecter pour utiliser ou tester Projectxwire",
+  "companyLoginPage": "Page de connexion de l'entreprise",
+  "welcomeBackMessage": "Bonjour,\nBienvenue à nouveau! 👋",
+  "continueOrCreateAccount": "Vous pouvez continuer en vous connectant, ou créer un compte.",
+  "email": "E-mail",
+  "forgotPassword": "Mot de passe oublié ? ",
+  "noAccount": "Vous n'avez pas de compte ? "
 }

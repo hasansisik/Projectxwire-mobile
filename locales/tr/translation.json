@@ -2,5 +2,21 @@
   "welcome": "Hoşgeldiniz",
   "login": "Giriş",
   "register": "Kayıt Ol",
-  "sites": "ŞANTİYELER"
+  "sites": "ŞANTİYELER",
+  "welcomeMessage": "Merhaba,\nHoşgeldiniz! 👋\n",
+  "companyInfo": "Şirketinizin bilgilerine erişmek için lütfen size Projectxwire tarafından verilmiş olan bilgileri doldurun.\n\nŞirket Kodu kısmında büyük-küçük harfe duyarlıdır.",
+  "companyCode": "Şirket Kodu",
+  "password": "Şifre",
+  "loginButton": "Giriş Yap",
+  "registerButton": "Kayıt Ol",
+  "forgotInfo": "Bilgileri Unuttum ? ",
+  "noCompanyCode": "Şirket Kodunuz yok mu ? ",
+  "applyNow": "Başvur şimdi",
+  "authDescription": "Projectxwire denemek veya kullanmak için kayıt ol veya giriş yapmayı dene",
+  "companyLoginPage": "Şirket Giriş Sayfası",
+  "welcomeBackMessage": "Merhaba,\nTekrar Hoşgeldiniz! 👋",
+  "continueOrCreateAccount": "Giriş yaparak devam edebilirsiniz, veya bir hesap oluşturabilirsiniz.",
+  "email": "E-mail",
+  "forgotPassword": "Şifremi Unuttum ? ",
+  "noAccount": "Hesabınız yok mu ? "
 }

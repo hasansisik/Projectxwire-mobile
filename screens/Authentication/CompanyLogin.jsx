@@ -23,12 +23,14 @@ import { useDispatch } from "react-redux";
 import { useFormik } from "formik";
 import NoticeMessage from "../../components/Reusable/NoticeMessage";
 import { companyLogin } from "../../redux/actions/companyActions";
+import { useTranslation } from "react-i18next";
 
 const CompanyLogin = ({ navigation }) => {
   const dispatch = useDispatch();
   const [status, setStatus] = useState(null);
   const [message, setMessage] = useState(null);
   const [isKeyboardVisible, setKeyboardVisible] = useState(false);
+  const { t } = useTranslation();
 
   const formik = useFormik({
     initialValues: { CompanyCode: "", password: "" },
@@ -105,15 +107,13 @@ const CompanyLogin = ({ navigation }) => {
           {!isKeyboardVisible && (
             <View style={{ padding: 20 }}>
               <ReusableText
-                text={"Merhaba,\nHoşgeldiniz! 👋\n"}
+                text={t("welcomeMessage")}
                 family={"bold"}
                 size={TEXT.xLarge}
                 color={COLORS.orange}
               />
               <ReusableText
-                text={
-                  "Şirketinizin bilgilerine erişmek için lüfen size Projectxwire tarafından verilmiş olan bilgileri doldurun.\n\nŞirket Kodu kısmında büyük-küçük harf'e duyarlıdır."
-                }
+                text={t("companyInfo")}
                 family={"regular"}
                 size={TEXT.small}
                 color={COLORS.description}
@@ -124,7 +124,7 @@ const CompanyLogin = ({ navigation }) => {
         <View style={styles.context}>
           <View>
             <ReusableInput
-              label="Şirket Kodu"
+              label={t("companyCode")}
               theme={{ colors: { primary: "black" } }}
               value={formik.values.CompanyCode}
               onChangeText={formik.handleChange("CompanyCode")}
@@ -132,7 +132,7 @@ const CompanyLogin = ({ navigation }) => {
               error={formik.errors.CompanyCode}
             />
             <ReusableInput
-              label="Şifre"
+              label={t("password")}
               secureTextEntry={true}
               theme={{ colors: { primary: "black" } }}
               value={formik.values.password}
@@ -141,7 +141,7 @@ const CompanyLogin = ({ navigation }) => {
               error={formik.errors.password}
             />
             <ReusableButton
-              btnText={"Giriş Yap"}
+              btnText={t("loginButton")}
               width={SIZES.width - 40}
               height={50}
               borderRadius={SIZES.small}
@@ -156,25 +156,25 @@ const CompanyLogin = ({ navigation }) => {
           <View style={styles.footer}>
             <TouchableOpacity onPress={handleForgotInfoPress}>
               <ReusableText
-                text={"Bilgileri Unuttum ? "}
+                text={t("forgotInfo")}
                 family={"bold"}
-                size={TEXT.xSmall}
+                size={TEXT.xxSmall}
                 color={COLORS.orange}
                 underline={true}
               />
             </TouchableOpacity>
             <ReusableText
-              text={"Şirket Kodunuz yok mu ? "}
+              text={t("noCompanyCode")}
               family={"regular"}
-              size={TEXT.xSmall}
+              size={TEXT.xxSmall}
               color={COLORS.description}
               underline={true}
             />
             <TouchableOpacity onPress={handleApplyPress}>
               <ReusableText
-                text={"Başvur"}
+                text={t("applyNow")}
                 family={"bold"}
-                size={TEXT.xSmall}
+                size={TEXT.xxSmall}
                 color={COLORS.orange}
                 underline={true}
               />
