@@ -17,6 +17,7 @@ import { Dropdown } from "react-native-element-dropdown";
 import { getAllUsers } from "../../redux/actions/userActions";
 import NoticeMessage from "../Reusable/NoticeMessage";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { useTranslation } from "react-i18next";
 
 export default function ModalTaskPlan({
   showFilters,
@@ -27,13 +28,13 @@ export default function ModalTaskPlan({
 }) {
   const dispatch = useDispatch();
   const navigation = useNavigation();
-
   const [status, setStatus] = useState(null);
   const [message, setMessage] = useState(null);
   const [selectedUserId, setSelectedUserId] = useState(null);
   const [taskId, setTaskId] = useState(null);
   const { users } = useSelector((state) => state.user);
   const { user } = useSelector((state) => state.user);
+  const { t } = useTranslation();
 
   useEffect(() => {
     const fetchUsers = async () => {
@@ -109,13 +110,13 @@ export default function ModalTaskPlan({
         <HeightSpacer height={15} />
         <View>
           <ReusableText
-            text={"Pin Oluştur"}
+            text={t("createPin")}
             family={"medium"}
             size={TEXT.medium}
             color={COLORS.black}
           />
           <ReusableText
-            text={"Pin oluşturarak, Plan üzerinde görev ekleyebilirsiniz."}
+            text={t("createPinPrompt")}
             family={"regular"}
             size={TEXT.xSmall}
             color={COLORS.description}
@@ -125,13 +126,13 @@ export default function ModalTaskPlan({
         <HeightSpacer height={15} />
         <View style={{ gap: 5 }}>
           <ReusableText
-            text={"Görev Konusu :"}
+            text={t("taskSubject")}
             family={"medium"}
             size={TEXT.small}
             color={COLORS.black}
           />
           <ReusableInput
-            label="Görev Konusu"
+            label={t("taskSubject")}
             theme={{ colors: { primary: "black" } }}
             value={formik.values.taskDesc}
             onChangeText={formik.handleChange("taskDesc")}
@@ -142,13 +143,13 @@ export default function ModalTaskPlan({
         {/* Task Category Input */}
         <View style={{ gap: 5 }}>
           <ReusableText
-            text={"Görev Kategorisi :"}
+            text={t("taskCategory")}
             family={"medium"}
             size={TEXT.small}
             color={COLORS.black}
           />
           <ReusableInput
-            label="Görev Kategorisi"
+            label={t("taskCategory")}
             theme={{ colors: { primary: "black" } }}
             value={formik.values.taskCategory}
             onChangeText={formik.handleChange("taskCategory")}
@@ -159,13 +160,13 @@ export default function ModalTaskPlan({
         {/* Task Title Input */}
         <View style={{ gap: 5 }}>
           <ReusableText
-            text={"Görev Başlığı :"}
+            text={t("taskTitle")}
             family={"medium"}
             size={TEXT.small}
             color={COLORS.black}
           />
           <ReusableInput
-            label="Görev Başlığı"
+            label={t("taskTitle")}
             theme={{ colors: { primary: "black" } }}
             value={formik.values.taskTitle}
             onChangeText={formik.handleChange("taskTitle")}
@@ -177,7 +178,7 @@ export default function ModalTaskPlan({
         <HeightSpacer height={10} />
         <View style={{ gap: 5 }}>
           <ReusableText
-            text={"İlgili Kişi Seç:"}
+            text={t("selectPerson")}
             family={"medium"}
             size={TEXT.small}
             color={COLORS.black}
@@ -197,13 +198,13 @@ export default function ModalTaskPlan({
               onChange={(item) => {
                 setSelectedUserId(item.userId);
               }}
-              placeholder="Kişi Seçin"
+              placeholder={t("selectPerson")}
             />
           </View>
         </View>
         <HeightSpacer height={25} />
         <ReusableButton
-          btnText={"Pin Oluştur"}
+          btnText={t("createPin")}
           width={SIZES.width - 60}
           height={45}
           borderRadius={SIZES.small}

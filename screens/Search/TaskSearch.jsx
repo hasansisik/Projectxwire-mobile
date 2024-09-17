@@ -7,11 +7,13 @@ import { COLORS, SIZES } from "../../constants/theme";
 import general from "../../components/general.style";
 import axios from "axios";
 import { server } from "../../config";
+import { useTranslation } from "react-i18next";
 
 const TaskSearch = ({ route, navigation }) => {
   const [searchKey, setSearchKey] = useState("");
   const [searchResults, setSearchResults] = useState([]);
   const { projectId } = route.params;
+  const { t } = useTranslation();
 
   const handleSearch = async () => {
     try {
@@ -52,7 +54,7 @@ const TaskSearch = ({ route, navigation }) => {
         <View style={general.row("space-between")}>
           <Searchbar
             style={styles.inputPlan}
-            placeholder="Görev Ara..."
+            placeholder={t("searchTasks")}
             onChangeText={(query) => {
               setSearchKey(query);
               if (!query) {

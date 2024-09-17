@@ -22,6 +22,7 @@ import { useFocusEffect } from "@react-navigation/native";
 import ModalTaskPlan from "../../components/Modals/ModalTaskPlan";
 import PinCard from "../../components/Tiles/Cards/PinCard";
 import { Searchbar } from "react-native-paper";
+import { useTranslation } from "react-i18next";
 
 const PlanDetails = ({ route, navigation }) => {
   const { item } = route.params;
@@ -36,6 +37,7 @@ const PlanDetails = ({ route, navigation }) => {
   const [searchKey, setSearchKey] = useState("");
   const [searchResults, setSearchResults] = useState([]);
   const [isSearchVisible, setIsSearchVisible] = useState(false);
+  const { t } = useTranslation();
 
   const images = [
     {
@@ -150,13 +152,13 @@ const PlanDetails = ({ route, navigation }) => {
           <View style={styles.searchContainer}>
             <Searchbar
               style={styles.inputPlan}
-              placeholder="Görev Ara..."
+              placeholder={t("searchPlans")}
               onChangeText={(query) => {
                 setSearchKey(query);
                 handleSearch(query);
               }}
               value={searchKey}
-              onSubmitEditing={() => handleSearch(searchKey)} // searchKey parametresini geç
+              onSubmitEditing={() => handleSearch(searchKey)}
             />
           </View>
         )}

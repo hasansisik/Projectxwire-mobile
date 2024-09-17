@@ -3,6 +3,7 @@ import { View, TouchableOpacity, ScrollView, StyleSheet } from "react-native";
 import { MaterialIcons } from "@expo/vector-icons";
 import { COLORS, TEXT } from "../../constants/theme";
 import ReusableText from "./ReusableText";
+import { useTranslation } from "react-i18next";
 
 const Tool = ({ onPress, iconName, text }) => {
   const [isSelected, setIsSelected] = useState(false);
@@ -65,6 +66,7 @@ const ToolBox = ({
     }
     onToolPress();
   };
+  const { t } = useTranslation();
 
   return (
     <View style={styles.container}>
@@ -72,7 +74,7 @@ const ToolBox = ({
         <Tool
           onPress={() => handleToolPressInternal("pin")}
           iconName="person-pin"
-          text="İşaretle"
+          text={t("mark")}
         />
         {/* <Tool
           onPress={() => handleToolPressInternal("draw")}

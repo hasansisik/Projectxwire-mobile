@@ -13,11 +13,13 @@ import { HeightSpacer, PlanCard } from "../../components";
 import { COLORS, SIZES } from "../../constants/theme";
 import axios from "axios";
 import { server } from "../../config";
+import { useTranslation } from "react-i18next";
 
 const PlanSearch = ({ route, navigation }) => {
   const [searchKey, setSearchKey] = useState("");
   const [searchResults, setSearchResults] = useState([]);
   const { projectId } = route.params;
+  const { t } = useTranslation();
 
   const handleSearch = async () => {
     try {
@@ -56,7 +58,7 @@ const PlanSearch = ({ route, navigation }) => {
       >
         <Searchbar
           style={styles.inputPlan}
-          placeholder="Plan Ara..."
+          placeholder={t("searchPlans")}
           onChangeText={(query) => {
             setSearchKey(query);
             if (!query) {
