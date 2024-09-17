@@ -125,3 +125,7 @@ export const getPins = createAsyncThunk(
     }
   }
 );
+
+export const clearPlans = createAsyncThunk("plan/clear", async (_, thunkAPI) => {
+  return [];
+});

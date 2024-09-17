@@ -14,7 +14,7 @@ import { COLORS, SIZES, TEXT } from "../../constants/theme";
 import { PlanCard, ReusableText, WidthSpacer } from "../../components";
 import ModalPlan from "../../components/Modals/ModalPlan";
 import { useDispatch, useSelector } from "react-redux";
-import { getPlans } from "../../redux/actions/planActions";
+import { clearPlans, getPlans } from "../../redux/actions/planActions";
 import { useFocusEffect } from "@react-navigation/native";
 
 const Plans = ({ route, navigation }) => {
@@ -27,6 +27,7 @@ const Plans = ({ route, navigation }) => {
 
   useFocusEffect(
     React.useCallback(() => {
+      dispatch(clearPlans()); 
       dispatch(getPlans(projectId));
     }, [dispatch, projectId])
   );

@@ -39,7 +39,6 @@ const ProjectsContent = ({ filter }) => {
             onPress={() => navigation.navigate("BottomTabNavigation", item._id)}
           />
         )}
-        style={{ flexGrow: 1 }}
       />
     </View>
   );

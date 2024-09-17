@@ -18,7 +18,6 @@ const tabBarStyle = {
 const BottomTabNavigation = () => {
   const route = useRoute();
   const projectId = route.params;
-  console.log("projectId", projectId);
 
   return (
     <Tab.Navigator

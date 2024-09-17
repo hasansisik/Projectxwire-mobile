@@ -7,6 +7,7 @@ import {
   deletePlan,
   createPin,
   getPins,
+  clearPlans,
 } from "../actions/planActions";
 
 export const planReducer = createReducer(
@@ -102,6 +103,9 @@ export const planReducer = createReducer(
       .addCase(getPins.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload;
+      })
+      .addCase(clearPlans.fulfilled, (state) => {
+        state.plans = [];
       });
   }
 );
