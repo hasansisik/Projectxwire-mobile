@@ -15,12 +15,14 @@ import { Feather } from "@expo/vector-icons";
 import { useSelector } from "react-redux";
 import { Dropdown } from "react-native-element-dropdown";
 import NoticeMessage from "../../../components/Reusable/NoticeMessage";
+import { useTranslation } from "react-i18next";
 
 const ProjectEdit = ({ navigation }) => {
   const [status, setStatus] = useState(null);
   const [message, setMessage] = useState(null);
   const { projects } = useSelector((state) => state.projects);
-  
+  const { t } = useTranslation();
+
   const dropdownData = projects.map((project) => ({
     projectId: project._id,
     projectName: project.projectName,

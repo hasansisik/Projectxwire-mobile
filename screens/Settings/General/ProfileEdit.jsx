@@ -20,9 +20,11 @@ import { Feather } from "@expo/vector-icons";
 import { useDispatch, useSelector } from "react-redux";
 import { useFocusEffect } from "@react-navigation/native";
 import { loadUser } from "../../../redux/actions/userActions";
+import { useTranslation } from "react-i18next";
 
 const ProfileEdit = ({ navigation }) => {
   const dispatch = useDispatch();
+  const { t } = useTranslation();
 
   useFocusEffect(
     React.useCallback(() => {
