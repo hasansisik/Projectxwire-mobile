@@ -109,8 +109,8 @@ export default function ModalProject({
 
   const categories = [
     { label: t("architecture"), value: "architecture" },
-    { label: t("static"), value: "static" },
-    { label: t("electricity"), value: "electricity" },
+    { label: t("statics"), value: "statics" },
+    { label: t("electrical"), value: "electrical" },
     { label: t("landscape"), value: "landscape" },
   ];
 

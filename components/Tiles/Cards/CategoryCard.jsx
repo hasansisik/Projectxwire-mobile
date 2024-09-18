@@ -2,8 +2,11 @@ import React from "react";
 import { StyleSheet, View, TouchableOpacity } from "react-native";
 import { COLORS, TEXT } from "../../../constants/theme";
 import ReusableText from "../../Reusable/ReusableText";
+import { useTranslation } from "react-i18next";
 
 const CategoryCard = ({ item, onPress }) => {
+  const { t } = useTranslation();
+
   return (
     <TouchableOpacity onPress={onPress}>
       <View style={styles.card}>
@@ -24,7 +27,7 @@ const CategoryCard = ({ item, onPress }) => {
           </View>
           <View style={styles.details}>
             <ReusableText
-              text={item.projectCategory}
+              text={t(item.projectCategory)}
               family={"regular"}
               size={TEXT.xSmall}
               color={COLORS.description}

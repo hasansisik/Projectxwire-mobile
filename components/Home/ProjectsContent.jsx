@@ -1,6 +1,5 @@
 import { FlatList, View } from "react-native";
 import React from "react";
-import { COLORS } from "../../constants/theme";
 import general from "../general.style";
 import { useNavigation } from "@react-navigation/native";
 import CategoryCard from "../Tiles/Cards/CategoryCard";

@@ -15,10 +15,26 @@ const ProjectsCategory = ({ setFilter }) => {
   useEffect(() => {
     const predefinedCategories = [
       { id: 0, text: `${t("all")} (${projects.length})`, filter: "all" },
-      { id: 1, text: `${t("architecture")} (${projects.filter(p => p.projectCategory === "architecture").length})`, filter: "architecture" },
-      { id: 2, text: `${t("electricity")} (${projects.filter(p => p.projectCategory === "electricity").length})`, filter: "electricity" },
-      { id: 3, text: `${t("static")} (${projects.filter(p => p.projectCategory === "static").length})`, filter: "static" },
-      { id: 4, text: `${t("landscape")} (${projects.filter(p => p.projectCategory === "landscape").length})`, filter: "landscape" },
+      {
+        id: 1,
+        text: `${t("architecture")} (${projects.filter((p) => p.projectCategory === "architecture").length})`,
+        filter: "architecture",
+      },
+      {
+        id: 2,
+        text: `${t("electrical")} (${projects.filter((p) => p.projectCategory === "electrical").length})`,
+        filter: "electrical",
+      },
+      {
+        id: 3,
+        text: `${t("statics")} (${projects.filter((p) => p.projectCategory === "statics").length})`,
+        filter: "statics",
+      },
+      {
+        id: 4,
+        text: `${t("landscape")} (${projects.filter((p) => p.projectCategory === "landscape").length})`,
+        filter: "landscape",
+      },
     ];
 
     setCategories(predefinedCategories);
