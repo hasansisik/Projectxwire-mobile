@@ -129,14 +129,14 @@ const Register = ({ navigation }) => {
             <View style={{ padding: 20 }}>
               {/* Header */}
               <ReusableText
-                text={t("joinUsMessage")}
+                text={t("joinUs")}
                 family={"bold"}
                 size={TEXT.xLarge}
                 color={COLORS.orange}
               />
               {/* Description */}
               <ReusableText
-                text={t("startUsingApp")}
+                text={t("registerPrompt")}
                 family={"regular"}
                 size={TEXT.small}
                 color={COLORS.description}
@@ -178,7 +178,7 @@ const Register = ({ navigation }) => {
             />
             {/* Confirm Password Input */}
             <ReusableInput
-              label={t("confirmPassword")}
+              label={t("repeatPassword")}
               theme={{ colors: { primary: "black" } }}
               value={formik.values.confirmPassword}
               onChangeText={formik.handleChange("confirmPassword")}
