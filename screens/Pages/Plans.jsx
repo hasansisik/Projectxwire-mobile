@@ -41,6 +41,7 @@ const Plans = ({ route, navigation }) => {
       setOpenCategories([...openCategories, planCategory]);
     }
   };
+
   return (
     <SafeAreaView
       style={[

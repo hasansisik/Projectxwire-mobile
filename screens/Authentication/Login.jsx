@@ -142,14 +142,14 @@ const Login = ({ navigation }) => {
             <View style={{ padding: 20 }}>
               {/* Header */}
               <ReusableText
-                text={t("welcomeBackMessage")}
+                text={t("welcomeBack")}
                 family={"bold"}
                 size={TEXT.xLarge}
                 color={COLORS.orange}
               />
               {/* Description */}
               <ReusableText
-                text={t("continueOrCreateAccount")}
+                text={t("loginPrompt")}
                 family={"regular"}
                 size={TEXT.small}
                 color={COLORS.description}

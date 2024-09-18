@@ -1,5 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { TouchableOpacity, StyleSheet, View, Platform } from "react-native";
+import {
+  TouchableOpacity,
+  StyleSheet,
+  View,
+  KeyboardAvoidingView,
+  Platform,
+} from "react-native";
 import Modal from "react-native-modal";
 import { AntDesign } from "@expo/vector-icons";
 import DateTimePicker from "@react-native-community/datetimepicker";
@@ -105,7 +111,10 @@ export default function ModalSite({
       swipeDirection="down"
       style={{ justifyContent: "flex-end", margin: 0 }}
     >
-      <View style={styles.modalView}>
+      <KeyboardAvoidingView
+        style={styles.modalView}
+        behavior={Platform.OS === "ios" ? "padding" : "height"}
+      >
         <TouchableOpacity onPress={() => setShowFilters(!showFilters)}>
           <AntDesign name="close" size={22} />
         </TouchableOpacity>
@@ -118,7 +127,7 @@ export default function ModalSite({
             color={COLORS.black}
           />
           <ReusableText
-            text={t("createSiteDescription")}
+            text={t("createSitePrompt")}
             family={"regular"}
             size={TEXT.xSmall}
             color={COLORS.description}
@@ -202,7 +211,7 @@ export default function ModalSite({
         />
         <HeightSpacer height={10} />
         <ReusableButton
-          btnText={t("createSiteButton")}
+          btnText={t("createSite")}
           width={SIZES.width - 60}
           height={45}
           borderRadius={SIZES.small}
@@ -212,7 +221,8 @@ export default function ModalSite({
           textFontFamily={"medium"}
           onPress={handleSubmit}
         />
-      </View>
+        {Platform.OS === "ios" && <HeightSpacer height={25} />}
+      </KeyboardAvoidingView>
       {status && <NoticeMessage status={status} message={message} />}
     </Modal>
   );

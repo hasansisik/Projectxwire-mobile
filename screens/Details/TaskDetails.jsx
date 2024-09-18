@@ -8,7 +8,9 @@ import {
   TextInput,
   TouchableOpacity,
   View,
-  Alert
+  Alert,
+  KeyboardAvoidingView,
+  Platform,
 } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
 import { useFocusEffect } from "@react-navigation/native";
@@ -313,7 +315,10 @@ const TaskDetails = ({ route, navigation }) => {
 
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
-      <SafeAreaView style={styles.container}>
+      <KeyboardAvoidingView
+        style={styles.container}
+        behavior={Platform.OS === "ios" ? "padding" : "height"}
+      >
         <View
           style={[
             styles.header,
@@ -329,7 +334,7 @@ const TaskDetails = ({ route, navigation }) => {
             title={item.taskTitle || "Başlık Belirtilmedi"}
             color={COLORS.white}
             onPress={() => navigation.goBack()}
-            onDeletePress={onDeletePress} 
+            onDeletePress={onDeletePress}
             showDeleteIcon={!!selectedMessageId}
             onCloseDeleteIcon={() => setSelectedMessageId(null)}
           />
@@ -428,7 +433,6 @@ const TaskDetails = ({ route, navigation }) => {
           >
             <Feather name="plus" size={24} color={COLORS.orange} />
           </TouchableOpacity>
-
           <TextInput
             style={styles.textbox}
             value={messageText}
@@ -448,7 +452,6 @@ const TaskDetails = ({ route, navigation }) => {
               <AntDesign name="like2" size={24} color={COLORS.orange} />
             </TouchableOpacity>
           )}
-
           {messageText !== "" && (
             <TouchableOpacity
               style={styles.mediaButton}
@@ -474,7 +477,7 @@ const TaskDetails = ({ route, navigation }) => {
             }}
           />
         )}
-      </SafeAreaView>
+      </KeyboardAvoidingView>
     </GestureHandlerRootView>
   );
 };
@@ -484,7 +487,7 @@ const styles = StyleSheet.create({
     backgroundColor: COLORS.lightWhite,
     zIndex: 1,
     width: SIZES.width,
-    height: 85,
+    height: 80,
   },
   container: {
     flex: 1,
@@ -497,9 +500,9 @@ const styles = StyleSheet.create({
     backgroundColor: COLORS.lightWhite,
     flexDirection: "row",
     alignItems: "center",
-    paddingVertical: 15,
-    paddingHorizontal: 10,
-    height: 70,
+    paddingVertical: 20,
+    paddingHorizontal: 15,
+    height: 80,
   },
   textbox: {
     flex: 1,
@@ -508,6 +511,7 @@ const styles = StyleSheet.create({
     borderColor: COLORS.lightGrey,
     marginHorizontal: 15,
     paddingHorizontal: 12,
+    height: "100%",
   },
   mediaButton: {
     alignItems: "center",

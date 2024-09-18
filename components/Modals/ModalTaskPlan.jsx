@@ -1,5 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { TouchableOpacity, StyleSheet, View } from "react-native";
+import {
+  TouchableOpacity,
+  StyleSheet,
+  View,
+  KeyboardAvoidingView,
+  Platform,
+} from "react-native";
 import Modal from "react-native-modal";
 import { AntDesign } from "@expo/vector-icons";
 import {
@@ -103,7 +109,10 @@ export default function ModalTaskPlan({
       swipeDirection="down"
       style={{ justifyContent: "flex-end", margin: 0 }}
     >
-      <View style={styles.modalView}>
+      <KeyboardAvoidingView
+        style={styles.modalView}
+        behavior={Platform.OS === "ios" ? "padding" : "height"}
+      >
         <TouchableOpacity onPress={() => setShowFilters(!showFilters)}>
           <AntDesign name="close" size={22} />
         </TouchableOpacity>
@@ -214,7 +223,8 @@ export default function ModalTaskPlan({
           textFontFamily={"medium"}
           onPress={formik.handleSubmit}
         />
-      </View>
+        {Platform.OS === "ios" && <HeightSpacer height={25} />}
+      </KeyboardAvoidingView>
       {status && <NoticeMessage status={status} message={message} />}
     </Modal>
   );
