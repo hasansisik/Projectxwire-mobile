@@ -14,10 +14,11 @@ import { useDispatch } from "react-redux";
 import { useFormik } from "formik";
 import { editProfile } from "../../../redux/actions/userActions";
 import { phoneNumberUpdateSchema } from "../../../utils/validation";
+import { useTranslation } from "react-i18next";
 
 const UserNumber = ({ navigation }) => {
   const dispatch = useDispatch();
-
+  const { t } = useTranslation();
   const [status, setStatus] = useState(null);
   const [message, setMessage] = useState(null);
 
@@ -62,20 +63,20 @@ const UserNumber = ({ navigation }) => {
 
         <View style={{ paddingBottom: 25 }}>
           <ReusableText
-            text={"Telefon Numarasını"}
+            text={t("phoneNumber")}
             family={"regular"}
             size={TEXT.large}
             color={COLORS.description}
           />
           <ReusableText
-            text={"Güncelle"}
+            text={t("update")}
             family={"medium"}
             size={TEXT.xxLarge}
             color={COLORS.black}
           />
         </View>
         <ReusableInput
-          label="Telefon Numarası"
+          label={t("phoneNumber")}
           theme={{ colors: { primary: "black" } }}
           value={formik.values.phoneNumber}
           onChangeText={formik.handleChange("phoneNumber")}
@@ -84,7 +85,7 @@ const UserNumber = ({ navigation }) => {
         />
         <HeightSpacer height={25} />
         <ReusableButton
-          btnText={"Güncelle"}
+          btnText={t("update")}
           width={SIZES.width - 40}
           height={40}
           borderRadius={SIZES.small}

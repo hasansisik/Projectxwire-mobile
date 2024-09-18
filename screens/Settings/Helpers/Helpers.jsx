@@ -1,19 +1,14 @@
-import {
-  View,
-  Platform,
-  StatusBar,
-  SafeAreaView,
-} from "react-native";
+import { View, Platform, StatusBar, SafeAreaView } from "react-native";
 import React from "react";
 import { AppBar, HeightSpacer, ReusableText } from "../../../components";
 import styles from "../../Pages/pages.style";
 import ReusableSettings from "../../../components/Reusable/ReusableSettings";
 import { COLORS, TEXT } from "../../../constants/theme";
-import { Contact,AboutUs } from "../../Data/index";
+import { Contact, AboutUs } from "../../Data/index";
 import { useTranslation } from "react-i18next";
 
-const Helpers = ({navigation}) => {
-    const { t } = useTranslation();
+const Helpers = ({ navigation }) => {
+  const { t } = useTranslation();
 
   return (
     <SafeAreaView

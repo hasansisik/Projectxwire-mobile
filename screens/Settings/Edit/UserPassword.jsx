@@ -14,10 +14,11 @@ import { useDispatch } from "react-redux";
 import { useFormik } from "formik";
 import { editProfile } from "../../../redux/actions/userActions";
 import { passwordUpdateSchema } from "../../../utils/validation";
+import { useTranslation } from "react-i18next";
 
 const UserPassword = ({ navigation }) => {
   const dispatch = useDispatch();
-
+  const { t } = useTranslation();
   const [status, setStatus] = useState(null);
   const [message, setMessage] = useState(null);
 
@@ -61,20 +62,20 @@ const UserPassword = ({ navigation }) => {
         <HeightSpacer height={50} />
         <View style={{ paddingBottom: 25 }}>
           <ReusableText
-            text={"Şifre"}
+            text={t("password")}
             family={"regular"}
             size={TEXT.large}
             color={COLORS.description}
           />
           <ReusableText
-            text={"Güncelle"}
+            text={t("update")}
             family={"medium"}
             size={TEXT.xxLarge}
             color={COLORS.black}
           />
         </View>
         <ReusableInput
-          label="Şifre"
+          label={t("password")}
           theme={{ colors: { primary: "black" } }}
           value={formik.values.password}
           onChangeText={formik.handleChange("password")}
@@ -82,7 +83,7 @@ const UserPassword = ({ navigation }) => {
           error={formik.errors.password}
         />
         <ReusableInput
-          label="Şifre Tekrar"
+          label={t("repeatPassword")}
           theme={{ colors: { primary: "black" } }}
           value={formik.values.confirmPassword}
           onChangeText={formik.handleChange("confirmPassword")}
@@ -91,7 +92,7 @@ const UserPassword = ({ navigation }) => {
         />
         <HeightSpacer height={15} />
         <ReusableButton
-          btnText={"Güncelle"}
+          btnText={t("update")}
           width={SIZES.width - 40}
           height={40}
           borderRadius={SIZES.small}

@@ -14,10 +14,11 @@ import { useFormik } from "formik";
 import { editProfile } from "../../../redux/actions/userActions";
 import NoticeMessage from "../../../components/Reusable/NoticeMessage";
 import { emailUpdateSchema } from "../../../utils/validation";
+import { useTranslation } from "react-i18next";
 
 const UserMail = ({ navigation }) => {
   const dispatch = useDispatch();
-
+  const { t } = useTranslation();
   const [status, setStatus] = useState(null);
   const [message, setMessage] = useState(null);
 
@@ -60,20 +61,20 @@ const UserMail = ({ navigation }) => {
 
         <View style={{ paddingBottom: 25 }}>
           <ReusableText
-            text={"Mail Adresi"}
+            text={t("email")}
             family={"regular"}
             size={TEXT.large}
             color={COLORS.description}
           />
           <ReusableText
-            text={"Güncelle"}
+            text={t("update")}
             family={"medium"}
             size={TEXT.xxLarge}
             color={COLORS.black}
           />
         </View>
         <ReusableInput
-          label="Mail"
+          label={t("email")}
           theme={{ colors: { primary: "black" } }}
           value={formik.values.email}
           onChangeText={formik.handleChange("email")}
@@ -82,7 +83,7 @@ const UserMail = ({ navigation }) => {
         />
         <HeightSpacer height={25} />
         <ReusableButton
-          btnText={"Güncelle"}
+          btnText={t("update")}
           width={SIZES.width - 40}
           height={40}
           borderRadius={SIZES.small}

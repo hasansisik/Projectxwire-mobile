@@ -14,10 +14,11 @@ import { useFormik } from "formik";
 import { editProfile } from "../../../redux/actions/userActions";
 import NoticeMessage from "../../../components/Reusable/NoticeMessage";
 import { jobTitleUpdateSchema } from "../../../utils/validation";
+import { useTranslation } from "react-i18next";
 
 const UserJob = ({ navigation }) => {
   const dispatch = useDispatch();
-
+  const { t } = useTranslation();
   const [status, setStatus] = useState(null);
   const [message, setMessage] = useState(null);
 
@@ -68,7 +69,7 @@ const UserJob = ({ navigation }) => {
             color={COLORS.description}
           />
           <ReusableText
-            text={"Güncelle"}
+            text={t("update")}
             family={"medium"}
             size={TEXT.xxLarge}
             color={COLORS.black}
@@ -84,7 +85,7 @@ const UserJob = ({ navigation }) => {
         />
         <HeightSpacer height={25} />
         <ReusableButton
-          btnText={"Güncelle"}
+          btnText={t("update")}
           width={SIZES.width - 40}
           height={40}
           borderRadius={SIZES.small}
