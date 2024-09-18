@@ -27,7 +27,7 @@ const ProjectEdit = ({ navigation }) => {
     projectId: project._id,
     projectName: project.projectName,
     projectCode: project.projectCode,
-    address: project.address,
+    address: project.address, 
   }));
 
   const [value, setValue] = useState(null);
@@ -67,7 +67,7 @@ const ProjectEdit = ({ navigation }) => {
           <Dropdown
             data={dropdownData}
             labelField="projectName"
-            valueField="id"
+            valueField="projectId"
             value={value}
             onChange={(item) => {
               setValue(item.projectId);
@@ -152,7 +152,9 @@ const ProjectEdit = ({ navigation }) => {
         <TouchableOpacity
           onPress={() => {
             if (selectedAddress) {
-              navigation.navigate("ProjectAdress", { projectId: value });
+              navigation.navigate("ProjectAdress", {
+                projectId: value,
+              });
             } else {
               setStatus("error");
               setMessage("Lütfen Proje Seçin");
