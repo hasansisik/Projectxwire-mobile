@@ -35,7 +35,7 @@ const Auth = ({ navigation }) => {
         }}
         style={{
           width: Dimensions.get("window").width - 40,
-          height: Dimensions.get("window").height / 1.8,
+          height: Dimensions.get("window").height / 2.2,
           marginBottom: 25,
           alignContent: "center",
           margin: 20,
@@ -62,7 +62,7 @@ const Auth = ({ navigation }) => {
         <ReusableButton
           btnText={t("loginButton")}
           width={SIZES.width - 40}
-          height={45}
+          height={40}
           borderRadius={SIZES.small}
           backgroundColor={COLORS.orange}
           textColor={COLORS.white}
@@ -70,7 +70,7 @@ const Auth = ({ navigation }) => {
           textFontFamily={"medium"}
           onPress={() => navigation.navigate("Login")}
         />
-        <HeightSpacer height={15} />
+        <HeightSpacer height={10} />
         <ReusableButton
           btnText={t("registerButton")}
           width={SIZES.width - 40}
@@ -81,7 +81,7 @@ const Auth = ({ navigation }) => {
           textFontFamily={"medium"}
           onPress={() => navigation.navigate("Register")}
         />
-        <HeightSpacer height={15} />
+        <HeightSpacer height={20} />
         <TouchableOpacity onPress={CompanyLogin}>
           <ReusableText
             text={t("companyLoginPage")}

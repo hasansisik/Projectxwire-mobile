@@ -8,6 +8,7 @@ import {
   Linking,
   KeyboardAvoidingView,
   Keyboard,
+  Text,
 } from "react-native";
 import React, { useEffect, useState } from "react";
 import styles from "./auth.style";
@@ -155,29 +156,37 @@ const CompanyLogin = ({ navigation }) => {
           <HeightSpacer height={50} />
           <View style={styles.footer}>
             <TouchableOpacity onPress={handleForgotInfoPress}>
-              <ReusableText
-                text={t("forgotInfo")}
-                family={"bold"}
-                size={TEXT.xxSmall}
-                color={COLORS.orange}
-                underline={true}
-              />
+              <Text
+                style={{
+                  fontFamily: "bold",
+                  fontSize: TEXT.xxSmall,
+                  color: COLORS.orange,
+                }}
+              >
+                {t("forgotInfo")}
+              </Text>
             </TouchableOpacity>
-            <ReusableText
-              text={t("noCompanyCode")}
-              family={"regular"}
-              size={TEXT.xxSmall}
-              color={COLORS.description}
-              underline={true}
-            />
+            <Text
+              style={{
+                fontFamily: "regular",
+                fontSize: TEXT.xxSmall,
+                color: COLORS.description,
+                textDecorationLine: "underline",
+              }}
+            >
+              {t("noCompanyCode")}
+            </Text>
             <TouchableOpacity onPress={handleApplyPress}>
-              <ReusableText
-                text={t("applyNow")}
-                family={"bold"}
-                size={TEXT.xxSmall}
-                color={COLORS.orange}
-                underline={true}
-              />
+              <Text
+                style={{
+                  fontFamily: "bold",
+                  fontSize: TEXT.xxSmall,
+                  color: COLORS.orange,
+                  textDecorationLine: "underline",
+                }}
+              >
+                {t("applyNow")}
+              </Text>
             </TouchableOpacity>
           </View>
         </View>

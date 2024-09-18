@@ -19,8 +19,11 @@ const styles = StyleSheet.create({
   },
   footer: {
     flexDirection: "row",
-    justifyContent: "center",
+    flexWrap: "wrap",
+    justifyContent: "flex-start", // Öğeleri başlangıçta hizalar
     alignItems: "center",
+    padding: 10,
+    backgroundColor: COLORS.lightWhite,
   },
   OtpContainer: {
     marginHorizontal: 30,

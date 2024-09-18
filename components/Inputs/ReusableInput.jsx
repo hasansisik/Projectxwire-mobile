@@ -27,6 +27,11 @@ const ReusableInput = ({
     />
   );
 
+  const handleTextChange = (text) => {
+    const trimmedText = text.replace(/\s/g, "");
+    onChangeText(trimmedText);
+  };
+
   return (
     <View>
       <View style={styles.inputContainer(error)}>
@@ -35,7 +40,7 @@ const ReusableInput = ({
           style={styles.input}
           label={label}
           value={value}
-          onChangeText={onChangeText}
+          onChangeText={handleTextChange}
           secureTextEntry={secureTextEntry && !passwordVisible}
           right={secureTextEntry ? renderIcon : null}
           autoCapitalize={autoCapitalize}
