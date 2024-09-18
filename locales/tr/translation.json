@@ -153,5 +153,13 @@
   "september": "EYLÜL",
   "october": "EKİM",
   "november": "KASIM",
-  "december": "ARALIK"
+  "december": "ARALIK",
+  "hello": "Merhaba",
+  "monday": "Pazartesi",
+  "tuesday": "Salı",
+  "wednesday": "Çarşamba",
+  "thursday": "Perşembe",
+  "friday": "Cuma",
+  "saturday": "Cumartesi",
+  "sunday": "Pazar"
 }

@@ -153,5 +153,13 @@
   "september": "SEPTEMBER",
   "october": "OCTOBER",
   "november": "NOVEMBER",
-  "december": "DECEMBER"
+  "december": "DECEMBER",
+  "hello": "Hello",
+  "monday": "Monday",
+  "tuesday": "Tuesday",
+  "wednesday": "Wednesday",
+  "thursday": "Thursday",
+  "friday": "Friday",
+  "saturday": "Saturday",
+  "sunday": "Sunday"
 }

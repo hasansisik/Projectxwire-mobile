@@ -6,8 +6,11 @@ import styles from "../../screens/Home/home.style";
 import general from "../general.style";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import axios from "axios";
+import { useTranslation } from "react-i18next";
 
 const DailyInfo = () => {
+  const { t } = useTranslation();
+
   const [dateInfo, setDateInfo] = useState({
     day: "",
     month: "",
@@ -21,27 +24,27 @@ const DailyInfo = () => {
   useEffect(() => {
     const today = new Date();
     const days = [
-      "Pazar",
-      "Pazartesi",
-      "Salı",
-      "Çarşamba",
-      "Perşembe",
-      "Cuma",
-      "Cumartesi",
+      t("monday"),
+      t("tuesday"),
+      t("wednesday"),
+      t("thursday"),
+      t("friday"),
+      t("saturday"),
+      t("sunday"),
     ];
     const months = [
-      "Ocak",
-      "Şubat",
-      "Mart",
-      "Nisan",
-      "Mayıs",
-      "Haziran",
-      "Temmuz",
-      "Ağustos",
-      "Eylül",
-      "Ekim",
-      "Kasım",
-      "Aralık",
+      t("january"),
+      t("february"),
+      t("march"),
+      t("april"),
+      t("may"),
+      t("june"),
+      t("july"),
+      t("august"),
+      t("september"),
+      t("october"),
+      t("november"),
+      t("december"),
     ];
 
     setDateInfo({
@@ -51,8 +54,8 @@ const DailyInfo = () => {
       year: today.getFullYear(),
     });
 
-    const apiKey = "baad69bbb07b855c625780ef8b555fc5"; 
-    const city = "Istanbul"; 
+    const apiKey = "baad69bbb07b855c625780ef8b555fc5";
+    const city = "Istanbul";
 
     axios
       .get(

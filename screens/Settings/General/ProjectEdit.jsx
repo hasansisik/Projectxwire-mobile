@@ -17,13 +17,12 @@ import { Dropdown } from "react-native-element-dropdown";
 import NoticeMessage from "../../../components/Reusable/NoticeMessage";
 import { useTranslation } from "react-i18next";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import i18n from "../../../locales/i18n"; // i18n import edildi
 
 const ProjectEdit = ({ navigation }) => {
   const [status, setStatus] = useState(null);
   const [message, setMessage] = useState(null);
   const { projects } = useSelector((state) => state.projects);
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   const dropdownData = projects.map((project) => ({
     projectId: project._id,
@@ -62,7 +61,7 @@ const ProjectEdit = ({ navigation }) => {
     try {
       await AsyncStorage.setItem("language", item.value);
       setLanguage(item.value);
-      i18n.changeLanguage(item.value);
+      i18n.changeLanguage(item.value); 
       setStatus("success");
       setMessage("Dil başarıyla güncellendi");
     } catch (error) {
@@ -256,23 +255,23 @@ const ProjectEdit = ({ navigation }) => {
             <Feather name="chevron-right" size={20} />
           </View>
         </View>
-          <View style={styles.info}>
-            <ReusableText
-              text={t("language")}
-              family={"regular"}
-              size={TEXT.small}
-              color={COLORS.black}
-            />
-            <Dropdown
-              style={styles.dropdown}
-              data={languages}
-              labelField="label"
-              valueField="value"
-              placeholder="Dil Seçiniz"
-              value={language}
-              onChange={handleLanguageChange}
-            />
-          </View>
+        <View style={styles.info}>
+          <ReusableText
+            text={t("language")}
+            family={"regular"}
+            size={TEXT.small}
+            color={COLORS.black}
+          />
+          <Dropdown
+            style={styles.dropdown}
+            data={languages}
+            labelField="label"
+            valueField="value"
+            placeholder={t("language")}
+            value={language}
+            onChange={handleLanguageChange}
+          />
+        </View>
       </View>
       {status && <NoticeMessage status={status} message={message} />}
     </SafeAreaView>
