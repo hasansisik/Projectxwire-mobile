@@ -13,6 +13,7 @@ import NoticeMessage from "../../../components/Reusable/NoticeMessage";
 import { Dropdown } from "react-native-element-dropdown";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useTranslation } from "react-i18next";
+import i18n from "../../../locales/i18n"; // i18n import edildi
 
 const ProjectLocales = ({ navigation, route }) => {
   const dispatch = useDispatch();
@@ -33,6 +34,7 @@ const ProjectLocales = ({ navigation, route }) => {
       const savedLanguage = await AsyncStorage.getItem("language");
       if (savedLanguage) {
         setLanguage(savedLanguage);
+        i18n.changeLanguage(savedLanguage); // Dil değişikliği uygulandı
       }
     };
     fetchLanguage();
@@ -42,6 +44,7 @@ const ProjectLocales = ({ navigation, route }) => {
     try {
       await AsyncStorage.setItem("language", item.value);
       setLanguage(item.value);
+      i18n.changeLanguage(item.value); // Dil değişikliği uygulandı
       setStatus("success");
       setMessage("Dil başarıyla güncellendi");
     } catch (error) {

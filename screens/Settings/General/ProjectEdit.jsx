@@ -6,7 +6,7 @@ import {
   StatusBar,
   TouchableOpacity,
 } from "react-native";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { COLORS, TEXT } from "../../../constants/theme";
 import { AppBar, HeightSpacer, ReusableText } from "../../../components";
 import styles from "../settings.style";
@@ -16,6 +16,8 @@ import { useSelector } from "react-redux";
 import { Dropdown } from "react-native-element-dropdown";
 import NoticeMessage from "../../../components/Reusable/NoticeMessage";
 import { useTranslation } from "react-i18next";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import i18n from "../../../locales/i18n"; // i18n import edildi
 
 const ProjectEdit = ({ navigation }) => {
   const [status, setStatus] = useState(null);
@@ -27,13 +29,47 @@ const ProjectEdit = ({ navigation }) => {
     projectId: project._id,
     projectName: project.projectName,
     projectCode: project.projectCode,
-    address: project.address, 
+    address: project.address,
   }));
 
   const [value, setValue] = useState(null);
   const [selectedProjectName, setSelectedProjectName] = useState("");
   const [selectedProjectCode, setSelectedProjectCode] = useState("");
   const [selectedAddress, setSelectedAddress] = useState("");
+
+  const languages = [
+    { label: t("turkish"), value: "tr" },
+    { label: t("english"), value: "en" },
+    { label: t("french"), value: "fr" },
+    { label: t("german"), value: "de" },
+    { label: t("russian"), value: "ru" },
+  ];
+
+  const [language, setLanguage] = useState(null);
+
+  useEffect(() => {
+    const fetchLanguage = async () => {
+      const savedLanguage = await AsyncStorage.getItem("language");
+      if (savedLanguage) {
+        setLanguage(savedLanguage);
+        i18n.changeLanguage(savedLanguage);
+      }
+    };
+    fetchLanguage();
+  }, []);
+
+  const handleLanguageChange = async (item) => {
+    try {
+      await AsyncStorage.setItem("language", item.value);
+      setLanguage(item.value);
+      i18n.changeLanguage(item.value);
+      setStatus("success");
+      setMessage("Dil başarıyla güncellendi");
+    } catch (error) {
+      setStatus("error");
+      setMessage("Dil güncellenirken bir hata oluştu");
+    }
+  };
 
   return (
     <SafeAreaView
@@ -220,7 +256,6 @@ const ProjectEdit = ({ navigation }) => {
             <Feather name="chevron-right" size={20} />
           </View>
         </View>
-        <TouchableOpacity onPress={() => navigation.navigate("ProjectLocales")}>
           <View style={styles.info}>
             <ReusableText
               text={t("language")}
@@ -228,17 +263,16 @@ const ProjectEdit = ({ navigation }) => {
               size={TEXT.small}
               color={COLORS.black}
             />
-            <View style={general.row("")}>
-              <ReusableText
-                text={"Türkçe"}
-                family={"regular"}
-                size={TEXT.small}
-                color={COLORS.description}
-              />
-              <Feather name="chevron-right" size={20} />
-            </View>
+            <Dropdown
+              style={styles.dropdown}
+              data={languages}
+              labelField="label"
+              valueField="value"
+              placeholder="Dil Seçiniz"
+              value={language}
+              onChange={handleLanguageChange}
+            />
           </View>
-        </TouchableOpacity>
       </View>
       {status && <NoticeMessage status={status} message={message} />}
     </SafeAreaView>
