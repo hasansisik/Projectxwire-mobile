@@ -14,11 +14,12 @@ import { useFormik } from "formik";
 import { projectNameUpdateSchema } from "../../../utils/validation";
 import { updateProject } from "../../../redux/actions/projectActions";
 import NoticeMessage from "../../../components/Reusable/NoticeMessage";
+import { useTranslation } from "react-i18next";
 
 const ProjectName = ({ navigation, route }) => {
   const dispatch = useDispatch();
   const projectId = route.params.projectId;
-
+  const { t } = useTranslation();
   const [status, setStatus] = useState(null);
   const [message, setMessage] = useState(null);
 
@@ -63,20 +64,20 @@ const ProjectName = ({ navigation, route }) => {
 
         <View style={{ paddingBottom: 25 }}>
           <ReusableText
-            text={"Proje Adı"}
+            text={t("projectName")}
             family={"regular"}
             size={TEXT.large}
             color={COLORS.description}
           />
           <ReusableText
-            text={"Güncelle"}
+            text={t("update")}
             family={"medium"}
             size={TEXT.xxLarge}
             color={COLORS.black}
           />
         </View>
         <ReusableInput
-          label="Proje Adı"
+          label={t("projectName")}
           theme={{ colors: { primary: "black" } }}
           value={formik.values.projectName}
           onChangeText={formik.handleChange("projectName")}
@@ -85,7 +86,7 @@ const ProjectName = ({ navigation, route }) => {
         />
         <HeightSpacer height={25} />
         <ReusableButton
-          btnText={"Güncelle"}
+          btnText={t("update")}
           width={SIZES.width - 40}
           height={40}
           borderRadius={SIZES.small}

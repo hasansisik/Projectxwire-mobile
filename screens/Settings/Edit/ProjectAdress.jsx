@@ -14,11 +14,12 @@ import { useDispatch } from "react-redux";
 import { useFormik } from "formik";
 import { addressUpdateSchema } from "../../../utils/validation";
 import { updateProject } from "../../../redux/actions/projectActions";
+import { useTranslation } from "react-i18next";
 
 const ProjectAdress = ({navigation,route}) => {
   const dispatch = useDispatch();
   const projectId = route.params.projectId;
-
+  const { t } = useTranslation();
   const [status, setStatus] = useState(null);
   const [message, setMessage] = useState(null);
 
@@ -70,20 +71,20 @@ const ProjectAdress = ({navigation,route}) => {
 
         <View style={{ paddingBottom: 25 }}>
           <ReusableText
-            text={"Adres"}
+            text={t("address")}
             family={"regular"}
             size={TEXT.large}
             color={COLORS.description}
           />
           <ReusableText
-            text={"Güncelle"}
+            text={t("update")}
             family={"medium"}
             size={TEXT.xxLarge}
             color={COLORS.black}
           />
         </View>
         <ReusableInput
-          label="İl"
+          label={t("city")}
           theme={{ colors: { primary: "black" } }}
           value={formik.values.province}
           onChangeText={formik.handleChange("province")}
@@ -91,7 +92,7 @@ const ProjectAdress = ({navigation,route}) => {
           error={formik.errors.province}
         />
         <ReusableInput
-          label="İlçe"
+          label={t("district")}
           theme={{ colors: { primary: "black" } }}
           value={formik.values.city}
           onChangeText={formik.handleChange("city")}
@@ -99,7 +100,7 @@ const ProjectAdress = ({navigation,route}) => {
           error={formik.errors.city}
         />
         <ReusableInput
-          label="Mahalle"
+          label={t("neighborhood")}
           theme={{ colors: { primary: "black" } }}
           value={formik.values.street}
           onChangeText={formik.handleChange("street")}
@@ -107,7 +108,7 @@ const ProjectAdress = ({navigation,route}) => {
           error={formik.errors.street}
         />
         <ReusableInput
-          label="Caddesi"
+          label={t("street")}
           theme={{ colors: { primary: "black" } }}
           value={formik.values.avenue}
           onChangeText={formik.handleChange("avenue")}
@@ -115,7 +116,7 @@ const ProjectAdress = ({navigation,route}) => {
           error={formik.errors.avenue}
         />
         <ReusableInput
-          label="No"
+          label={t("no")}
           theme={{ colors: { primary: "black" } }}
           value={formik.values.no}
           onChangeText={formik.handleChange("no")}
@@ -124,7 +125,7 @@ const ProjectAdress = ({navigation,route}) => {
         />
         <HeightSpacer height={25} />
         <ReusableButton
-          btnText={"Güncelle"}
+          btnText={t("update")}
           width={SIZES.width - 40}
           height={40}
           borderRadius={SIZES.small}

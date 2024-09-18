@@ -12,12 +12,14 @@ import { useDispatch } from "react-redux";
 import NoticeMessage from "../../../components/Reusable/NoticeMessage";
 import { Dropdown } from "react-native-element-dropdown";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { useTranslation } from "react-i18next";
 
 const ProjectLocales = ({ navigation, route }) => {
   const dispatch = useDispatch();
   const [status, setStatus] = useState(null);
   const [message, setMessage] = useState(null);
   const [language, setLanguage] = useState(null);
+  const { t } = useTranslation();
 
   const languages = [
     { label: "Türkçe", value: "tr" },
@@ -42,7 +44,6 @@ const ProjectLocales = ({ navigation, route }) => {
       setLanguage(item.value);
       setStatus("success");
       setMessage("Dil başarıyla güncellendi");
-      // Burada dil güncelleme işlemi yapılabilir (örn. Redux ile)
     } catch (error) {
       setStatus("error");
       setMessage("Dil güncellenirken bir hata oluştu");
@@ -67,13 +68,13 @@ const ProjectLocales = ({ navigation, route }) => {
         <HeightSpacer height={50} />
         <View style={{ paddingBottom: 15 }}>
           <ReusableText
-            text={"Sistem Dili"}
+            text={t("language")}
             family={"regular"}
             size={TEXT.large}
             color={COLORS.description}
           />
           <ReusableText
-            text={"Güncelle"}
+            text={t("update")}
             family={"medium"}
             size={TEXT.xxLarge}
             color={COLORS.black}
@@ -90,7 +91,7 @@ const ProjectLocales = ({ navigation, route }) => {
         />
         <HeightSpacer height={50} />
         <ReusableButton
-          btnText={"Güncelle"}
+          btnText={t("update")}
           width={SIZES.width - 40}
           height={40}
           borderRadius={SIZES.small}
