@@ -8,6 +8,7 @@ import {
   TextInput,
   TouchableOpacity,
   View,
+  Alert
 } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
 import { useFocusEffect } from "@react-navigation/native";
@@ -34,8 +35,8 @@ import {
   LongPressGestureHandler,
   State,
   GestureHandlerRootView,
-  TouchableWithoutFeedback,
 } from "react-native-gesture-handler";
+import { useTranslation } from "react-i18next";
 
 const TaskDetails = ({ route, navigation }) => {
   const dispatch = useDispatch();
@@ -50,10 +51,30 @@ const TaskDetails = ({ route, navigation }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [loading, setLoading] = useState(true);
   const [selectedMessageId, setSelectedMessageId] = useState(null);
+  const { t } = useTranslation();
 
   const taskId = item._id;
   const flatListRef = useRef(null);
   const socketRef = useRef(null);
+
+  const onDeletePress = () => {
+    Alert.alert(
+      t("deleteMessage"),
+      t("confirmDeleteMessage"),
+      [
+        {
+          text: t("cancel"),
+          style: "cancel",
+        },
+        {
+          text: t("delete"),
+          onPress: () => handleDeleteMessage(selectedMessageId),
+          style: "destructive",
+        },
+      ],
+      { cancelable: true }
+    );
+  };
 
   const handleDeleteMessage = async (messageId) => {
     try {
@@ -155,21 +176,21 @@ const TaskDetails = ({ route, navigation }) => {
   const formatDate = (dateString) => {
     const date = new Date(dateString);
     if (isNaN(date.getTime())) {
-      return "Şimdi";
+      return t("now");
     }
     const months = [
-      "OCAK",
-      "ŞUB",
-      "MART",
-      "NİS",
-      "MAY",
-      "HAZ",
-      "TEM",
-      "AĞUST",
-      "EYL",
-      "EKİM",
-      "KAS",
-      "ARALIK",
+      t("january"),
+      t("february"),
+      t("march"),
+      t("april"),
+      t("may"),
+      t("june"),
+      t("july"),
+      t("august"),
+      t("september"),
+      t("october"),
+      t("november"),
+      t("december"),
     ];
     const day = date.getDate();
     const month = months[date.getMonth()];
@@ -308,7 +329,7 @@ const TaskDetails = ({ route, navigation }) => {
             title={item.taskTitle || "Başlık Belirtilmedi"}
             color={COLORS.white}
             onPress={() => navigation.goBack()}
-            onDeletePress={() => handleDeleteMessage(selectedMessageId)}
+            onDeletePress={onDeletePress} 
             showDeleteIcon={!!selectedMessageId}
             onCloseDeleteIcon={() => setSelectedMessageId(null)}
           />

@@ -136,5 +136,22 @@
   "english": "İngilizce",
   "german": "Almanca",
   "russian": "Rusça",
-  "french": "Fransızca"
+  "french": "Fransızca",
+  "deleteMessage": "Mesajı Sil",
+  "confirmDeleteMessage": "Bu mesajı silmek istediğinizden emin misiniz?",
+  "cancel": "İptal",
+  "delete": "Sil",
+  "now": "Şimdi",
+  "january": "OCAK",
+  "february": "ŞUBAT",
+  "march": "MART",
+  "april": "NİSAN",
+  "may": "MAYIS",
+  "june": "HAZİRAN",
+  "july": "TEMMUZ",
+  "august": "AĞUSTOS",
+  "september": "EYLÜL",
+  "october": "EKİM",
+  "november": "KASIM",
+  "december": "ARALIK"
 }

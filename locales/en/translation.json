@@ -136,5 +136,22 @@
   "english": "English",
   "german": "German",
   "russian": "Russian",
-  "french": "French"
+  "french": "French",
+  "deleteMessage": "Delete Message",
+  "confirmDeleteMessage": "Are you sure you want to delete this message?",
+  "cancel": "Cancel",
+  "delete": "Delete",
+  "now": "Now",
+  "january": "JANUARY",
+  "february": "FEBRUARY",
+  "march": "MARCH",
+  "april": "APRIL",
+  "may": "MAY",
+  "june": "JUNE",
+  "july": "JULY",
+  "august": "AUGUST",
+  "september": "SEPTEMBER",
+  "october": "OCTOBER",
+  "november": "NOVEMBER",
+  "december": "DECEMBER"
 }
