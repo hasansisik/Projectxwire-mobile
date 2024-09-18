@@ -168,6 +168,7 @@ const Login = ({ navigation }) => {
               onChangeText={formik.handleChange("email")}
               touched={formik.touched.email}
               error={formik.errors.email}
+              allowSpaces={false}
             />
             {/*Password Input*/}
             <ReusableInput

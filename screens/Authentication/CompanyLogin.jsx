@@ -131,6 +131,7 @@ const CompanyLogin = ({ navigation }) => {
               onChangeText={formik.handleChange("CompanyCode")}
               touched={formik.touched.CompanyCode}
               error={formik.errors.CompanyCode}
+              allowSpaces={false}
             />
             <ReusableInput
               label={t("password")}

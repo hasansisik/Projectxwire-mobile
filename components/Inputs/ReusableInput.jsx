@@ -11,6 +11,7 @@ const ReusableInput = ({
   error,
   secureTextEntry,
   autoCapitalize = "none",
+  allowSpaces = true,
   ...props
 }) => {
   const [passwordVisible, setPasswordVisible] = useState(false);
@@ -28,7 +29,7 @@ const ReusableInput = ({
   );
 
   const handleTextChange = (text) => {
-    const trimmedText = text.replace(/\s/g, "");
+    const trimmedText = allowSpaces ? text : text.replace(/\s/g, "");
     onChangeText(trimmedText);
   };
 
