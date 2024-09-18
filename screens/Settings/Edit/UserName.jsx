@@ -29,7 +29,7 @@ const UserName = ({ navigation }) => {
       const actionResult = await dispatch(editProfile({ name: values.name }));
       if (editProfile.fulfilled.match(actionResult)) {
         setStatus("success");
-        setMessage("İsim Değiştirme başarılı");
+        setMessage(t("nameChangeSuccessful"));
         setTimeout(() => {
           navigation.navigate("ProfileEdit");
         }, 3000);

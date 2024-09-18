@@ -34,7 +34,7 @@ const MailVerify = ({ navigation, route }) => {
     );
     if (verifyEmail.fulfilled.match(actionResult)) {
       setStatus("success");
-      setMessage("Doğrulama başarılı");
+      setMessage(t("verificationSuccessful"));
       setTimeout(() => {
         navigation.navigate("ProfileEdit");
       }, 3000);

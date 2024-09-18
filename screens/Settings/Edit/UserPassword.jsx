@@ -22,27 +22,27 @@ const UserPassword = ({ navigation }) => {
   const [status, setStatus] = useState(null);
   const [message, setMessage] = useState(null);
 
-   const formik = useFormik({
-     initialValues: { password: "", confirmPassword: "" },
-     validationSchema: passwordUpdateSchema,
-     onSubmit: async (values) => {
-       const actionResult = await dispatch(
-         editProfile({ password: values.password })
-       );
-       if (editProfile.fulfilled.match(actionResult)) {
-         setStatus("success");
-         setMessage("Şifre Değiştirme Başarılı");
-         setTimeout(() => {
-           navigation.navigate("ProfileEdit");
-         }, 3000);
-       } else if (editProfile.rejected.match(actionResult)) {
-         const NoticeMessage = actionResult.payload;
-         setStatus("error");
-         setMessage(NoticeMessage);
-         setTimeout(() => setStatus(null), 3000);
-       }
-     },
-   });
+  const formik = useFormik({
+    initialValues: { password: "", confirmPassword: "" },
+    validationSchema: passwordUpdateSchema,
+    onSubmit: async (values) => {
+      const actionResult = await dispatch(
+        editProfile({ password: values.password })
+      );
+      if (editProfile.fulfilled.match(actionResult)) {
+        setStatus("success");
+        setMessage(t("passwordUpdateSuccessful"));
+        setTimeout(() => {
+          navigation.navigate("ProfileEdit");
+        }, 3000);
+      } else if (editProfile.rejected.match(actionResult)) {
+        const NoticeMessage = actionResult.payload;
+        setStatus("error");
+        setMessage(NoticeMessage);
+        setTimeout(() => setStatus(null), 3000);
+      }
+    },
+  });
 
   return (
     <SafeAreaView

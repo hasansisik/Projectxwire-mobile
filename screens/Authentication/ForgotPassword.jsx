@@ -35,7 +35,7 @@ const ForgotPassword = ({ navigation }) => {
       if (forgotPassword.fulfilled.match(actionResult)) {
         navigation.navigate("ResetPassword", { email: values.email });
         setStatus("success");
-        setMessage("Mail gönderildi");
+        setMessage(t("emailSent"));
       } else if (forgotPassword.rejected.match(actionResult)) {
         const NoticeMessage = actionResult.payload;
         setStatus("error");

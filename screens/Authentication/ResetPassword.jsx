@@ -41,7 +41,7 @@ const ResetPassword = ({ navigation, route }) => {
       if (resetPassword.fulfilled.match(actionResult)) {
         navigation.navigate("Login");
         setStatus("success");
-        setMessage("Şifre değiştirme başarılı");
+        setMessage(t("passwordChangeSuccessful"));
       } else if (resetPassword.rejected.match(actionResult)) {
         const NoticeMessage = actionResult.payload;
         setStatus("error");

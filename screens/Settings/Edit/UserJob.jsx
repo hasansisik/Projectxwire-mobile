@@ -31,7 +31,7 @@ const UserJob = ({ navigation }) => {
       );
       if (editProfile.fulfilled.match(actionResult)) {
         setStatus("success");
-        setMessage("İş Pozisyonu Değiştirme başarılı");
+        setMessage(t("jobPositionUpdateSuccessful"));
         setTimeout(() => {
           navigation.navigate("ProfileEdit");
         }, 3000);

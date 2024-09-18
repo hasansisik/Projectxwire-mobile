@@ -74,7 +74,7 @@ const Login = ({ navigation }) => {
       if (login.fulfilled.match(actionResult)) {
         navigation.navigate("Home");
         setStatus("success");
-        setMessage("Giriş başarılı");
+        setMessage(t("loginSuccessful"));
       } else if (login.rejected.match(actionResult)) {
         const NoticeMessage = actionResult.payload;
         setStatus("error");

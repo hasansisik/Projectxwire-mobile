@@ -39,7 +39,7 @@ export default function ModalPlan({ showFilters, setShowFilters, projectId }) {
       );
       if (createPlan.fulfilled.match(actionResult)) {
         setStatus("success");
-        setMessage("Plan başarıyla oluşturuldu.");
+        setMessage(t("planCreatedSuccessfully"));
         setTimeout(() => {
           setShowFilters(false);
         }, 1500);

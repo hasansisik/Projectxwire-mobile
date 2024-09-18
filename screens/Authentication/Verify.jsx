@@ -1,4 +1,11 @@
-import { View, SafeAreaView, Platform, StatusBar, Image, TouchableOpacity } from "react-native";
+import {
+  View,
+  SafeAreaView,
+  Platform,
+  StatusBar,
+  Image,
+  TouchableOpacity,
+} from "react-native";
 import React, { useState } from "react";
 import styles from "./auth.style";
 import { COLORS, SIZES, TEXT } from "../../constants/theme";
@@ -28,7 +35,7 @@ const Verify = ({ navigation, route }) => {
     if (verifyEmail.fulfilled.match(actionResult)) {
       navigation.navigate("Login");
       setStatus("success");
-      setMessage("Doğrulama başarılı");
+      setMessage(t("verificationSuccessful"));
     } else if (verifyEmail.rejected.match(actionResult)) {
       const NoticeMessage = actionResult.payload;
       setStatus("error");
@@ -92,7 +99,7 @@ const Verify = ({ navigation, route }) => {
               handleTextChange={setVerificationCode}
               inputCount={4}
               keyboardType="numeric"
-              tintColor={COLORS.black} 
+              tintColor={COLORS.black}
               offTintColor="#BBBCBE"
               backgroundColor={COLORS.white}
               textInputStyle={styles.OtpInput}

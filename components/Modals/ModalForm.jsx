@@ -60,7 +60,7 @@ export default function ModalForm({ showFilters, setShowFilters, projectId }) {
       );
       if (createForm.fulfilled.match(actionResult)) {
         setStatus("success");
-        setMessage("Form başarıyla oluşturuldu.");
+        setMessage(t("formCreatedSuccessfully"));
         setTimeout(() => {
           setShowFilters(false);
         }, 1500);

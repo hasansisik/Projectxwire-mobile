@@ -75,7 +75,7 @@ const Profile = ({ navigation }) => {
     const actionResult = await dispatch(editProfile({ picture: url }));
     if (editProfile.fulfilled.match(actionResult)) {
       setStatus("success");
-      setMessage("Profil resmi güncellendi");
+      setMessage(t("profilePictureUpdated"));
     } else if (editProfile.rejected.match(actionResult)) {
       const NoticeMessage = actionResult.payload;
       setStatus("error");

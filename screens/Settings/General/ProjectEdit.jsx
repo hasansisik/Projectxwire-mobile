@@ -61,12 +61,12 @@ const ProjectEdit = ({ navigation }) => {
     try {
       await AsyncStorage.setItem("language", item.value);
       setLanguage(item.value);
-      i18n.changeLanguage(item.value); 
+      i18n.changeLanguage(item.value);
       setStatus("success");
-      setMessage("Dil başarıyla güncellendi");
+      setMessage(t("languageUpdatedSuccessfully"));
     } catch (error) {
       setStatus("error");
-      setMessage("Dil güncellenirken bir hata oluştu");
+      setMessage(t("languageUpdateError"));
     }
   };
 
@@ -132,7 +132,7 @@ const ProjectEdit = ({ navigation }) => {
               });
             } else {
               setStatus("error");
-              setMessage("Lütfen Proje Seçin");
+              setMessage(t("selectProject"));
               setTimeout(() => setStatus(null), 3000);
             }
           }}
@@ -161,7 +161,7 @@ const ProjectEdit = ({ navigation }) => {
               navigation.navigate("ProjectCode", { projectId: value });
             } else {
               setStatus("error");
-              setMessage("Lütfen Proje Seçin");
+              setMessage(t("selectProject"));
               setTimeout(() => setStatus(null), 3000);
             }
           }}
@@ -192,7 +192,7 @@ const ProjectEdit = ({ navigation }) => {
               });
             } else {
               setStatus("error");
-              setMessage("Lütfen Proje Seçin");
+              setMessage(t("selectProject"));
               setTimeout(() => setStatus(null), 3000);
             }
           }}

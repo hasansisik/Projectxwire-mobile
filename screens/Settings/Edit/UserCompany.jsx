@@ -29,7 +29,7 @@ const UserCompany = ({ navigation }) => {
       const actionResult = await dispatch(editProfile({ company: values.company }));
       if (editProfile.fulfilled.match(actionResult)) {
         setStatus("success");
-        setMessage("Şirket İsmi Değiştirme Başarılı");
+        setMessage(t("companyNameUpdateSuccessful"));
         setTimeout(() => {
           navigation.navigate("ProfileEdit");
         }, 3000);

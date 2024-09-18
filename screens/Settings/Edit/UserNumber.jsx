@@ -31,7 +31,7 @@ const UserNumber = ({ navigation }) => {
       );
       if (editProfile.fulfilled.match(actionResult)) {
         setStatus("success");
-        setMessage("Telefon Numarası Değiştirme Başarılı");
+        setMessage(t("phoneNumberUpdateSuccessful"));
         setTimeout(() => {
           navigation.navigate("ProfileEdit");
         }, 3000);

@@ -74,7 +74,7 @@ export default function ModalTask({
       );
       if (createTask.fulfilled.match(actionResult)) {
         setStatus("success");
-        setMessage("Görev başarıyla oluşturuldu.");
+        setMessage(t("taskCreatedSuccessfully"));
         const taskId = actionResult.payload._id;
         setTaskId(taskId);
         onTaskCreated && onTaskCreated(taskId);

@@ -34,7 +34,7 @@ const ProjectLocales = ({ navigation, route }) => {
       const savedLanguage = await AsyncStorage.getItem("language");
       if (savedLanguage) {
         setLanguage(savedLanguage);
-        i18n.changeLanguage(savedLanguage); // Dil değişikliği uygulandı
+        i18n.changeLanguage(savedLanguage);
       }
     };
     fetchLanguage();
@@ -44,12 +44,12 @@ const ProjectLocales = ({ navigation, route }) => {
     try {
       await AsyncStorage.setItem("language", item.value);
       setLanguage(item.value);
-      i18n.changeLanguage(item.value); // Dil değişikliği uygulandı
+      i18n.changeLanguage(item.value);
       setStatus("success");
-      setMessage("Dil başarıyla güncellendi");
+      setMessage(t("languageUpdatedSuccessfully"));
     } catch (error) {
       setStatus("error");
-      setMessage("Dil güncellenirken bir hata oluştu");
+      setMessage(t("languageUpdateError"));
     }
   };
 

@@ -57,7 +57,7 @@ export default function ModalSelectUser({
       );
       if (addPersonToTask.fulfilled.match(actionResult)) {
         setStatus("success");
-        setMessage("Kullanıcı göreve başarıyla eklendi.");
+        setMessage(t("userAddedToTaskSuccessfully"));
         onUserSelected(selectedUserName); 
         setTimeout(() => {
           setShowFilters(false);

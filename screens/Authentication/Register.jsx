@@ -82,7 +82,7 @@ const Register = ({ navigation }) => {
       if (register.fulfilled.match(actionResult)) {
         navigation.navigate("Verify", { email: values.email });
         setStatus("success");
-        setMessage("Kayıt başarılı");
+        setMessage(t("registrationSuccessful"));
       } else if (register.rejected.match(actionResult)) {
         const NoticeMessage = actionResult.payload;
         setStatus("error");

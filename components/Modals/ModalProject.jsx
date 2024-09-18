@@ -62,7 +62,7 @@ export default function ModalProject({
       );
       if (createProject.fulfilled.match(actionResult)) {
         setStatus("success");
-        setMessage("Proje başarıyla oluşturuldu.");
+        setMessage(t("projectCreatedSuccessfully"));
         onProjectCreated();
         setTimeout(() => {
           setShowFilters(false);

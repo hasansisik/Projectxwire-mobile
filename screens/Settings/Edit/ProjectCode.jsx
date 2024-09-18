@@ -32,7 +32,7 @@ const ProjectCode = ({ navigation, route }) => {
       );
       if (updateProject.fulfilled.match(actionResult)) {
         setStatus("success");
-        setMessage("Proje kodu başarıyla güncellendi.");
+        setMessage(t("projectCodeUpdatedSuccessfully"));
         setTimeout(() => {
           navigation.goBack();
         }, 3000);

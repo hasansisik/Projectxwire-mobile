@@ -36,7 +36,7 @@ const UserAdress = ({ navigation }) => {
       const actionResult = await dispatch(editProfile({ address }));
       if (editProfile.fulfilled.match(actionResult)) {
         setStatus("success");
-        setMessage("Adres Güncelleme Başarılı");
+        setMessage(t("addressUpdateSuccessful"));
         setTimeout(() => {
           navigation.navigate("ProfileEdit");
         }, 3000);

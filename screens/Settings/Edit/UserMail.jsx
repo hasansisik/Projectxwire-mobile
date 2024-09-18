@@ -29,7 +29,7 @@ const UserMail = ({ navigation }) => {
       const actionResult = await dispatch(editProfile({ email: values.email }));
       if (editProfile.fulfilled.match(actionResult)) {
         setStatus("success");
-        setMessage("Mail adresine doğrulama maili gönderildi.Lütfen Bekleyin...");
+        setMessage(t("verificationEmailSent"));
         setTimeout(() => {
           navigation.navigate("MailVerify", { email: values.email });
         }, 3000);

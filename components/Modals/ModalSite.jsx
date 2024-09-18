@@ -59,7 +59,7 @@ export default function ModalSite({
       );
       if (createSite.fulfilled.match(actionResult)) {
         setStatus("success");
-        setMessage("Şantiye başarıyla oluşturuldu.");
+        setMessage(t("siteCreatedSuccessfully"));
         onProjectCreated();
         setTimeout(() => {
           setShowFilters(false);

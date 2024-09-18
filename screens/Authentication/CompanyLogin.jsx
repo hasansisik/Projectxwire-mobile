@@ -39,7 +39,7 @@ const CompanyLogin = ({ navigation }) => {
       if (companyLogin.fulfilled.match(actionResult)) {
         navigation.navigate("Auth");
         setStatus("success");
-        setMessage("Giriş başarılı");
+        setMessage(t("loginSuccessful"));
       } else if (actionResult.type === companyLogin.rejected.type) {
         const NoticeMessage = actionResult.payload;
         setStatus("error");

@@ -1,4 +1,4 @@
-import { View,SafeAreaView, Platform, StatusBar } from "react-native";
+import { View, SafeAreaView, Platform, StatusBar } from "react-native";
 import React, { useState } from "react";
 import {
   AppBar,
@@ -16,7 +16,7 @@ import { addressUpdateSchema } from "../../../utils/validation";
 import { updateProject } from "../../../redux/actions/projectActions";
 import { useTranslation } from "react-i18next";
 
-const ProjectAdress = ({navigation,route}) => {
+const ProjectAdress = ({ navigation, route }) => {
   const dispatch = useDispatch();
   const projectId = route.params.projectId;
   const { t } = useTranslation();
@@ -39,7 +39,7 @@ const ProjectAdress = ({navigation,route}) => {
       );
       if (updateProject.fulfilled.match(actionResult)) {
         setStatus("success");
-        setMessage("Adres Güncelleme Başarılı");
+        setMessage(t("addressUpdateSuccessful"));
         setTimeout(() => {
           navigation.goBack();
         }, 3000);
@@ -51,7 +51,7 @@ const ProjectAdress = ({navigation,route}) => {
       }
     },
   });
-  
+
   return (
     <SafeAreaView
       style={[

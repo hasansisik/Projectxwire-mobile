@@ -70,7 +70,7 @@ export default function ModalTaskPlan({
       );
       if (createTask.fulfilled.match(actionResult)) {
         setStatus("success");
-        setMessage("Pin başarıyla oluşturuldu.");
+        setMessage(t("pinCreatedSuccessfully"));
         const taskId = actionResult.payload._id;
         setTaskId(taskId);
         onTaskCreated && onTaskCreated(taskId);
