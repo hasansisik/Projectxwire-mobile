@@ -1,6 +1,5 @@
 import { StyleSheet } from "react-native";
 import { COLORS, SIZES } from "../../constants/theme";
-import { Dropdown } from "react-native-element-dropdown";
 
 const settings = StyleSheet.create({
   info: {

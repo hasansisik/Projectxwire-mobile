@@ -10,6 +10,7 @@ const ReusableInput = ({
   touched,
   error,
   secureTextEntry,
+  autoCapitalize = "none",
   ...props
 }) => {
   const [passwordVisible, setPasswordVisible] = useState(false);
@@ -18,13 +19,13 @@ const ReusableInput = ({
     setPasswordVisible(!passwordVisible);
   };
 
- const renderIcon = (props) => (
-  <TextInput.Icon
-    {...props}
-    icon={passwordVisible ? "eye-off" : "eye"} // İkon durumuna bağlı olarak değişir
-    onPress={togglePasswordVisibility}
-  />
-);
+  const renderIcon = (props) => (
+    <TextInput.Icon
+      {...props}
+      icon={passwordVisible ? "eye-off" : "eye"}
+      onPress={togglePasswordVisibility}
+    />
+  );
 
   return (
     <View>
@@ -36,7 +37,8 @@ const ReusableInput = ({
           value={value}
           onChangeText={onChangeText}
           secureTextEntry={secureTextEntry && !passwordVisible}
-          right={secureTextEntry ? renderIcon : null} // İkonu doğrudan bir fonksiyon olarak kullan
+          right={secureTextEntry ? renderIcon : null}
+          autoCapitalize={autoCapitalize}
           {...props}
         />
       </View>
