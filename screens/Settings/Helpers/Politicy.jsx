@@ -5,8 +5,11 @@ import styles from "../../Pages/pages.style";
 import ReusableSettings from "../../../components/Reusable/ReusableSettings";
 import { COLORS, TEXT } from "../../../constants/theme";
 import { PrivacyPolicy, TermsPolicy, CookiePolicy } from "../../Data/index";
+import { useTranslation } from "react-i18next";
 
 const Politicy = ({ navigation }) => {
+  const { t } = useTranslation();
+
   return (
     <SafeAreaView
       style={[
@@ -31,13 +34,13 @@ const Politicy = ({ navigation }) => {
         }}
       >
         <ReusableText
-          text={"Uygulama Politikaları"}
+          text={t("appPolicies")}
           family={"regular"}
           size={TEXT.medium}
           color={COLORS.description}
         />
         <ReusableText
-          text={"Politikalarımız"}
+          text={t("ourPolicies")}
           family={"medium"}
           size={TEXT.xLarge}
           color={COLORS.black}
@@ -47,7 +50,7 @@ const Politicy = ({ navigation }) => {
       <HeightSpacer height={50} />
       <View style={{ paddingHorizontal: 20, paddingBottom: 5 }}>
         <ReusableText
-          text={"Uygulama Politikaları"}
+          text={t("appPolicies")}
           family={"regular"}
           size={TEXT.small}
           color={COLORS.description}
@@ -56,11 +59,11 @@ const Politicy = ({ navigation }) => {
       <View style={styles.settingsBox}>
         <ReusableSettings
           icon={"document-lock-outline"}
-          title={"Gizlilik Politikası"}
+          title={t("privacyPolicy")}
           onPress={() => {
             navigation.navigate("PoliticyPage", {
-              header: "Politikalar",
-              title: "Gizlilik Politikası",
+              header: t("ourPolicies"),
+              title: t("privacyPolicy"),
               text: PrivacyPolicy,
             });
           }}
@@ -68,11 +71,11 @@ const Politicy = ({ navigation }) => {
         <View style={{ borderTopWidth: 1, borderColor: COLORS.lightBorder }} />
         <ReusableSettings
           icon={"document-text-outline"}
-          title={"Kullanım Koşulları"}
+          title={t("termsOfUse")}
           onPress={() => {
             navigation.navigate("PoliticyPage", {
-              header: "Politikalar",
-              title: "Kullanım Koşulları",
+              header: t("ourPolicies"),
+              title: t("termsOfUse"),
               text: TermsPolicy,
             });
           }}
@@ -80,11 +83,11 @@ const Politicy = ({ navigation }) => {
         <View style={{ borderTopWidth: 1, borderColor: COLORS.lightBorder }} />
         <ReusableSettings
           icon={"documents-outline"}
-          title={"Çerez Politikası"}
+          title={t("cookiePolicy")}
           onPress={() => {
             navigation.navigate("PoliticyPage", {
-              header: "Politikalar",
-              title: "Çerez Politikası",
+              header: t("ourPolicies"),
+              title: t("cookiePolicy"),
               text: CookiePolicy,
             });
           }}

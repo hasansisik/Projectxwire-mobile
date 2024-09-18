@@ -52,8 +52,8 @@
   "siteLogo": "Şantiye Logo:",
   "createProject": "Proje Oluştur",
   "createProjectPrompt": "Proje oluşturmak için aşağıdaki alanları doldurunuz.",
-  "projectName": "Proje Adı:",
-  "projectCode": "Proje Kodu:",
+  "projectName": "Proje Adı",
+  "projectCode": "Proje Kodu",
   "projectCategory": "Proje Kategorisi:",
   "addProject": "Proje Ekle",
   "plans": "Planlar",
@@ -128,5 +128,13 @@
   "addPersonToTask": "Göreve Kişi Ekle",
   "sendSelectedPhoto": "Seçilen Fotoğrafı Gönder",
   "contactUsIfIssue": "Bir sorun var ise ",
-  "contactUsByEmail": " e-posta adresinden bizimle iletişime geçebilirsiniz."
+  "contactUsByEmail": " e-posta adresinden bizimle iletişime geçebilirsiniz.",
+  "projectNotSelected": "Proje seçilmedi",
+  "light": "Aydınlık",
+  "dark": "Koyu",
+  "turkish": "Türkçe",
+  "english": "İngilizce",
+  "german": "Almanca",
+  "russian": "Rusça",
+  "french": "Fransızca"
 }

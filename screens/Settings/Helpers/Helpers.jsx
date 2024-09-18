@@ -10,8 +10,11 @@ import styles from "../../Pages/pages.style";
 import ReusableSettings from "../../../components/Reusable/ReusableSettings";
 import { COLORS, TEXT } from "../../../constants/theme";
 import { Contact,AboutUs } from "../../Data/index";
+import { useTranslation } from "react-i18next";
 
 const Helpers = ({navigation}) => {
+    const { t } = useTranslation();
+
   return (
     <SafeAreaView
       style={[
@@ -36,13 +39,13 @@ const Helpers = ({navigation}) => {
         }}
       >
         <ReusableText
-          text={"Size Nasıl Yardımcı Olabiliriz?"}
+          text={t("howCanWeHelp")}
           family={"regular"}
           size={TEXT.large}
           color={COLORS.description}
         />
         <ReusableText
-          text={"Yardım ve Destek Merkezi"}
+          text={t("helpAndSupportCenter")}
           family={"medium"}
           size={TEXT.xLarge}
           color={COLORS.black}
@@ -51,7 +54,7 @@ const Helpers = ({navigation}) => {
       <HeightSpacer height={50} />
       <View style={{ paddingHorizontal: 20, paddingBottom: 5 }}>
         <ReusableText
-          text={"Yardım ve Destek Merkezi"}
+          text={t("helpAndSupportCenter")}
           family={"regular"}
           size={TEXT.small}
           color={COLORS.description}
@@ -60,11 +63,11 @@ const Helpers = ({navigation}) => {
       <View style={styles.settingsBox}>
         <ReusableSettings
           icon={"information-circle-outline"}
-          title={"Hakkımızda"}
+          title={t("aboutUs")}
           onPress={() => {
             navigation.navigate("PoliticyPage", {
-              header:"Yardım Merkezi",
-              title: "Hakkımızda",
+              header: t("helpAndSupportCenter"),
+              title: t("aboutUs"),
               text: AboutUs,
             });
           }}
@@ -72,17 +75,17 @@ const Helpers = ({navigation}) => {
         <View style={{ borderTopWidth: 1, borderColor: COLORS.lightBorder }} />
         <ReusableSettings
           icon={"help-circle-outline"}
-          title={"Sıkça Sorulan Sorular"}
+          title={t("faq")}
           onPress={() => navigation.navigate("HelperFaq")}
         />
         <View style={{ borderTopWidth: 1, borderColor: COLORS.lightBorder }} />
         <ReusableSettings
           icon={"headset-outline"}
-          title={"İletişim ve Destek"}
+          title={t("contactAndSupport")}
           onPress={() => {
             navigation.navigate("PoliticyPage", {
-              header: "Yardım Merkezi",
-              title: "İletişim ve Destek",
+              header: t("helpAndSupportCenter"),
+              title: t("contactAndSupport"),
               text: Contact,
             });
           }}

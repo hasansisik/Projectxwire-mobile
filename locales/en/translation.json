@@ -128,5 +128,13 @@
   "addPersonToTask": "Add Person to Task",
   "sendSelectedPhoto": "Send Selected Photo",
   "contactUsIfIssue": "If there is an issue ",
-  "contactUsByEmail": " you can contact us via email."
+  "contactUsByEmail": " you can contact us via email.",
+  "projectNotSelected": "Project not selected",
+  "light": "Light",
+  "dark": "Dark",
+  "turkish": "Turkish",
+  "english": "English",
+  "german": "German",
+  "russian": "Russian",
+  "french": "French"
 }

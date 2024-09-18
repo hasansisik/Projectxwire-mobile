@@ -52,7 +52,7 @@ const ProjectEdit = ({ navigation }) => {
         />
         <HeightSpacer height={75} />
         <ReusableText
-          text={"Proje Seçin"}
+          text={t("selectProject")}
           family={"medium"}
           size={TEXT.medium}
           color={COLORS.black}
@@ -75,7 +75,7 @@ const ProjectEdit = ({ navigation }) => {
               setSelectedProjectCode(item.projectCode);
               setSelectedAddress(item.address);
             }}
-            placeholder="Proje Seçin"
+            placeholder={t("selectProject")}
             touchableWrapperProps={{
               activeOpacity: 1,
             }}
@@ -83,7 +83,7 @@ const ProjectEdit = ({ navigation }) => {
         </View>
         <HeightSpacer height={50} />
         <ReusableText
-          text={"Proje Bilgileri"}
+          text={t("projectInfo")}
           family={"medium"}
           size={TEXT.medium}
           color={COLORS.black}
@@ -104,14 +104,14 @@ const ProjectEdit = ({ navigation }) => {
           style={styles.info}
         >
           <ReusableText
-            text={"Proje Adı"}
+            text={t("projectName")}
             family={"regular"}
             size={TEXT.small}
             color={COLORS.black}
           />
           <View style={general.row("")}>
             <ReusableText
-              text={selectedProjectName || "Proje seçilmedi"}
+              text={selectedProjectName || t("projectNotSelected")}
               family={"regular"}
               size={TEXT.small}
               color={COLORS.description}
@@ -133,14 +133,14 @@ const ProjectEdit = ({ navigation }) => {
           style={styles.info}
         >
           <ReusableText
-            text={"Proje Kodu"}
+            text={t("projectCode")}
             family={"regular"}
             size={TEXT.small}
             color={COLORS.black}
           />
           <View style={general.row("")}>
             <ReusableText
-              text={selectedProjectCode || "Proje seçilmedi"}
+              text={selectedProjectCode || t("projectNotSelected")}
               family={"regular"}
               size={TEXT.small}
               color={COLORS.description}
@@ -162,14 +162,14 @@ const ProjectEdit = ({ navigation }) => {
           style={styles.info}
         >
           <ReusableText
-            text={"Adres"}
+            text={t("address")}
             family={"regular"}
             size={TEXT.small}
             color={COLORS.black}
           />
           <View style={general.row("")}>
             <ReusableText
-              text={selectedAddress || "Proje seçilmedi"}
+              text={selectedAddress || t("projectNotSelected")}
               family={"regular"}
               size={TEXT.small}
               color={COLORS.description}
@@ -179,14 +179,14 @@ const ProjectEdit = ({ navigation }) => {
         </TouchableOpacity>
         <HeightSpacer height={50} />
         <ReusableText
-          text={"Birimler"}
+          text={t("units")}
           family={"medium"}
           size={TEXT.medium}
           color={COLORS.black}
         />
         <View style={styles.info}>
           <ReusableText
-            text={"Zaman Dilimi"}
+            text={t("timeZone")}
             family={"regular"}
             size={TEXT.small}
             color={COLORS.black}
@@ -203,14 +203,14 @@ const ProjectEdit = ({ navigation }) => {
         </View>
         <View style={styles.info}>
           <ReusableText
-            text={"Tema"}
+            text={t("theme")}
             family={"regular"}
             size={TEXT.small}
             color={COLORS.black}
           />
           <View style={general.row("")}>
             <ReusableText
-              text={"Gündüz"}
+              text={t("light")}
               family={"regular"}
               size={TEXT.small}
               color={COLORS.description}
@@ -221,7 +221,7 @@ const ProjectEdit = ({ navigation }) => {
         <TouchableOpacity onPress={() => navigation.navigate("ProjectLocales")}>
           <View style={styles.info}>
             <ReusableText
-              text={"Dil"}
+              text={t("language")}
               family={"regular"}
               size={TEXT.small}
               color={COLORS.black}
