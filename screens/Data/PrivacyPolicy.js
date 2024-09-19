@@ -1,35 +1,38 @@
 const PrivacyPolicy = `
-Son güncellenme: 01/06/2024
+Son güncellenme: 19/09/2024
 
-Güvenliğiniz bizim için önemli. Bu sebeple bizimle paylaşacağınız kişisel verileriz hassasiyetle korunmaktadır.
+Gizlilik Politikası
+Projectxwire Gizlilik Politikası
+Giriş
+Projectxwire, kullanıcılarının gizliliğine saygı göstermeyi taahhüt eder. Bu gizlilik politikası, hangi bilgileri topladığımızı, bu bilgileri nasıl kullandığımızı ve koruduğumuzu açıklamaktadır.
 
-Biz, Projectxwire, veri sorumlusu olarak, bu gizlilik ve kişisel verilerin korunması politikası ile, hangi kişisel verilerinizin hangi amaçla işleneceği, işlenen verilerin kimlerle ve neden paylaşılabileceği, veri işleme yöntemimiz ve hukuki sebeplerimiz ile; işlenen verilerinize ilişkin haklarınızın neler olduğu hususunda sizleri aydınlatmayı amaçlıyoruz.
+Topladığımız Bilgiler
 
-Toplanan Kişisel Verileriniz, Toplanma Yöntemi ve Hukuki Sebebi
-Kimlik, (isim, soy isim, doğum tarihi gibi) iletişim, (adres, e-posta adresi, telefon, IP, konum gibi) özlük, sosyal medya, finans bilgileriniz ile görsel ve işitsel kayıtlarınız tarafımızca, çerezler (cookies) vb. teknolojiler vasıtasıyla, otomatik veya otomatik olmayan yöntemlerle ve bazen de analitik sağlayıcılar, reklam ağları, arama bilgi sağlayıcıları, teknoloji sağlayıcıları gibi üçüncü taraflardan elde edilerek, kaydedilerek, depolanarak ve güncellenerek, aramızdaki hizmet ve sözleşme ilişkisi çerçevesinde ve süresince, meşru menfaat işleme şartına dayanılarak işlenecektir.
+Kişisel Bilgiler: Ad, soyad, e-posta adresi, telefon numarası, iş unvanı, adres.
+Profil Bilgileri: Kullanıcıların isteğe bağlı olarak ekleyebileceği profil resmi.
+Otomatik Olarak Toplanan Bilgiler: Uygulamanın kullanımı sırasında teknik bilgiler, cihaz bilgileri, IP adresi ve tarayıcı bilgileri.
+Bilgi Kullanımı
+Toplanan bilgileri aşağıdaki amaçlar için kullanabiliriz:
 
-Kişisel Verilerinizin İşlenme Amacı
-Bizimle paylaştığınız kişisel verileriniz; hizmetlerimizden faydalanabilmeniz amacıyla sizlerle sözleşmeler kurabilmek, sunduğumuz hizmetlerin gerekliliklerini en iyi şekilde ve aramızdaki sözleşmelere uygun olarak yerine getirebilmek, bu sözleşmelerden doğan haklarınızın tarafınızca kullanılmasını sağlayabilmek, ürün ve hizmetlerimizi, ihtiyaçlarınız doğrultusunda geliştirebilmek ve bu gelişmelerden sizleri haberdar edebilmek, ayrıca sizleri daha geniş kapsamlı hizmet sağlayıcıları ile yasal çerçeveler içerisinde buluşturabilmek ve kanundan doğan zorunlulukların (kişisel verilerin talep halinde adli ve idari makamlarla paylaşılması) yerine getirilebilmesi amacıyla, sözleşme ve hizmet süresince, amacına uygun ve ölçülü bir şekilde işlenecek ve güncellenecektir.
+Uygulamanın işlevselliğini sağlamak ve geliştirmek
+Kullanıcı hesabını oluşturmak ve yönetmek
+Müşteri hizmetleri desteği sağlamak
+Uygulama kullanımı hakkında analiz yapmak ve iyileştirmek
+Yasal yükümlülükleri yerine getirmek
+Bilgi Paylaşımı
+Kullanıcı bilgilerini üçüncü taraflarla yalnızca aşağıdaki durumlarda paylaşırız:
 
-Toplanan Kişisel Verilerin Kimlere ve Hangi Amaçlarla Aktarılabileceği
-Bizimle paylaştığınız kişisel verileriniz; faaliyetlerimizi yürütmek üzere hizmet aldığımız ve/veya verdiğimiz, sözleşmesel ilişki içerisinde bulunduğumuz, iş birliği yaptığımız, yurt içi ve yurt dışındaki 3. şahıslar ile kurum ve kuruluşlara ve talep halinde adli ve idari makamlara, gerekli teknik ve idari önlemler alınması koşulu ile aktarılabilecektir.
+Kullanıcının açık rızası ile
+Yasal zorunluluklar nedeniyle
+Uygulamamızın güvenliğini sağlamak ve korumak amacıyla
+Veri Güvenliği
+Kullanıcı verilerini korumak için teknik ve idari önlemler alıyoruz. Veri güvenliği konusunda endüstri standartlarını izler ve uygun güvenlik protokollerini uygularız.
 
-Kişisel Verileri İşlenen Kişi Olarak Haklarınız
-KVKK madde 11 uyarınca herkes, veri sorumlusuna başvurarak aşağıdaki haklarını kullanabilir:
+Kullanıcı Hakları
+Kullanıcılar, kişisel verilerine erişme, bunları düzeltme, silme veya işlemenin durdurulmasını talep etme hakkına sahiptir. Bu haklardan yararlanmak için bizimle iletişime geçebilirsiniz.
 
-Kişisel veri işlenip işlenmediğini öğrenme,
-Kişisel verileri işlenmişse buna ilişkin bilgi talep etme,
-Kişisel verilerin işlenme amacını ve bunların amacına uygun kullanılıp kullanılmadığını öğrenme,
-Yurt içinde veya yurt dışında kişisel verilerin aktarıldığı üçüncü kişileri bilme,
-Kişisel verilerin eksik veya yanlış işlenmiş olması hâlinde bunların düzeltilmesini isteme,
-Kişisel verilerin silinmesini veya yok edilmesini isteme,
-(e) ve (f) bentleri uyarınca yapılan işlemlerin, kişisel verilerin aktarıldığı üçüncü kişilere bildirilmesini isteme,
-İşlenen verilerin münhasıran otomatik sistemler vasıtasıyla analiz edilmesi suretiyle kişinin kendisi aleyhine bir sonucun ortaya çıkmasına itiraz etme,
-Kişisel verilerin kanuna aykırı olarak işlenmesi sebebiyle zarara uğraması hâlinde zararın giderilmesini talep etme, haklarına sahiptir.
-Yukarıda sayılan haklarınızı kullanmak üzere info@Projectxwire.com üzerinden bizimle iletişime geçebilirsiniz.
-
-İletişim
-Sizlere talepleriniz doğrultusunda hizmet sunabilmek amacıyla, sadece gerekli olan kişisel verilerinizin, işbu gizlilik ve kişisel verilerin işlenmesi politikası uyarınca işlenmesini, kabul edip etmemek hususunda tamamen özgürsünüz. Uygulamayı kullanmaya devam ettiğiniz takdirde, kabul etmiş olduğunuz tarafımızca varsayılacaktır. Şayet kabul etmiyorsanız, lütfen uygulamayı tüm cihazlarınızdan kaldırınız. Ayrıntılı bilgi için bizimle info@Projectxwire.com e-mail adresi üzerinden iletişime geçmekten lütfen çekinmeyiniz.
+Gizlilik Politikasındaki Değişiklikler
+Bu gizlilik politikası, yasal veya iş gereksinimlerine uygun olarak güncellenebilir. Herhangi bir değişiklik durumunda, güncellenen politikayı bu sayfada yayınlayacağız.
 `;
 
 export default PrivacyPolicy;
