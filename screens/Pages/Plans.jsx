@@ -29,7 +29,6 @@ const Plans = ({ route, navigation }) => {
 
   useFocusEffect(
     React.useCallback(() => {
-      dispatch(clearPlans()); 
       dispatch(getPlans(projectId));
     }, [dispatch, projectId])
   );

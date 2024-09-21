@@ -29,7 +29,6 @@ const Projects = () => {
   useFocusEffect(
     React.useCallback(() => {
       if (companyId && siteId) {
-        dispatch(clearProjects());
         dispatch(getProjects({ companyId, siteId }));
       }
     }, [dispatch, companyId, siteId])
