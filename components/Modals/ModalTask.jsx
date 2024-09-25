@@ -36,7 +36,6 @@ export default function ModalTask({
   const [message, setMessage] = useState(null);
   const [selectedPlanId, setSelectedPlanId] = useState(null);
   const [selectedUserId, setSelectedUserId] = useState(null);
-  const [selectedUserSignal, setSelectedUserSignal] = useState(null);
   const [taskId, setTaskId] = useState(null);
   const { plans } = useSelector((state) => state.plans);
   const { users } = useSelector((state) => state.user);
@@ -82,7 +81,7 @@ export default function ModalTask({
         })
       );
       if (createTask.fulfilled.match(actionResult)) {
-        const userIds = selectedUserSignal; 
+        const userIds = selectedUserId; 
         const message = `Yeni bir görev oluşturuldu: ${values.taskTitle}`;
         await sendNotification(userIds, message);
         setStatus("success");

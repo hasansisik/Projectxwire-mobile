@@ -24,6 +24,7 @@ import { getAllUsers } from "../../redux/actions/userActions";
 import NoticeMessage from "../Reusable/NoticeMessage";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useTranslation } from "react-i18next";
+import sendNotification from "../../helpers/sendNotification";
 
 export default function ModalTaskPlan({
   showFilters,
@@ -75,6 +76,9 @@ export default function ModalTaskPlan({
         })
       );
       if (createTask.fulfilled.match(actionResult)) {
+        const userIds = selectedUserId;
+        const message = `Yeni bir görev oluşturuldu: ${values.taskTitle}`;
+        await sendNotification(userIds, message);
         setStatus("success");
         setMessage(t("pinCreatedSuccessfully"));
         const taskId = actionResult.payload._id;

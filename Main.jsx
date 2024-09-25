@@ -84,11 +84,11 @@ export default function Main() {
   useEffect(() => {
     OneSignal.Debug.setLogLevel(LogLevel.Verbose);
     OneSignal.initialize(Constants.expoConfig.extra.oneSignalAppId);
+    OneSignal.login(userId);
 
     // Bildirim izinlerini isteme
     OneSignal.Notifications.requestPermission(true);
     OneSignal.User.pushSubscription.getPushSubscriptionId();
-
   }, [dispatch, userId]);
 
   const [fontLoaded] = useFonts({
