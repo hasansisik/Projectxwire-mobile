@@ -15,6 +15,7 @@ export default function App() {
 
     // Bildirim izinlerini isteme
     OneSignal.Notifications.requestPermission(true);
+    OneSignal.User.pushSubscription.getPushSubscriptionId();
   }, []);
 
   return (
