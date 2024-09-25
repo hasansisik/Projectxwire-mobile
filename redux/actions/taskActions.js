@@ -26,10 +26,6 @@ export const createTask = createAsyncThunk(
         taskCreator,
         taskDesc,
       });
-       // Bildirim gönderme işlemi
-      const userIds = persons.map(person => person.userId);
-      const message = `Yeni bir görev oluşturuldu: ${taskTitle}`;
-      await sendNotification(userIds, message);
 
       return response.data;
     } catch (error) {

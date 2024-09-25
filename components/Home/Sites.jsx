@@ -24,7 +24,6 @@ const Sites = () => {
   const [companyId, setCompanyId] = useState("");
   const [filteredSites, setFilteredSites] = useState([]);
   const [filter, setFilter] = useState("all");
-  const { user } = useSelector((state) => state.user);
   const { sites } = useSelector((state) => state.sites);
   const { t } = useTranslation();
 
@@ -41,35 +40,6 @@ const Sites = () => {
       dispatch(getSites(companyId));
     }, [dispatch, companyId])
   );
-
-  // Push notification
-  useEffect(() => {
-    const registerForPushNotificationsAsync = async () => {
-      const { status } = await Notifications.getPermissionsAsync();
-      if (status !== "granted") {
-        const { status } = await Notifications.requestPermissionsAsync();
-        if (status !== "granted") {
-          alert("Failed to get push token for push notification!");
-          return;
-        }
-      }
-      const token = (await Notifications.getExpoPushTokenAsync()).data;
-      if (!user.expoPushToken || user.expoPushToken !== token) {
-        dispatch(
-          sendPushNotification({ userId: user._id, expoPushToken: token })
-        );
-      }
-    };
-
-    registerForPushNotificationsAsync();
-    Notifications.setNotificationHandler({
-      handleNotification: async () => ({
-        shouldShowAlert: true,
-        shouldPlaySound: true,
-        shouldSetBadge: false,
-      }),
-    });
-  }, [dispatch, user]);
 
   useEffect(() => {
     if (filter === "all" || filter === t("all").toLowerCase()) {

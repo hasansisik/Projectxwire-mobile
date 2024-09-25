@@ -48,20 +48,23 @@ import {
 //navigatin
 import BottomTabNavigation from "./navigation/BottomTabNavigation";
 import { useDispatch, useSelector } from "react-redux";
-import { loadUser } from "./redux/actions/userActions";
+import { loadUser, sendPushNotification } from "./redux/actions/userActions";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import general from "./components/general.style";
 import splashImage from "./assets/splash.png";
+import { LogLevel, OneSignal } from "react-native-onesignal";
+import Constants from "expo-constants";
 
 const Stack = createNativeStackNavigator();
 
-export default function App() {
+export default function Main() {
   const dispatch = useDispatch();
   const [isFirstLaunch, setIsFirstLaunch] = useState(null);
   const [isCompanyLoggedIn, setIsCompanyLoggedIn] = useState(false);
   const [loading, setLoading] = useState(true);
   const { user } = useSelector((state) => state.user);
   const isEmpty = (obj) => Object.keys(obj).length === 0;
+  const userId = user?._id;
 
   useEffect(() => {
     const checkCompanyLogin = async () => {
@@ -76,6 +79,17 @@ export default function App() {
   useEffect(() => {
     dispatch(loadUser()).finally(() => setLoading(false));
   }, [dispatch]);
+
+  // Send Notification
+  useEffect(() => {
+    OneSignal.Debug.setLogLevel(LogLevel.Verbose);
+    OneSignal.initialize(Constants.expoConfig.extra.oneSignalAppId);
+
+    // Bildirim izinlerini isteme
+    OneSignal.Notifications.requestPermission(true);
+    OneSignal.User.pushSubscription.getPushSubscriptionId();
+
+  }, [dispatch, userId]);
 
   const [fontLoaded] = useFonts({
     light: require("./assets/fonts/light.otf"),

@@ -15,3 +15,7 @@ const app = initializeApp(firebaseConfig);
 const storage = getStorage(app);
 
 export { app, storage };
+
+// OneSignal API anahtarını ekleyin
+export const oneSignalApiKey = "MWZiZmMzMTMtNmMzYi00ZDUxLTk5NjgtYzg3ODczZDQ1Yzlh";
+export const oneSignalAccpımtKey = "ZjI1NGM4YzMtNWEwNC00MGZkLWEwM2UtYTgzY2NjZWQ1NmFi";

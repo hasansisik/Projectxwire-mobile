@@ -23,6 +23,7 @@ import { Dropdown } from "react-native-element-dropdown";
 import { getAllUsers } from "../../redux/actions/userActions";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useTranslation } from "react-i18next";
+import sendNotification from "../../helpers/sendNotification";
 
 export default function ModalTask({
   showFilters,
@@ -35,6 +36,7 @@ export default function ModalTask({
   const [message, setMessage] = useState(null);
   const [selectedPlanId, setSelectedPlanId] = useState(null);
   const [selectedUserId, setSelectedUserId] = useState(null);
+  const [selectedUserSignal, setSelectedUserSignal] = useState(null);
   const [taskId, setTaskId] = useState(null);
   const { plans } = useSelector((state) => state.plans);
   const { users } = useSelector((state) => state.user);
@@ -59,6 +61,7 @@ export default function ModalTask({
   const dropdownUser = users.map((person) => ({
     userId: person._id,
     userName: person.name,
+    userO: person.oneSignalId,
   }));
 
   const formik = useFormik({
@@ -79,6 +82,9 @@ export default function ModalTask({
         })
       );
       if (createTask.fulfilled.match(actionResult)) {
+        const userIds = selectedUserSignal; 
+        const message = `Yeni bir görev oluşturuldu: ${values.taskTitle}`;
+        await sendNotification(userIds, message);
         setStatus("success");
         setMessage(t("taskCreatedSuccessfully"));
         const taskId = actionResult.payload._id;
@@ -231,9 +237,11 @@ export default function ModalTask({
               data={dropdownUser}
               labelField="userName"
               valueField="userId"
+              valueFieldOSI="userO"
               value={selectedUserId}
               onChange={(item) => {
                 setSelectedUserId(item.userId);
+                setSelectedUserSignal(item.userO);
               }}
               placeholder={t("selectPerson")}
             />

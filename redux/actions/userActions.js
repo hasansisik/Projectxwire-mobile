@@ -186,10 +186,9 @@ export const getAllUsers = createAsyncThunk(
 
 export const sendPushNotification = createAsyncThunk(
   "user/sendPushNotification",
-  async ({ userId, expoPushToken }, thunkAPI) => {
+  async ({ userId, oneSignalId }, thunkAPI) => {
     try {
       const token = await AsyncStorage.getItem("accessToken");
-
       const config = {
         headers: {
           "Content-Type": "application/json",
@@ -199,7 +198,7 @@ export const sendPushNotification = createAsyncThunk(
 
       const { data } = await axios.post(
         `${server}/auth/send-push-notification`,
-        { userId, expoPushToken },
+        { userId, oneSignalId },
         config
       );
       return data.message;
