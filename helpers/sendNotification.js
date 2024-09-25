@@ -1,19 +1,27 @@
-import * as Notifications from "expo-notifications";
+import axios from "axios";
 
-const sendNotification = async (expoPushToken, message) => {
+const sendNotification = async (userIds, message) => {
   try {
-    await Notifications.scheduleNotificationAsync({
-      content: {
-        title: "Yeni Görev",
-        body: message,
-        sound: true,
+    const response = await axios.post(
+      "https://onesignal.com/api/v1/notifications",
+      {
+        app_id: "5fa9d477-0bd0-4199-9960-406c4928b218",
+        include_external_user_ids: userIds,
+        headings: { en: "Yeni Görev" },
+        contents: { en: message },
       },
-      trigger: null,
-    });
-    console.log("Bildirim başarıyla gönderildi.");
+      {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Basic MWZiZmMzMTMtNmMzYi00ZDUxLTk5NjgtYzg3ODczZDQ1Yzlh`,
+        },
+      }
+    );
+
+    console.log("Bildirim başarıyla gönderildi:", response.data);
   } catch (error) {
     console.error("Bildirim gönderilemedi:", error);
   }
 };
 
-module.exports = sendNotification;
+export default sendNotification;
