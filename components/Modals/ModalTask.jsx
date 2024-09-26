@@ -60,7 +60,6 @@ export default function ModalTask({
   const dropdownUser = users.map((person) => ({
     userId: person._id,
     userName: person.name,
-    userO: person.oneSignalId,
   }));
 
   const formik = useFormik({
@@ -240,7 +239,6 @@ export default function ModalTask({
               value={selectedUserId}
               onChange={(item) => {
                 setSelectedUserId(item.userId);
-                setSelectedUserSignal(item.userO);
               }}
               placeholder={t("selectPerson")}
             />
