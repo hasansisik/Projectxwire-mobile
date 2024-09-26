@@ -1,18 +1,20 @@
 const PrivacyPolicy = `
 Son güncellenme: 19/09/2024
 
-Gizlilik Politikası
 Projectxwire Gizlilik Politikası
 Giriş
 Projectxwire, kullanıcılarının gizliliğine saygı göstermeyi taahhüt eder. Bu gizlilik politikası, hangi bilgileri topladığımızı, bu bilgileri nasıl kullandığımızı ve koruduğumuzu açıklamaktadır.
 
 Topladığımız Bilgiler
-
 Kişisel Bilgiler: Ad, soyad, e-posta adresi, telefon numarası, iş unvanı, adres.
 Profil Bilgileri: Kullanıcıların isteğe bağlı olarak ekleyebileceği profil resmi.
 Otomatik Olarak Toplanan Bilgiler: Uygulamanın kullanımı sırasında teknik bilgiler, cihaz bilgileri, IP adresi ve tarayıcı bilgileri.
+Kamera İzni: Uygulama, kullanıcının fotoğraf çekmesi veya belge taraması gerektiğinde kamera erişimine ihtiyaç duyar. Kamera kullanımı sadece kullanıcı izni ile aktif hale gelir.
+Dosyalarım İzni: Uygulama, dosya yükleme ve dosyalara erişim işlemleri için cihazınızdaki depolama alanına erişim izni talep edebilir. Bu izin yalnızca kullanıcı tarafından onaylandığında verilir ve uygulama, kullanıcının belirttiği dosyalara erişim sağlar.
+Bildirim İzni: Uygulama, kullanıcılara önemli güncellemeler ve görevlerle ilgili bildirimler göndermek için bildirim izni talep eder. Kullanıcı bu izni onayladığında, sadece gerekli bildirimler gönderilir.
+E-posta Gönderme İzni: Kullanıcıya kayıt onayları, şifre sıfırlama talepleri ve önemli bilgilendirmeler gibi işlemler için e-posta gönderebiliriz.
 Bilgi Kullanımı
-Toplanan bilgileri aşağıdaki amaçlar için kullanabiliriz:
+Topladığımız bilgileri aşağıdaki amaçlar için kullanabiliriz:
 
 Uygulamanın işlevselliğini sağlamak ve geliştirmek
 Kullanıcı hesabını oluşturmak ve yönetmek
