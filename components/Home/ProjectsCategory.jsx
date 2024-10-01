@@ -9,12 +9,12 @@ import { useTranslation } from "react-i18next";
 const ProjectsCategory = ({ setFilter }) => {
   const { projects } = useSelector((state) => state.projects);
   const [categories, setCategories] = useState([]);
-  const [selectedCategory, setSelectedCategory] = useState("all");
+  const [selectedCategory, setSelectedCategory] = useState("Hepsi");
   const { t } = useTranslation();
 
   useEffect(() => {
     const predefinedCategories = [
-      { id: 0, text: `${t("all")} (${projects.length})`, filter: "all" },
+      { id: 0, text: `${t("all")} (${projects.length})`, filter: "Hepsi" },
       {
         id: 1,
         text: `${t("architecture")} (${projects.filter((p) => p.projectCategory === "architecture").length})`,

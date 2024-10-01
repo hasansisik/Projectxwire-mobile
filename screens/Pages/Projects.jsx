@@ -1,4 +1,4 @@
-import { View, Text, StatusBar, SafeAreaView, Platform } from "react-native";
+import { View, StatusBar, SafeAreaView, Platform } from "react-native";
 import general from "../../components/general.style.js";
 import React, { useEffect, useState } from "react";
 import { COLORS } from "../../constants/theme.js";
@@ -8,7 +8,7 @@ import ProjectsCategory from "../../components/Home/ProjectsCategory.jsx";
 import ProjectsContent from "../../components/Home/ProjectsContent.jsx";
 import { useFocusEffect, useRoute } from "@react-navigation/native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { clearProjects, getProjects } from "../../redux/actions/projectActions.js";
+import { getProjects } from "../../redux/actions/projectActions.js";
 
 const Projects = () => {
   const route = useRoute();
