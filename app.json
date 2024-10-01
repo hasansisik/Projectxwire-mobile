@@ -2,7 +2,7 @@
   "expo": {
     "name": "Projectxwire",
     "slug": "Projectxwire",
-    "version": "1.0.1",
+    "version": "1.0.3",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
@@ -13,14 +13,18 @@
     },
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.projectxwire.projectxwire"
+      "bundleIdentifier": "com.projectxwire.projectxwire",
+      "infoPlist": {
+        "NSPhotoLibraryUsageDescription": "Projectxwire uygulaması, görevlerde fotoğraf eklemek veya profil fotoğrafınızı güncellemek için fotoğraf kitaplığınıza erişim talep ediyor. Bu fotoğraflar yalnızca belirtilen amaçlar için kullanılacaktır."
+      }
     },
     "android": {
-      "versionCode": 2, 
+      "versionCode": 3,
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
+      "permissions": ["READ_EXTERNAL_STORAGE", "WRITE_EXTERNAL_STORAGE"],
       "package": "com.Projectxwire.Projectxwire"
     },
     "web": {

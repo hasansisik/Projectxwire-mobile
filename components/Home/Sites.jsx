@@ -11,8 +11,6 @@ import ReusableText from "../Reusable/ReusableText.jsx";
 import { useDispatch, useSelector } from "react-redux";
 import { useFocusEffect } from "@react-navigation/native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { sendPushNotification } from "../../redux/actions/userActions.js";
-import * as Notifications from "expo-notifications";
 import { getSites } from "../../redux/actions/siteActions.js";
 import SitesCategory from "./SitesCategory.jsx";
 import { useTranslation } from "react-i18next";
