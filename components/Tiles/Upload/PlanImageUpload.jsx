@@ -23,10 +23,10 @@ export default function PlanImageUpload({ onUpload }) {
           type: mimeType,
         });
       } else {
-        Alert.alert("Dosya seçimi iptal edildi.");
+        Alert.alert("Plan yükleme için ,Dosya seçimi iptal edildi.");
       }
     } catch (error) {
-      console.error("Dosya seçimi hatası:", error);
+      console.error("Plan yükleme için ,Dosya seçimi iptal edildi :", error);
     }
   };
 

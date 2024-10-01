@@ -29,7 +29,7 @@ export default function CameraFile({ onImageSelected, onImageSend }) {
       if (Platform.OS !== "web") {
         const { status } = await ImagePicker.requestCameraPermissionsAsync();
         if (status !== "granted") {
-          Alert.alert("Üzgünüz, kamera erişim izni gerekiyor!");
+          Alert.alert("Üzgünüz Plan ve Görevlere görsel eklemek için, kamera erişim izni gerekiyor!");
         }
       }
     })();
