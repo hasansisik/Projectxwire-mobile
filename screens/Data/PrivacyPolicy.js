@@ -31,7 +31,7 @@ Veri Güvenliği
 Kullanıcı verilerini korumak için teknik ve idari önlemler alıyoruz. Veri güvenliği konusunda endüstri standartlarını izler ve uygun güvenlik protokollerini uygularız.
 
 Kullanıcı Hakları
-Kullanıcılar, kişisel verilerine erişme, bunları düzeltme, silme veya işlemenin durdurulmasını talep etme hakkına sahiptir. Bu haklardan yararlanmak için bizimle iletişime geçebilirsiniz.
+Kullanıcılar, kişisel verilerine erişme, bu verileri düzeltme veya silme hakkına sahiptir. Ayrıca, veri işleme iznini diledikleri zaman geri çekme hakkına sahiptirler. Hesap silme işlemi için www.projectxwire.com adresinden **dashboard** bölümüne giriş yapıp **users** kısmından hesabınızı silebilirsiniz. Alternatif olarak,info@projectxwire.com adresine e-posta gönderebilir veya +90 532 351 06 87 numarasından çağrı yaparak hesap silme talebinde bulunabilirsiniz.
 
 Gizlilik Politikasındaki Değişiklikler
 Bu gizlilik politikası, yasal veya iş gereksinimlerine uygun olarak güncellenebilir. Herhangi bir değişiklik durumunda, güncellenen politikayı bu sayfada yayınlayacağız.
