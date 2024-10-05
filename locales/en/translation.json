@@ -197,6 +197,10 @@
     "title": "Delete My Account",
     "message": "Are you sure you want to delete your account?",
     "cancel": "Cancel",
-    "confirm": "Delete My Account"
+    "confirm": "Delete My Account",
+    "confirmTitle": "Are you sure?",
+    "confirmMessage": "This action cannot be undone, are you still sure?",
+    "confirmCancel": "Cancel",
+    "confirmConfirm": "I'm sure"
   }
 }

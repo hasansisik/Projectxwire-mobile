@@ -197,6 +197,10 @@
     "title": "Konto Löschen",
     "message": "Sind Sie sicher, dass Sie Ihr Konto löschen möchten?",
     "cancel": "Abbrechen",
-    "confirm": "Konto Löschen"
+    "confirm": "Konto Löschen",
+    "confirmTitle": "Sind Sie sicher?",
+    "confirmMessage": "Diese Aktion kann nicht rückgängig gemacht werden. Sind Sie sich immer noch sicher?",
+    "confirmCancel": "Abbrechen",
+    "confirmConfirm": "Ich bin sicher"
   }
 }

@@ -11,6 +11,7 @@ import {
   editProfile,
   getAllUsers,
   sendPushNotification,
+  deleteUser,
 } from "../actions/userActions";
 
 export const userReducer = createReducer(
@@ -155,6 +156,20 @@ export const userReducer = createReducer(
         state.message = action.payload;
       })
       .addCase(sendPushNotification.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+      })
+       // Delete User
+      .addCase(deleteUser.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(deleteUser.fulfilled, (state, action) => {
+        state.loading = false;
+        state.isAuthenticated = false;
+        state.user = null;
+        state.message = action.payload;
+      })
+      .addCase(deleteUser.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload;
       });

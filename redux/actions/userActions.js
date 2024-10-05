@@ -1,7 +1,7 @@
-import axios from 'axios';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import { createAsyncThunk } from '@reduxjs/toolkit';
-import { server } from "../../config"
+import axios from "axios";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { createAsyncThunk } from "@reduxjs/toolkit";
+import { server } from "../../config";
 
 export const register = createAsyncThunk(
   "user/register",
@@ -39,10 +39,10 @@ export const login = createAsyncThunk(
 );
 
 export const loadUser = createAsyncThunk(
-  'user/loadUser',
+  "user/loadUser",
   async (_, thunkAPI) => {
     try {
-      const token = await AsyncStorage.getItem('accessToken');
+      const token = await AsyncStorage.getItem("accessToken");
 
       const { data } = await axios.get(`${server}/auth/me`, {
         headers: {
@@ -68,7 +68,7 @@ export const logout = createAsyncThunk("user/logout", async (_, thunkAPI) => {
       withCredentials: true,
     });
     await AsyncStorage.removeItem("accessToken");
-    await AsyncStorage.removeItem("companyId"); 
+    await AsyncStorage.removeItem("companyId");
     return data.message;
   } catch (error) {
     return thunkAPI.rejectWithValue(error.response.data.message);
@@ -76,27 +76,27 @@ export const logout = createAsyncThunk("user/logout", async (_, thunkAPI) => {
 });
 
 export const verifyEmail = createAsyncThunk(
-  'user/verifyEmail',
+  "user/verifyEmail",
   async ({ email, verificationCode }, thunkAPI) => {
     try {
-      const { data } = await axios.post(
-        `${server}/auth/verify-email`,
-        { email, verificationCode },
-      );
+      const { data } = await axios.post(`${server}/auth/verify-email`, {
+        email,
+        verificationCode,
+      });
 
       return data.message;
     } catch (error) {
       return thunkAPI.rejectWithValue(
         error.response && error.response.data.message
           ? error.response.data.message
-          : error.message,
+          : error.message
       );
     }
   }
 );
 
 export const againEmail = createAsyncThunk(
-  'user/againEmail',
+  "user/againEmail",
   async (email, thunkAPI) => {
     try {
       await axios.post(`${server}/auth/again-email`, { email });
@@ -106,14 +106,14 @@ export const againEmail = createAsyncThunk(
       return thunkAPI.rejectWithValue(
         error.response && error.response.data.message
           ? error.response.data.message
-          : error.message,
+          : error.message
       );
     }
   }
 );
 
 export const forgotPassword = createAsyncThunk(
-  'user/forgotPassword',
+  "user/forgotPassword",
   async (email, thunkAPI) => {
     try {
       await axios.post(`${server}/auth/forgot-password`, { email });
@@ -123,39 +123,43 @@ export const forgotPassword = createAsyncThunk(
       return thunkAPI.rejectWithValue(
         error.response && error.response.data.message
           ? error.response.data.message
-          : error.message,
+          : error.message
       );
     }
   }
 );
 
 export const resetPassword = createAsyncThunk(
-  'user/resetPassword',
+  "user/resetPassword",
   async ({ email, passwordToken, newPassword }, thunkAPI) => {
     try {
-      await axios.post(`${server}/auth/reset-password`, { email, passwordToken, newPassword });
+      await axios.post(`${server}/auth/reset-password`, {
+        email,
+        passwordToken,
+        newPassword,
+      });
 
       return;
     } catch (error) {
       return thunkAPI.rejectWithValue(
         error.response && error.response.data.message
           ? error.response.data.message
-          : error.message,
+          : error.message
       );
     }
   }
 );
 
 export const editProfile = createAsyncThunk(
-  'user/editProfile',
+  "user/editProfile",
   async (userData, thunkAPI) => {
     try {
-      const token = await AsyncStorage.getItem('accessToken');
+      const token = await AsyncStorage.getItem("accessToken");
 
       const config = {
         headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${token}`
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
         },
       };
 
@@ -166,14 +170,14 @@ export const editProfile = createAsyncThunk(
       return thunkAPI.rejectWithValue(
         error.response && error.response.data.message
           ? error.response.data.message
-          : error.message,
+          : error.message
       );
     }
   }
 );
 
 export const getAllUsers = createAsyncThunk(
-  'user/getAllUsers',
+  "user/getAllUsers",
   async (companyId, thunkAPI) => {
     try {
       const { data } = await axios.get(`${server}/auth/users/${companyId}`);
@@ -212,3 +216,22 @@ export const sendPushNotification = createAsyncThunk(
   }
 );
 
+export const deleteUser = createAsyncThunk(
+  "user/deleteUser",
+  async (_, thunkAPI) => {
+    try {
+      const token = await AsyncStorage.getItem("accessToken");
+      const { data } = await axios.delete(`${server}/auth/delete-user`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+        withCredentials: true,
+      });
+      await AsyncStorage.removeItem("accessToken");
+      await AsyncStorage.removeItem("companyId");
+      return data.message;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.response.data.message);
+    }
+  }
+);

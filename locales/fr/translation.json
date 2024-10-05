@@ -197,6 +197,10 @@
     "title": "Supprimer Mon Compte",
     "message": "Êtes-vous sûr de vouloir supprimer votre compte?",
     "cancel": "Annuler",
-    "confirm": "Supprimer Mon Compte"
+    "confirm": "Supprimer Mon Compte",
+    "confirmTitle": "Êtes-vous sûr?",
+    "confirmMessage": "Cette action est irréversible, êtes-vous toujours sûr?",
+    "confirmCancel": "Annuler",
+    "confirmConfirm": "Je suis sûr"
   }
 }

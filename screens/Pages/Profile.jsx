@@ -14,7 +14,7 @@ import styles from "./pages.style";
 import general from "../../components/general.style.js";
 import ReusableSettings from "../../components/Reusable/ReusableSettings";
 import { useDispatch, useSelector } from "react-redux";
-import { logout, editProfile } from "../../redux/actions/userActions";
+import { logout, editProfile, deleteUser } from "../../redux/actions/userActions";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { storage } from "../../config";
 import * as ImagePicker from "expo-image-picker";
@@ -117,14 +117,35 @@ const Profile = ({ navigation }) => {
        },
        {
          text: t("profileDelete.confirm"),
-         onPress: async () => {
-           await dispatch(logout());
-           navigation.navigate("CompanyLoginAgain");
+         onPress: () => {
+           Alert.alert(
+             t("profileDelete.confirmTitle"),
+             t("profileDelete.confirmMessage"),
+             [
+               {
+                 text: t("profileDelete.cancel"),
+                 onPress: () =>
+                   console.log(
+                     t("profileDelete.cancel") +
+                       " " +
+                       t("profileDelete.confirmTitle")
+                   ),
+                 style: "cancel",
+               },
+               {
+                 text: t("profileDelete.confirm"),
+                 onPress: async () => {
+                   await dispatch(deleteUser());
+                   navigation.navigate("CompanyLoginAgain");
+                 },
+               },
+             ]
+           );
          },
        },
      ]);
    };
-   
+
   return (
     <SafeAreaView
       style={[

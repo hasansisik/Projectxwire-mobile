@@ -197,6 +197,10 @@
     "title": "Hesabımı Sil",
     "message": "Hesabınızı silmek istediğinizden emin misiniz?",
     "cancel": "Vazgeç",
-    "confirm": "Hesabımı Sil"
+    "confirm": "Hesabımı Sil",
+    "confirmTitle": "Emin misiniz?",
+    "confirmMessage": "Bu işlemin geri dönüşü yok, hala emin misiniz?",
+    "confirmCancel": "Vazgeç",
+    "confirmConfirm": "Eminim"
   }
 }
