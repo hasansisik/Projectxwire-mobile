@@ -8,6 +8,7 @@
   "companyCode": "Code de l'entreprise",
   "password": "Mot de passe",
   "loginButton": "Connexion",
+  "deleteButton": "Supprimer mon compte",
   "registerButton": "S'inscrire",
   "forgotInfo": "Informations oubliées? ",
   "noCompanyCode": "Pas de code d'entreprise? ",
@@ -185,5 +186,17 @@
   "phoneNumberUpdateSuccessful": "Mise à jour du numéro de téléphone réussie",
   "passwordUpdateSuccessful": "Mise à jour du mot de passe réussie",
   "languageUpdatedSuccessfully": "Langue mise à jour avec succès",
-  "languageUpdateError": "Une erreur s'est produite lors de la mise à jour de la langue"
+  "languageUpdateError": "Une erreur s'est produite lors de la mise à jour de la langue",
+  "profileLogout": {
+    "title": "Se Déconnecter",
+    "message": "Êtes-vous sûr de vouloir vous déconnecter?",
+    "cancel": "Annuler",
+    "confirm": "Se Déconnecter"
+  },
+  "profileDelete": {
+    "title": "Supprimer Mon Compte",
+    "message": "Êtes-vous sûr de vouloir supprimer votre compte?",
+    "cancel": "Annuler",
+    "confirm": "Supprimer Mon Compte"
+  }
 }

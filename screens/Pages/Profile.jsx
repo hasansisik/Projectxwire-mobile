@@ -5,6 +5,7 @@ import {
   SafeAreaView,
   Image,
   TouchableOpacity,
+  Alert,
 } from "react-native";
 import React, { useState, useEffect } from "react";
 import { COLORS, TEXT } from "../../constants/theme";
@@ -84,11 +85,46 @@ const Profile = ({ navigation }) => {
     setTimeout(() => setStatus(null), 3000);
   };
 
-  const logoutHandler = async () => {
-    await dispatch(logout());
-    navigation.navigate("CompanyLoginAgain");
-  };
+   const logoutHandler = async () => {
+     Alert.alert(t("profileLogout.title"), t("profileLogout.message"), [
+       {
+         text: t("profileLogout.cancel"),
+         onPress: () =>
+           console.log(
+             t("profileLogout.cancel") + " " + t("profileLogout.title")
+           ),
+         style: "cancel",
+       },
+       {
+         text: t("profileLogout.confirm"),
+         onPress: async () => {
+           await dispatch(logout());
+           navigation.navigate("CompanyLoginAgain");
+         },
+       },
+     ]);
+   };
 
+   const deleteHandler = async () => {
+     Alert.alert(t("profileDelete.title"), t("profileDelete.message"), [
+       {
+         text: t("profileDelete.cancel"),
+         onPress: () =>
+           console.log(
+             t("profileDelete.cancel") + " " + t("profileDelete.title")
+           ),
+         style: "cancel",
+       },
+       {
+         text: t("profileDelete.confirm"),
+         onPress: async () => {
+           await dispatch(logout());
+           navigation.navigate("CompanyLoginAgain");
+         },
+       },
+     ]);
+   };
+   
   return (
     <SafeAreaView
       style={[
@@ -208,6 +244,19 @@ const Profile = ({ navigation }) => {
         />
       </View>
       <HeightSpacer height={20} />
+      {!user ? null : (
+        <View style={styles.settingsBoxDelete}>
+          <ReusableSettings
+            icon={"deleteuser"}
+            title={t("deleteButton")}
+            onPress={deleteHandler}
+            iconColor={COLORS.white}
+            textColor={COLORS.white}
+            iconType={"AntDesign"}
+          />
+        </View>
+      )}
+      <HeightSpacer height={10} />
       {!user ? (
         <View style={styles.settingsBox}>
           <ReusableSettings

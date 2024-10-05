@@ -27,6 +27,13 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: COLORS.lightBorder,
   },
+  settingsBoxDelete: {
+    backgroundColor: COLORS.red,
+    borderRadius: 10,
+    marginHorizontal: 15,
+    borderWidth: 1,
+    borderColor: COLORS.lightBorder,
+  },
   editIcon: {
     position: "absolute",
     bottom: -5,

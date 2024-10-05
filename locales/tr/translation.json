@@ -8,6 +8,7 @@
   "companyCode": "Şirket Kodu",
   "password": "Şifre",
   "loginButton": "Giriş Yap",
+  "deleteButton": "Hesabımı Sil",
   "registerButton": "Kayıt Ol",
   "forgotInfo": "Bilgileri Unuttum? ",
   "noCompanyCode": "Şirket Kodunuz yok mu? ",
@@ -185,5 +186,17 @@
   "phoneNumberUpdateSuccessful": "Telefon Numarası Değiştirme Başarılı",
   "passwordUpdateSuccessful": "Şifre Değiştirme Başarılı",
   "languageUpdatedSuccessfully": "Dil başarıyla güncellendi",
-  "languageUpdateError": "Dil güncellenirken bir hata oluştu"
+  "languageUpdateError": "Dil güncellenirken bir hata oluştu",
+  "profileLogout": {
+    "title": "Çıkış Yap",
+    "message": "Çıkış yapmak istediğinizden emin misiniz?",
+    "cancel": "Vazgeç",
+    "confirm": "Çıkış Yap"
+  },
+  "profileDelete": {
+    "title": "Hesabımı Sil",
+    "message": "Hesabınızı silmek istediğinizden emin misiniz?",
+    "cancel": "Vazgeç",
+    "confirm": "Hesabımı Sil"
+  }
 }

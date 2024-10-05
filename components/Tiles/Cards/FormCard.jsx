@@ -11,43 +11,41 @@ const FormCard = ({ item }) => {
     return url.split("/").pop().split("#")[0].split("?")[0];
   };
 
-const downloadAndOpenPDF = async () => {
-  try {
-    const fileName = getFileNameFromUrl(item.document);
-    const fileUri = FileSystem.documentDirectory + fileName; // "forms/" kısmı kaldırıldı
-    const directoryUri = FileSystem.documentDirectory + "forms"; // Dizin yolu düzeltildi
+  const downloadAndOpenPDF = async () => {
+    try {
+      const fileName = getFileNameFromUrl(item.document);
+      const fileUri = FileSystem.documentDirectory + fileName;
+      const directoryUri = FileSystem.documentDirectory + "forms"; 
 
-    // Dizin var mı diye kontrol et
-    const directoryInfo = await FileSystem.getInfoAsync(directoryUri);
-    if (!directoryInfo.exists) {
-      // Dizin yoksa oluştur
-      await FileSystem.makeDirectoryAsync(directoryUri, {
-        intermediates: true,
-      });
+      const directoryInfo = await FileSystem.getInfoAsync(directoryUri);
+      if (!directoryInfo.exists) {
+        await FileSystem.makeDirectoryAsync(directoryUri, {
+          intermediates: true,
+        });
+      }
+
+      const downloadResumable = FileSystem.createDownloadResumable(
+        item.document,
+        fileUri,
+        {}
+      );
+
+      const { uri } = await downloadResumable.downloadAsync();
+      Alert.alert(
+        "Form Dosyası indirildi",
+        "PDF dosyasını açmak ister misiniz?",
+        [
+          {
+            text: "Aç",
+            onPress: () => openPDF(uri),
+          },
+        ],
+        { cancelable: true }
+      );
+    } catch (error) {
+      console.error(error);
     }
-
-    const downloadResumable = FileSystem.createDownloadResumable(
-      item.document,
-      fileUri,
-      {}
-    );
-
-    const { uri } = await downloadResumable.downloadAsync();
-    Alert.alert(
-      "Form Dosyası indirildi",
-      "PDF dosyasını açmak ister misiniz?",
-      [
-        {
-          text: "Aç",
-          onPress: () => openPDF(uri),
-        },
-      ],
-      { cancelable: true }
-    );
-  } catch (error) {
-    console.error(error);
-  }
-};
+  };
 
   const openPDF = async (uri) => {
     try {
@@ -99,7 +97,11 @@ const downloadAndOpenPDF = async () => {
         <View style={general.row("space-between")}>
           <View style={general.row("")}>
             <Image
-              source={{ uri: item.formCreator.picture }}
+              source={{
+                uri:
+                  item.formCreator?.picture ||
+                  "https://firebasestorage.googleapis.com/v0/b/projectxwire-e951a.appspot.com/o/user.png?alt=media&token=1beeeb68-a4c5-4a9c-b0e1-b3bd437a37fc",
+              }}
               style={styles.image}
             />
             <View style={{ flexDirection: "column" }}>
@@ -110,7 +112,7 @@ const downloadAndOpenPDF = async () => {
                 color={COLORS.description}
               />
               <ReusableText
-                text={item.formCreator.name}
+                text={item.formCreator?.name || "Kullanıcı eklenmedi"}
                 family={"regular"}
                 size={TEXT.xSmall}
                 color={COLORS.description}
@@ -119,7 +121,11 @@ const downloadAndOpenPDF = async () => {
           </View>
           <View style={general.row("")}>
             <Image
-              source={{ uri: item.formPerson.picture }}
+              source={{
+                uri:
+                  item.formPerson?.picture ||
+                  "https://firebasestorage.googleapis.com/v0/b/projectxwire-e951a.appspot.com/o/user.png?alt=media&token=1beeeb68-a4c5-4a9c-b0e1-b3bd437a37fc",
+              }}
               style={styles.image}
             />
             <View style={{ flexDirection: "column" }}>
@@ -130,7 +136,7 @@ const downloadAndOpenPDF = async () => {
                 color={COLORS.description}
               />
               <ReusableText
-                text={item.formPerson.name}
+                text={item.formPerson?.name || "Kullanıcı eklenmedi"}
                 family={"regular"}
                 size={TEXT.xSmall}
                 color={COLORS.description}

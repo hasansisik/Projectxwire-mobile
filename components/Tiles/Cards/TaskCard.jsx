@@ -28,12 +28,16 @@ const TaskCard = ({ item, navigation }) => {
           </View>
           <View style={general.row("space-between")}>
             <Image
-              source={{ uri: item.taskCreator.picture }}
+              source={{
+                uri:
+                  item.taskCreator?.picture ||
+                  "https://firebasestorage.googleapis.com/v0/b/projectxwire-e951a.appspot.com/o/user.png?alt=media&token=1beeeb68-a4c5-4a9c-b0e1-b3bd437a37fc",
+              }}
               style={styles.image}
             />
             <View>
               <ReusableText
-                text={item.taskCreator.name}
+                text={item.taskCreator?.name || "Kullanıcı eklenmedi"}
                 family={"regular"}
                 size={TEXT.small}
                 color={COLORS.description}
@@ -72,13 +76,13 @@ const TaskCard = ({ item, navigation }) => {
             {item.persons &&
               item.persons.map(
                 (person, index) =>
-                  person && person.picture ? ( // person ve person.picture'ın varlığını kontrol et
+                  person && person.picture ? ( 
                     <Image
                       key={index}
                       source={{ uri: person.picture }}
                       style={styles.userImage}
                     />
-                  ) : null // person veya person.picture yoksa hiçbir şey render etme
+                  ) : null 
               )}
             {item.persons.length > 2 && (
               <View style={styles.moreImages}>

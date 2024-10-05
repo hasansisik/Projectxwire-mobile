@@ -8,6 +8,7 @@
   "companyCode": "Unternehmenskode",
   "password": "Passwort",
   "loginButton": "Anmelden",
+  "deleteButton": "Lösche mein Konto",
   "registerButton": "Registrieren",
   "forgotInfo": "Informationen vergessen? ",
   "noCompanyCode": "Kein Unternehmenskode? ",
@@ -185,5 +186,17 @@
   "phoneNumberUpdateSuccessful": "Telefonnummer erfolgreich aktualisiert",
   "passwordUpdateSuccessful": "Passwortänderung erfolgreich",
   "languageUpdatedSuccessfully": "Sprache erfolgreich aktualisiert",
-  "languageUpdateError": "Fehler bei der Aktualisierung der Sprache"
+  "languageUpdateError": "Fehler bei der Aktualisierung der Sprache",
+  "profileLogout": {
+    "title": "Abmelden",
+    "message": "Sind Sie sicher, dass Sie sich abmelden möchten?",
+    "cancel": "Abbrechen",
+    "confirm": "Abmelden"
+  },
+  "profileDelete": {
+    "title": "Konto Löschen",
+    "message": "Sind Sie sicher, dass Sie Ihr Konto löschen möchten?",
+    "cancel": "Abbrechen",
+    "confirm": "Konto Löschen"
+  }
 }

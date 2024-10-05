@@ -8,6 +8,7 @@
   "companyCode": "Company Code",
   "password": "Password",
   "loginButton": "Login",
+  "deleteButton": "Delete my account",
   "registerButton": "Register",
   "forgotInfo": "Forgot Info? ",
   "noCompanyCode": "Don't have a Company Code? ",
@@ -185,5 +186,17 @@
   "phoneNumberUpdateSuccessful": "Phone number update successful",
   "passwordUpdateSuccessful": "Password update successful",
   "languageUpdatedSuccessfully": "Language updated successfully",
-  "languageUpdateError": "An error occurred while updating the language"
+  "languageUpdateError": "An error occurred while updating the language",
+  "profileLogout": {
+    "title": "Logout",
+    "message": "Are you sure you want to logout?",
+    "cancel": "Cancel",
+    "confirm": "Logout"
+  },
+  "profileDelete": {
+    "title": "Delete My Account",
+    "message": "Are you sure you want to delete your account?",
+    "cancel": "Cancel",
+    "confirm": "Delete My Account"
+  }
 }

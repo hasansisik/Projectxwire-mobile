@@ -12,6 +12,7 @@
       "backgroundColor": "#ffffff"
     },
     "ios": {
+      "buildNumber": "3",
       "supportsTablet": true,
       "bundleIdentifier": "com.projectxwire.projectxwire",
       "infoPlist": {
@@ -25,7 +26,7 @@
         "backgroundColor": "#ffffff"
       },
       "permissions": ["READ_EXTERNAL_STORAGE", "WRITE_EXTERNAL_STORAGE"],
-      "package": "com.Projectxwire.Projectxwire"
+      "package": "com.Projectxwire.App"
     },
     "web": {
       "favicon": "./assets/favicon.png"

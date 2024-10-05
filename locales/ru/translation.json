@@ -8,6 +8,7 @@
   "companyCode": "Код Компании",
   "password": "Пароль",
   "loginButton": "Войти",
+  "deleteButton": "удалить мою учетную запись",
   "registerButton": "Зарегистрироваться",
   "forgotInfo": "Забыли данные? ",
   "noCompanyCode": "Нет кода компании? ",
@@ -185,5 +186,17 @@
   "phoneNumberUpdateSuccessful": "Номер телефона успешно обновлен",
   "passwordUpdateSuccessful": "Смена пароля прошла успешно",
   "languageUpdatedSuccessfully": "Язык успешно обновлен",
-  "languageUpdateError": "Ошибка при обновлении языка"
+  "languageUpdateError": "Ошибка при обновлении языка",
+  "profileLogout": {
+    "title": "Выйти",
+    "message": "Вы уверены, что хотите выйти?",
+    "cancel": "Отмена",
+    "confirm": "Выйти"
+  },
+  "profileDelete": {
+    "title": "Удалить аккаунт",
+    "message": "Вы уверены, что хотите удалить свой аккаунт?",
+    "cancel": "Отмена",
+    "confirm": "Удалить аккаунт"
+  }
 }
