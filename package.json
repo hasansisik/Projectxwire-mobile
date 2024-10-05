@@ -29,6 +29,7 @@
     "expo-font": "~12.0.9",
     "expo-image-picker": "~15.0.7",
     "expo-intent-launcher": "~11.0.1",
+    "expo-localization": "^15.0.3",
     "expo-module-scripts": "^3.5.2",
     "expo-notifications": "~0.28.17",
     "expo-status-bar": "~1.12.1",
