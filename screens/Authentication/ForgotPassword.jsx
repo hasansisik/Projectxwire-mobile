@@ -21,11 +21,13 @@ import { useFormik } from "formik";
 import { forgotPasswordSchema } from "../../utils/validation";
 import { forgotPassword } from "../../redux/actions/userActions";
 import NoticeMessage from "../../components/Reusable/NoticeMessage";
+import { useTranslation } from "react-i18next";
 
 const ForgotPassword = ({ navigation }) => {
   const dispatch = useDispatch();
   const [status, setStatus] = useState(null);
   const [message, setMessage] = useState(null);
+  const { t } = useTranslation();
 
   const formik = useFormik({
     initialValues: { email: "" },

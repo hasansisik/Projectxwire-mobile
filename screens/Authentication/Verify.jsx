@@ -19,10 +19,12 @@ import OTPTextInput from "react-native-otp-textinput";
 import { useDispatch } from "react-redux";
 import { verifyEmail, againEmail } from "../../redux/actions/userActions";
 import NoticeMessage from "../../components/Reusable/NoticeMessage";
+import { useTranslation } from "react-i18next";
 
 const Verify = ({ navigation, route }) => {
   const dispatch = useDispatch();
   const email = route.params.email;
+  const { t } = useTranslation();
 
   const [verificationCode, setVerificationCode] = useState("");
   const [status, setStatus] = useState(null);

@@ -21,12 +21,14 @@ import { useFormik } from "formik";
 import { resetPasswordSchema } from "../../utils/validation";
 import { resetPassword } from "../../redux/actions/userActions";
 import NoticeMessage from "../../components/Reusable/NoticeMessage";
+import { useTranslation } from "react-i18next";
 
 const ResetPassword = ({ navigation, route }) => {
   const email = route.params.email;
   const dispatch = useDispatch();
   const [status, setStatus] = useState(null);
   const [message, setMessage] = useState(null);
+  const { t } = useTranslation();
 
   const formik = useFormik({
     initialValues: {

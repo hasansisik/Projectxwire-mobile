@@ -51,7 +51,6 @@ const AppBar = ({
             color={showDeleteIcon ? COLORS.white : COLORS.black}
           />
         )}
-
         <View style={styles.rightContainer}>
           {!showDeleteIcon && (
             <TouchableOpacity style={styles.box1(color1)} onPress={onPress1}>
@@ -85,6 +84,7 @@ const styles = StyleSheet.create({
     right: right,
     justifyContent: "center",
     backgroundColor: showDeleteIcon ? COLORS.red : "transparent",
+    zIndex: 10, 
   }),
   box: (color) => ({
     backgroundColor: color,
