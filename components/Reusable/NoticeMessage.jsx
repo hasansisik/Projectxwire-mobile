@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { View, Text, StyleSheet, Dimensions, StatusBar, Platform } from "react-native";
+import { View, Text, StyleSheet, Dimensions, StatusBar, Platform, SafeAreaView } from "react-native";
 import { COLORS } from "../../constants/theme";
 
 const NoticeMessage = ({ message, status, duration = 5000 }) => {
@@ -17,7 +17,7 @@ const NoticeMessage = ({ message, status, duration = 5000 }) => {
   };
 
   useEffect(() => {
-    setVisible(true); // Herhangi bir prop değiştiğinde visible'ı true yap
+    setVisible(true);
 
     if (duration) {
       const timer = setTimeout(() => {
@@ -26,21 +26,27 @@ const NoticeMessage = ({ message, status, duration = 5000 }) => {
 
       return () => clearTimeout(timer);
     }
-  }, [message, status, duration]); // message, status veya duration değiştiğinde useEffect'i tetikle
+  }, [message, status, duration]);
 
   if (!visible) return null;
 
   return (
-    <View style={[styles.errorContainer, { backgroundColor: getBackgroundColor(), top: Platform.OS === 'ios' ? 0 : StatusBar.currentHeight }]}>
-      <Text style={styles.errorText}>{message}</Text>
-    </View>
+    <SafeAreaView style={styles.safeArea}>
+      <View style={[styles.errorContainer, { backgroundColor: getBackgroundColor() }]}>
+        <Text style={styles.errorText}>{message}</Text>
+      </View>
+    </SafeAreaView>
   );
 };
 
 const styles = StyleSheet.create({
-  errorContainer: {
+  safeArea: {
     position: "absolute",
+    top: Platform.OS === 'ios' ? 35 : 0,
     width: Dimensions.get("window").width,
+  },
+  errorContainer: {
+    width: "100%",
     padding: 4,
   },
   errorText: {
