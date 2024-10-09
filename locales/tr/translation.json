@@ -202,5 +202,8 @@
     "confirmMessage": "Bu işlemin geri dönüşü yok, hala emin misiniz?",
     "confirmCancel": "Vazgeç",
     "confirmConfirm": "Eminim"
-  }
+  },
+  "enterCategoryName": "Kategori Adı Girin",
+  "addCategory": "Kategori Ekle",  
+  "selectCategory": "Kategori Seç"
 }

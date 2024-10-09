@@ -202,5 +202,8 @@
     "confirmMessage": "This action cannot be undone, are you still sure?",
     "confirmCancel": "Cancel",
     "confirmConfirm": "I'm sure"
-  }
+  },
+  "enterCategoryName": "Enter Category Name",
+  "addCategory": "Add Category",
+  "selectCategory": "Select Category"
 }

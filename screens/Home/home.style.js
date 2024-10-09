@@ -82,6 +82,14 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     backgroundColor: COLORS.lightWhite,
   },
+  addButton: {
+    width: 30,
+    height: 30,
+    borderRadius: 40,
+    backgroundColor: COLORS.orange,
+    justifyContent: "center",
+    alignItems: "center",
+  },
 });
 
 export default styles;

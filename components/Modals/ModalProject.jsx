@@ -8,6 +8,7 @@ import {
 } from "react-native";
 import Modal from "react-native-modal";
 import { AntDesign } from "@expo/vector-icons";
+import { Ionicons } from "@expo/vector-icons";
 import DateTimePicker from "@react-native-community/datetimepicker";
 import ReusableText from "../Reusable/ReusableText";
 import HeightSpacer from "../Reusable/HeightSpacer";
@@ -22,6 +23,7 @@ import { Dropdown } from "react-native-element-dropdown";
 import NoticeMessage from "../Reusable/NoticeMessage";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useTranslation } from "react-i18next";
+import ModalAddCategory from "../Home/ModalAddCategory";
 
 export default function ModalProject({
   showFilters,
@@ -36,7 +38,20 @@ export default function ModalProject({
   const [companyId, setCompanyId] = useState("");
   const [finishDate, setFinishDate] = useState(new Date());
   const [showDatePicker, setShowDatePicker] = useState(false);
+  const [isModalVisible, setIsModalVisible] = useState(false);
   const { t } = useTranslation();
+
+  const [categories, setCategories] = useState([
+    { label: t("architecture"), value: "architecture" },
+    { label: t("statics"), value: "statics" },
+    { label: t("electrical"), value: "electrical" },
+    { label: t("landscape"), value: "landscape" },
+  ]);
+
+  const handleAddCategory = (categoryName) => {
+    const newCategory = { label: t(categoryName), value: categoryName };
+    setCategories([...categories, newCategory]);
+  };
 
   useEffect(() => {
     const fetchCompanyId = async () => {
@@ -107,13 +122,6 @@ export default function ModalProject({
     return date.toLocaleDateString("tr-TR", options);
   };
 
-  const categories = [
-    { label: t("architecture"), value: "architecture" },
-    { label: t("statics"), value: "statics" },
-    { label: t("electrical"), value: "electrical" },
-    { label: t("landscape"), value: "landscape" },
-  ];
-
   return (
     <Modal
       isVisible={showFilters}
@@ -183,17 +191,24 @@ export default function ModalProject({
             size={TEXT.small}
             color={COLORS.black}
           />
-          <Dropdown
-            style={styles.dropdown}
-            data={categories}
-            labelField="label"
-            valueField="value"
-            placeholder={t("projectCategory")}
-            value={formik.values.projectCategory}
-            onChange={(item) =>
-              formik.setFieldValue("projectCategory", item.value)
-            }
-          />
+          <View style={styles.dropdownContainer}>
+            <TouchableOpacity
+              style={styles.addIcon}
+              onPress={() => setIsModalVisible(true)}
+            >
+              <Ionicons name="add-outline" size={20} color={COLORS.white} />
+            </TouchableOpacity>
+            <Dropdown
+              style={styles.dropdown}
+              data={categories}
+              labelField="label"
+              valueField="value"
+              placeholder={t("selectCategory")}
+              value={formik.values.category}
+              onChange={formik.handleChange("category")}
+              dropdownPosition="up"
+            />
+          </View>
         </View>
         <View style={{ gap: 5 }}>
           <ReusableText
@@ -241,6 +256,11 @@ export default function ModalProject({
         {Platform.OS === "ios" && <HeightSpacer height={25} />}
       </KeyboardAvoidingView>
       {status && <NoticeMessage status={status} message={message} />}
+      <ModalAddCategory
+        isVisible={isModalVisible}
+        onClose={() => setIsModalVisible(false)}
+        onAddCategory={handleAddCategory}
+      />
     </Modal>
   );
 }
@@ -271,7 +291,14 @@ const styles = StyleSheet.create({
     borderColor: COLORS.lightGrey,
     borderWidth: 1,
   },
+  dropdownContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    alignContent: "center",
+  },
   dropdown: {
+    flex: 1,
     height: 50,
     borderColor: COLORS.lightGrey,
     borderWidth: 1,
@@ -279,5 +306,16 @@ const styles = StyleSheet.create({
     paddingHorizontal: 8,
     backgroundColor: "#FCFCFC",
     marginBottom: 10,
+  },
+  addIcon: {
+    height: 50,
+    width: 50,
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: COLORS.orange,
+    padding: 10,
+    borderRadius: 8,
+    marginRight: 10,
+    marginTop: -10,
   },
 });

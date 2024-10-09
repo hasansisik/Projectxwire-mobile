@@ -202,5 +202,8 @@
     "confirmMessage": "Diese Aktion kann nicht rückgängig gemacht werden. Sind Sie sich immer noch sicher?",
     "confirmCancel": "Abbrechen",
     "confirmConfirm": "Ich bin sicher"
-  }
+  },
+  "enterCategoryName": "Kategoriename eingeben",
+  "addCategory": "Kategorie hinzufügen",
+  "selectCategory": "Kategorie auswählen"
 }

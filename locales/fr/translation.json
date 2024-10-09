@@ -202,5 +202,8 @@
     "confirmMessage": "Cette action est irréversible, êtes-vous toujours sûr?",
     "confirmCancel": "Annuler",
     "confirmConfirm": "Je suis sûr"
-  }
+  },
+  "enterCategoryName": "Entrez le nom de la catégorie",
+  "addCategory": "Ajouter une catégorie",
+  "selectCategory": "Sélectionner une catégorie"
 }

@@ -202,5 +202,8 @@
     "confirmMessage": "Это действие необратимо, вы все еще уверены?",
     "confirmCancel": "Отмена",
     "confirmConfirm": "Уверен"
-  }
+  },
+  "enterCategoryName": "Введите название категории",
+  "addCategory": "Добавить категорию",
+  "selectCategory": "Выберите категорию"
 }
