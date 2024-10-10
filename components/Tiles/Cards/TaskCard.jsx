@@ -5,6 +5,9 @@ import general from "../../general.style";
 import ReusableText from "../../Reusable/ReusableText";
 
 const TaskCard = ({ item, navigation }) => {
+  const textColor = item.status ? COLORS.black : COLORS.lightGrey;
+  const descColor = item.status ? COLORS.description : COLORS.lightGrey;
+
   return (
     <TouchableOpacity
       onPress={() => navigation.navigate("TaskDetails", { item })}
@@ -17,13 +20,13 @@ const TaskCard = ({ item, navigation }) => {
               text={`#${item.number}`}
               family={"regular"}
               size={TEXT.small}
-              color={COLORS.description}
+              color={descColor}
             />
             <ReusableText
               text={item.taskCategory}
               family={"regular"}
               size={TEXT.small}
-              color={COLORS.description}
+              color={descColor}
             />
           </View>
           <View style={general.row("space-between")}>
@@ -40,7 +43,7 @@ const TaskCard = ({ item, navigation }) => {
                 text={item.taskCreator?.name || "Kullanıcı eklenmedi"}
                 family={"regular"}
                 size={TEXT.small}
-                color={COLORS.description}
+                color={descColor}
               />
             </View>
           </View>
@@ -50,13 +53,13 @@ const TaskCard = ({ item, navigation }) => {
             text={item.taskTitle}
             family={"bold"}
             size={TEXT.medium}
-            color={COLORS.black}
+            color={textColor}
           />
           <ReusableText
             text={item.taskDesc}
             family={"regular"}
             size={TEXT.medium}
-            color={COLORS.black}
+            color={textColor}
           />
         </View>
         <View style={general.row("space-between")}>
@@ -64,13 +67,13 @@ const TaskCard = ({ item, navigation }) => {
             text={new Date(item.createdAt).toLocaleDateString("tr-TR")}
             family={"medium"}
             size={TEXT.small}
-            color={COLORS.description}
+            color={descColor}
           />
           <ReusableText
             text={item.plan.planCode}
             family={"bold"}
             size={TEXT.small}
-            color={COLORS.lightBlack}
+            color={textColor}
           />
           <View style={styles.imagesContainer}>
             {item.persons &&
@@ -139,6 +142,6 @@ const styles = StyleSheet.create({
     height: 10,
     width: 10,
     borderRadius: 5,
-    backgroundColor: COLORS.orange, // veya istediğiniz bir renk
+    backgroundColor: COLORS.orange, 
   },
 });

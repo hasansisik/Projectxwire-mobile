@@ -32,6 +32,15 @@ const Tasks = ({ route, navigation }) => {
 
   const { tasks } = useSelector((state) => state.tasks);
 
+  const sortedTasks = tasks
+    .slice()
+    .sort((a, b) => {
+      if (a.status === b.status) {
+        return new Date(b.createdAt) - new Date(a.createdAt);
+      }
+      return a.status ? -1 : 1;
+    });
+
   return (
     <SafeAreaView
       style={[
@@ -66,7 +75,7 @@ const Tasks = ({ route, navigation }) => {
           </View>
         </View>
         <FlatList
-          data={tasks}
+          data={sortedTasks}
           vertical
           showsVerticalScrollIndicator={false}
           keyExtractor={(item, index) => index.toString()}
