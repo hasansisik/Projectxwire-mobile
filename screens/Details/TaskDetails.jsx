@@ -255,8 +255,8 @@ const TaskDetails = ({ route, navigation }) => {
               <View
                 style={[
                   styles.messageContainer,
-                  isSelected
-                    ? { backgroundColor: "red" }
+                  isSelected && isCurrentUser
+                    ? { backgroundColor: COLORS.red }
                     : { backgroundColor: "hsla(50, 0%, 82%, 0.4)" },
                 ]}
               >
@@ -264,7 +264,9 @@ const TaskDetails = ({ route, navigation }) => {
                   <Text
                     style={[
                       styles.messageText,
-                      isSelected ? { color: "white" } : { color: COLORS.black },
+                      isSelected && isCurrentUser
+                        ? { color: "white" }
+                        : { color: COLORS.black },
                     ]}
                   >
                     {item.content}
@@ -321,7 +323,7 @@ const TaskDetails = ({ route, navigation }) => {
         <View
           style={[
             styles.header,
-            selectedMessageId
+            selectedMessageId && messages.find((msg) => msg._id === selectedMessageId)?.sender._id === user._id
               ? { backgroundColor: COLORS.red }
               : { backgroundColor: COLORS.lightWhite },
           ]}
@@ -333,8 +335,8 @@ const TaskDetails = ({ route, navigation }) => {
             title={item.taskTitle || "Başlık Belirtilmedi"}
             color={COLORS.white}
             onPress={() => navigation.goBack()}
-            onDeletePress={onDeletePress}
-            showDeleteIcon={!!selectedMessageId}
+            onDeletePress={messages.find((msg) => msg._id === selectedMessageId)?.sender._id === user._id ? onDeletePress : null}
+            showDeleteIcon={!!selectedMessageId && messages.find((msg) => msg._id === selectedMessageId)?.sender._id === user._id}
             onCloseDeleteIcon={() => setSelectedMessageId(null)}
           />
         </View>
