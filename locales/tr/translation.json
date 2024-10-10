@@ -42,6 +42,8 @@
   "startDate": "Başlangıç T.",
   "endDate": "Teslim T.",
   "architecture": "Mimari",
+  "mechanical": "Mekanik",
+  "infrastructure": "Altyapı",
   "electrical": "Elektrik",
   "statics": "Statik",
   "landscape": "Peyzaj",

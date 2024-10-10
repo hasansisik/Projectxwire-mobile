@@ -7,8 +7,7 @@ import {
   Platform,
 } from "react-native";
 import Modal from "react-native-modal";
-import { AntDesign } from "@expo/vector-icons";
-import { Ionicons } from "@expo/vector-icons";
+import { AntDesign, Ionicons } from "@expo/vector-icons";
 import DateTimePicker from "@react-native-community/datetimepicker";
 import ReusableText from "../Reusable/ReusableText";
 import HeightSpacer from "../Reusable/HeightSpacer";
@@ -23,7 +22,7 @@ import { Dropdown } from "react-native-element-dropdown";
 import NoticeMessage from "../Reusable/NoticeMessage";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useTranslation } from "react-i18next";
-import ModalAddCategory from "../Home/ModalAddCategory";
+import ModalAddCategory from "../Modals/ModalAddCategory";
 
 export default function ModalProject({
   showFilters,
@@ -34,24 +33,19 @@ export default function ModalProject({
   const dispatch = useDispatch();
   const [status, setStatus] = useState(null);
   const [message, setMessage] = useState(null);
-  const [uploadFunction, setUploadFunction] = useState(null);
   const [companyId, setCompanyId] = useState("");
   const [finishDate, setFinishDate] = useState(new Date());
   const [showDatePicker, setShowDatePicker] = useState(false);
   const [isModalVisible, setIsModalVisible] = useState(false);
-  const { t } = useTranslation();
-
-  const [categories, setCategories] = useState([
-    { label: t("architecture"), value: "architecture" },
-    { label: t("statics"), value: "statics" },
-    { label: t("electrical"), value: "electrical" },
-    { label: t("landscape"), value: "landscape" },
+   const [categories, setCategories] = useState([
+    { label: "architecture", value: "architecture" },
+    { label: "statics", value: "statics" },
+    { label: "electrical", value: "electrical" },
+    { label: "landscape", value: "landscape" },
+    { label: "mechanical", value: "mechanical" },
+    { label: "infrastructure", value: "infrastructure" },
   ]);
-
-  const handleAddCategory = (categoryName) => {
-    const newCategory = { label: t(categoryName), value: categoryName };
-    setCategories([...categories, newCategory]);
-  };
+  const { t } = useTranslation();
 
   useEffect(() => {
     const fetchCompanyId = async () => {
@@ -105,21 +99,18 @@ export default function ModalProject({
   }, [showFilters]);
 
   const handleSubmit = async () => {
-    if (uploadFunction) {
-      const url = await uploadFunction();
-      if (!url) {
-        formik.handleSubmit();
-        return;
-      }
-    } else {
-      formik.handleSubmit();
-    }
+    formik.handleSubmit();
   };
 
   const formatDate = (date) => {
     if (!date) return t("deliveryDate");
     const options = { day: "2-digit", month: "2-digit", year: "numeric" };
     return date.toLocaleDateString("tr-TR", options);
+  };
+
+  const handleAddCategory = (categoryName) => {
+    const newCategory = { label: t(categoryName), value: categoryName };
+    setCategories([...categories, newCategory]);
   };
 
   return (
@@ -184,31 +175,24 @@ export default function ModalProject({
             error={formik.errors.projectCode}
           />
         </View>
-        <View style={{ gap: 5 }}>
-          <ReusableText
-            text={t("projectCategory")}
-            family={"medium"}
-            size={TEXT.small}
-            color={COLORS.black}
+        <View style={styles.dropdownContainer}>
+          <TouchableOpacity
+            style={styles.addIcon}
+            onPress={() => setIsModalVisible(true)}
+          >
+            <Ionicons name="add-outline" size={20} color={COLORS.white} />
+          </TouchableOpacity>
+          <Dropdown
+            style={styles.dropdown}
+            data={categories}
+            labelField="label"
+            valueField="value"
+            placeholder={t("projectCategory")}
+            value={formik.values.projectCategory}
+            onChange={(item) =>
+              formik.setFieldValue("projectCategory", item.value)
+            }
           />
-          <View style={styles.dropdownContainer}>
-            <TouchableOpacity
-              style={styles.addIcon}
-              onPress={() => setIsModalVisible(true)}
-            >
-              <Ionicons name="add-outline" size={20} color={COLORS.white} />
-            </TouchableOpacity>
-            <Dropdown
-              style={styles.dropdown}
-              data={categories}
-              labelField="label"
-              valueField="value"
-              placeholder={t("selectCategory")}
-              value={formik.values.category}
-              onChange={formik.handleChange("category")}
-              dropdownPosition="up"
-            />
-          </View>
         </View>
         <View style={{ gap: 5 }}>
           <ReusableText

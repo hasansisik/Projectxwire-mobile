@@ -42,6 +42,8 @@
   "startDate": "Startdatum",
   "endDate": "Enddatum",
   "architecture": "Architektur",
+  "mechanical": "Mechanisch",
+  "infrastructure": "Infrastruktur",
   "electrical": "Elektrisch",
   "statics": "Statik",
   "landscape": "Landschaft",

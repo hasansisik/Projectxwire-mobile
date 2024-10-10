@@ -35,9 +35,32 @@ const ProjectsCategory = ({ setFilter }) => {
         text: `${t("landscape")} (${projects.filter((p) => p.projectCategory === "landscape").length})`,
         filter: "landscape",
       },
+      {
+        id: 5,
+        text: `${t("mechanical")} (${projects.filter((p) => p.projectCategory === "mechanical").length})`,
+        filter: "mechanical",
+      },
+      {
+        id: 6,
+        text: `${t("infrastructure")} (${projects.filter((p) => p.projectCategory === "infrastructure").length})`,
+        filter: "infrastructure",
+      },
     ];
 
-    setCategories(predefinedCategories);
+    const additionalCategories = projects
+      .map((project) => project.projectCategory)
+      .filter(
+        (category, index, self) =>
+          !predefinedCategories.some((predefined) => predefined.filter === category) &&
+          self.indexOf(category) === index 
+      )
+      .map((category, index) => ({
+        id: predefinedCategories.length + index,
+        text: `${t(category)} (${projects.filter((p) => p.projectCategory === category).length})`,
+        filter: category,
+      }));
+
+    setCategories([...predefinedCategories, ...additionalCategories]);
   }, [projects, t]);
 
   const handleCategoryPress = (categoryId, filter) => {

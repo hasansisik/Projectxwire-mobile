@@ -18,7 +18,13 @@ const ModalAddCategory = ({ isVisible, onClose, onAddCategory }) => {
   };
 
   return (
-    <Modal isVisible={isVisible} onBackdropPress={onClose}>
+    <Modal
+      isVisible={isVisible}
+      onBackdropPress={onClose}
+      coverScreen={true}
+      backdropOpacity={0.7}
+      style={styles.modal}
+    >
       <View style={styles.modalView}>
         <TextInput
           style={styles.input}
@@ -43,11 +49,17 @@ const ModalAddCategory = ({ isVisible, onClose, onAddCategory }) => {
 };
 
 const styles = StyleSheet.create({
+  modal: {
+    margin: 0,
+    justifyContent: "center",
+    alignItems: "center",
+  },
   modalView: {
     backgroundColor: "white",
     borderRadius: 10,
     padding: 20,
     alignItems: "center",
+    width: "90%",
   },
   input: {
     width: "100%",

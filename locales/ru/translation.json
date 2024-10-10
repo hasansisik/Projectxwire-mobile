@@ -42,6 +42,8 @@
   "startDate": "Дата начала",
   "endDate": "Дата окончания",
   "architecture": "Архитектура",
+  "mechanical": "Механический",
+  "infrastructure": "Инфраструктура",
   "electrical": "Электрика",
   "statics": "Статика",
   "landscape": "Ландшафт",
