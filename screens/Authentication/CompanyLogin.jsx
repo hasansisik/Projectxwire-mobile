@@ -9,8 +9,9 @@ import {
   KeyboardAvoidingView,
   Keyboard,
   Text,
+  Animated,
 } from "react-native";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import styles from "./auth.style";
 import general from "../../components/general.style";
 import { COLORS, SIZES, TEXT } from "../../constants/theme";
@@ -32,6 +33,8 @@ const CompanyLogin = ({ navigation }) => {
   const [message, setMessage] = useState(null);
   const [isKeyboardVisible, setKeyboardVisible] = useState(false);
   const { t } = useTranslation();
+  const inputAnimation = useRef(new Animated.Value(0)).current;
+  const textAnimation = useRef(new Animated.Value(1)).current;
 
   const formik = useFormik({
     initialValues: { CompanyCode: "", password: "" },
@@ -50,28 +53,37 @@ const CompanyLogin = ({ navigation }) => {
     },
   });
 
-  const handleForgotInfoPress = () => {
-    Linking.openURL(
-      "mailto:destek@Projectxwire.com?subject=Bilgilerimi Unuttum&body=Merhaba, bilgilerimi unuttum, yardımcı olabilir misiniz?"
-    );
-  };
-  const handleApplyPress = () => {
-    Linking.openURL(
-      "mailto:basvur@Projectxwire.com?subject=Başvuru&body=Merhaba, şirket kodu başvurusunda bulunmak istiyorum."
-    );
-  };
-
   useEffect(() => {
     const keyboardDidShowListener = Keyboard.addListener(
       "keyboardDidShow",
       () => {
         setKeyboardVisible(true);
+        Animated.timing(inputAnimation, {
+          toValue: 50,
+          duration: 500,
+          useNativeDriver: true,
+        }).start();
+        Animated.timing(textAnimation, {
+          toValue: 0,
+          duration: 500,
+          useNativeDriver: true,
+        }).start();
       }
     );
     const keyboardDidHideListener = Keyboard.addListener(
       "keyboardDidHide",
       () => {
         setKeyboardVisible(false);
+        Animated.timing(inputAnimation, {
+          toValue: 0,
+          duration: 500,
+          useNativeDriver: true,
+        }).start();
+        Animated.timing(textAnimation, {
+          toValue: 1,
+          duration: 500,
+          useNativeDriver: true,
+        }).start();
       }
     );
 
@@ -79,7 +91,7 @@ const CompanyLogin = ({ navigation }) => {
       keyboardDidHideListener.remove();
       keyboardDidShowListener.remove();
     };
-  }, []);
+  }, [inputAnimation, textAnimation]);
 
   return (
     <KeyboardAvoidingView
@@ -105,92 +117,78 @@ const CompanyLogin = ({ navigation }) => {
             }}
             resizeMode="contain"
           />
-          {!isKeyboardVisible && (
-            <View style={{ padding: 20 }}>
-              <ReusableText
-                text={t("welcomeMessage")}
-                family={"bold"}
-                size={TEXT.xLarge}
-                color={COLORS.orange}
-              />
-              <ReusableText
-                text={t("companyInfo")}
-                family={"regular"}
-                size={TEXT.small}
-                color={COLORS.description}
-              />
-            </View>
-          )}
+          <Animated.View
+            style={{
+              padding: 20,
+              opacity: textAnimation,
+              transform: [
+                {
+                  translateY: textAnimation.interpolate({
+                    inputRange: [0, 1],
+                    outputRange: [-50, 0],
+                  }),
+                },
+              ],
+            }}
+          >
+            <ReusableText
+              text={t("welcomeMessage")}
+              family={"bold"}
+              size={TEXT.xLarge}
+              color={COLORS.orange}
+            />
+            <ReusableText
+              text={t("companyInfo")}
+              family={"regular"}
+              size={TEXT.small}
+              color={COLORS.description}
+            />
+          </Animated.View>
         </View>
-        <View style={styles.context}>
+        <Animated.View
+          style={[
+            styles.context,
+            {
+              transform: [
+                {
+                  translateY: inputAnimation,
+                },
+              ],
+            },
+          ]}
+        >
           <View>
-            <ReusableInput
-              label={t("companyCode")}
-              theme={{ colors: { primary: "black" } }}
-              value={formik.values.CompanyCode}
-              onChangeText={formik.handleChange("CompanyCode")}
-              touched={formik.touched.CompanyCode}
-              error={formik.errors.CompanyCode}
-              allowSpaces={false}
-            />
-            <ReusableInput
-              label={t("password")}
-              secureTextEntry={true}
-              theme={{ colors: { primary: "black" } }}
-              value={formik.values.password}
-              onChangeText={formik.handleChange("password")}
-              touched={formik.touched.password}
-              error={formik.errors.password}
-            />
-            <ReusableButton
-              btnText={t("loginButton")}
-              width={SIZES.width - 40}
-              height={50}
-              borderRadius={SIZES.small}
-              backgroundColor={COLORS.orange}
-              textColor={COLORS.white}
-              textFontSize={TEXT.small}
-              textFontFamily={"medium"}
-              onPress={formik.handleSubmit}
-            />
+          <ReusableInput
+            label={t("companyCode")}
+            theme={{ colors: { primary: "black" } }}
+            value={formik.values.CompanyCode}
+            onChangeText={formik.handleChange("CompanyCode")}
+            touched={formik.touched.CompanyCode}
+            error={formik.errors.CompanyCode}
+            allowSpaces={false}
+          />
+          <ReusableInput
+            label={t("password")}
+            secureTextEntry={true}
+            theme={{ colors: { primary: "black" } }}
+            value={formik.values.password}
+            onChangeText={formik.handleChange("password")}
+            touched={formik.touched.password}
+            error={formik.errors.password}
+          />
+          <ReusableButton
+            btnText={t("loginButton")}
+            width={SIZES.width - 40}
+            height={50}
+            borderRadius={SIZES.small}
+            backgroundColor={COLORS.orange}
+            textColor={COLORS.white}
+            textFontSize={TEXT.small}
+            textFontFamily={"medium"}
+            onPress={formik.handleSubmit}
+          />
           </View>
-          <HeightSpacer height={50} />
-          <View style={styles.footer}>
-            <TouchableOpacity onPress={handleForgotInfoPress}>
-              <Text
-                style={{
-                  fontFamily: "bold",
-                  fontSize: TEXT.xxSmall,
-                  color: COLORS.orange,
-                }}
-              >
-                {t("forgotInfo")}
-              </Text>
-            </TouchableOpacity>
-            <Text
-              style={{
-                fontFamily: "regular",
-                fontSize: TEXT.xxSmall,
-                color: COLORS.description,
-                textDecorationLine: "underline",
-              }}
-            >
-              {t("noCompanyCode")}
-            </Text>
-            <TouchableOpacity onPress={handleApplyPress}>
-              <Text
-                style={{
-                  fontFamily: "bold",
-                  fontSize: TEXT.xxSmall,
-                  color: COLORS.orange,
-                  textDecorationLine: "underline",
-                }}
-              >
-                {t("applyNow")}
-              </Text>
-            </TouchableOpacity>
-          </View>
-        </View>
+        </Animated.View>
         {status && <NoticeMessage status={status} message={message} />}
       </SafeAreaView>
     </KeyboardAvoidingView>

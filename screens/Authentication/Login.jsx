@@ -7,8 +7,9 @@ import {
   Image,
   KeyboardAvoidingView,
   Keyboard,
+  Animated,
 } from "react-native";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import styles from "./auth.style";
 import general from "../../components/general.style";
 import { COLORS, SIZES, TEXT } from "../../constants/theme";
@@ -34,6 +35,8 @@ const Login = ({ navigation }) => {
   const [companyId, setCompanyId] = useState("");
   const [isKeyboardVisible, setKeyboardVisible] = useState(false);
   const { t } = useTranslation();
+  const inputAnimation = useRef(new Animated.Value(0)).current;
+  const textAnimation = useRef(new Animated.Value(1)).current;
 
   useEffect(() => {
     const fetchCompanyId = async () => {
@@ -46,12 +49,32 @@ const Login = ({ navigation }) => {
       "keyboardDidShow",
       () => {
         setKeyboardVisible(true);
+        Animated.timing(inputAnimation, {
+          toValue: 50,
+          duration: 500,
+          useNativeDriver: true,
+        }).start();
+        Animated.timing(textAnimation, {
+          toValue: 0,
+          duration: 500,
+          useNativeDriver: true,
+        }).start();
       }
     );
     const keyboardDidHideListener = Keyboard.addListener(
       "keyboardDidHide",
       () => {
         setKeyboardVisible(false);
+        Animated.timing(inputAnimation, {
+          toValue: 0,
+          duration: 500,
+          useNativeDriver: true,
+        }).start();
+        Animated.timing(textAnimation, {
+          toValue: 1,
+          duration: 500,
+          useNativeDriver: true,
+        }).start();
       }
     );
 
@@ -59,7 +82,7 @@ const Login = ({ navigation }) => {
       keyboardDidHideListener.remove();
       keyboardDidShowListener.remove();
     };
-  }, []);
+  }, [inputAnimation, textAnimation]);
 
   const formik = useFormik({
     initialValues: { email: "", password: "" },
@@ -138,27 +161,53 @@ const Login = ({ navigation }) => {
             />
           </TouchableOpacity>
           <HeightSpacer height={75} />
-          {!isKeyboardVisible && (
-            <View style={{ padding: 20 }}>
-              {/* Header */}
-              <ReusableText
-                text={t("welcomeBack")}
-                family={"bold"}
-                size={TEXT.xLarge}
-                color={COLORS.orange}
-              />
-              {/* Description */}
-              <ReusableText
-                text={t("loginPrompt")}
-                family={"regular"}
-                size={TEXT.small}
-                color={COLORS.description}
-              />
-            </View>
-          )}
+          <Animated.View
+            style={{
+              padding: 20,
+              opacity: textAnimation,
+              transform: [
+                {
+                  translateY: textAnimation.interpolate({
+                    inputRange: [0, 1],
+                    outputRange: [-50, 0],
+                  }),
+                },
+              ],
+            }}
+          >
+            {!isKeyboardVisible && (
+              <View>
+                {/* Header */}
+                <ReusableText
+                  text={t("welcomeBack")}
+                  family={"bold"}
+                  size={TEXT.xLarge}
+                  color={COLORS.orange}
+                />
+                {/* Description */}
+                <ReusableText
+                  text={t("loginPrompt")}
+                  family={"regular"}
+                  size={TEXT.small}
+                  color={COLORS.description}
+                />
+              </View>
+            )}
+          </Animated.View>
         </View>
         {/* Footer */}
-        <View style={styles.context}>
+        <Animated.View
+          style={[
+            styles.context,
+            {
+              transform: [
+                {
+                  translateY: inputAnimation,
+                },
+              ],
+            },
+          ]}
+        >
           <View>
             {/*Mail Input*/}
             <ReusableInput
@@ -195,35 +244,37 @@ const Login = ({ navigation }) => {
           </View>
           <HeightSpacer height={50} />
           {/* Footer */}
-          <View style={styles.footer}>
-            <TouchableOpacity
-              onPress={() => navigation.navigate("ForgotPassword")}
-            >
+          {!isKeyboardVisible && (
+            <View style={styles.footer}>
+              <TouchableOpacity
+                onPress={() => navigation.navigate("ForgotPassword")}
+              >
+                <ReusableText
+                  text={t("forgotPassword")}
+                  family={"bold"}
+                  size={TEXT.xxSmall}
+                  color={COLORS.orange}
+                  underline={true}
+                />
+              </TouchableOpacity>
               <ReusableText
-                text={t("forgotPassword")}
-                family={"bold"}
+                text={t("noAccount")}
+                family={"regular"}
                 size={TEXT.xxSmall}
-                color={COLORS.orange}
-                underline={true}
+                color={COLORS.description}
               />
-            </TouchableOpacity>
-            <ReusableText
-              text={t("noAccount")}
-              family={"regular"}
-              size={TEXT.xxSmall}
-              color={COLORS.description}
-            />
-            <TouchableOpacity onPress={() => navigation.navigate("Register")}>
-              <ReusableText
-                text={t("registerButton")}
-                family={"bold"}
-                size={TEXT.xxSmall}
-                color={COLORS.orange}
-                underline={true}
-              />
-            </TouchableOpacity>
-          </View>
-        </View>
+              <TouchableOpacity onPress={() => navigation.navigate("Register")}>
+                <ReusableText
+                  text={t("registerButton")}
+                  family={"bold"}
+                  size={TEXT.xxSmall}
+                  color={COLORS.orange}
+                  underline={true}
+                />
+              </TouchableOpacity>
+            </View>
+          )}
+        </Animated.View>
         {status && <NoticeMessage status={status} message={message} />}
       </SafeAreaView>
     </KeyboardAvoidingView>

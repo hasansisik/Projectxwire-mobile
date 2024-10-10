@@ -7,8 +7,9 @@ import {
   Image,
   KeyboardAvoidingView,
   Keyboard,
+  Animated,
 } from "react-native";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import styles from "./auth.style";
 import general from "../../components/general.style";
 import { COLORS, SIZES, TEXT } from "../../constants/theme";
@@ -34,6 +35,8 @@ const Register = ({ navigation }) => {
   const [companyId, setCompanyId] = useState("");
   const [isKeyboardVisible, setKeyboardVisible] = useState(false);
   const { t } = useTranslation();
+  const inputAnimation = useRef(new Animated.Value(0)).current;
+  const textAnimation = useRef(new Animated.Value(1)).current;
 
   useEffect(() => {
     const fetchCompanyId = async () => {
@@ -47,12 +50,32 @@ const Register = ({ navigation }) => {
       "keyboardDidShow",
       () => {
         setKeyboardVisible(true);
+        Animated.timing(inputAnimation, {
+          toValue: 50,
+          duration: 500,
+          useNativeDriver: true,
+        }).start();
+        Animated.timing(textAnimation, {
+          toValue: 0,
+          duration: 500,
+          useNativeDriver: true,
+        }).start();
       }
     );
     const keyboardDidHideListener = Keyboard.addListener(
       "keyboardDidHide",
       () => {
         setKeyboardVisible(false);
+        Animated.timing(inputAnimation, {
+          toValue: 0,
+          duration: 500,
+          useNativeDriver: true,
+        }).start();
+        Animated.timing(textAnimation, {
+          toValue: 1,
+          duration: 500,
+          useNativeDriver: true,
+        }).start();
       }
     );
 
@@ -60,7 +83,7 @@ const Register = ({ navigation }) => {
       keyboardDidHideListener.remove();
       keyboardDidShowListener.remove();
     };
-  }, []);
+  }, [inputAnimation, textAnimation]);
 
   const formik = useFormik({
     initialValues: {
@@ -95,12 +118,13 @@ const Register = ({ navigation }) => {
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === "ios" ? "padding" : "height"}
+      keyboardVerticalOffset={Platform.OS === "ios" ? 0 : 0}
       style={{ flex: 1 }}
     >
       <SafeAreaView
         style={[
           general.container,
-          { paddingTop: Platform.OS === "ios" ? 20 : StatusBar.currentHeight },
+          { paddingTop: Platform.OS === "ios" ? 20 : StatusBar.currentHeight, flex: 1 },
         ]}
       >
         {/* Content */}
@@ -125,27 +149,66 @@ const Register = ({ navigation }) => {
             onPress={() => navigation.goBack()}
           />
           <HeightSpacer height={50} />
-          {!isKeyboardVisible && (
-            <View style={{ padding: 20 }}>
-              {/* Header */}
-              <ReusableText
-                text={t("joinUs")}
-                family={"bold"}
-                size={TEXT.xLarge}
-                color={COLORS.orange}
-              />
-              {/* Description */}
-              <ReusableText
-                text={t("registerPrompt")}
-                family={"regular"}
-                size={TEXT.small}
-                color={COLORS.description}
-              />
-            </View>
-          )}
+          <Animated.View
+            style={{
+              padding: 20,
+              opacity: textAnimation,
+              transform: [
+                {
+                  translateY: textAnimation.interpolate({
+                    inputRange: [0, 1],
+                    outputRange: [-50, 0],
+                  }),
+                },
+              ],
+            }}
+          >
+            <Animated.View
+              style={{
+                transform: [
+                  {
+                    translateY: inputAnimation.interpolate({
+                      inputRange: [0, 50],
+                      outputRange: [0, -50],
+                    }),
+                  },
+                ],
+              }}
+            >
+              {!isKeyboardVisible && (
+                <View>
+                  {/* Header */}
+                  <ReusableText
+                    text={t("joinUs")}
+                    family={"bold"}
+                    size={TEXT.xLarge}
+                    color={COLORS.orange}
+                  />
+                  {/* Description */}
+                  <ReusableText
+                    text={t("registerPrompt")}
+                    family={"regular"}
+                    size={TEXT.small}
+                    color={COLORS.description}
+                  />
+                </View>
+              )}
+            </Animated.View>
+          </Animated.View>
         </View>
         {/* Footer */}
-        <View style={styles.context}>
+        <Animated.View
+          style={[
+            styles.context,
+            {
+              transform: [
+                {
+                  translateY: inputAnimation,
+                },
+              ],
+            },
+          ]}
+        >
           {/* Inputs */}
           <View>
             {/* Username Input */}
@@ -198,27 +261,29 @@ const Register = ({ navigation }) => {
               onPress={formik.handleSubmit}
             />
           </View>
-          <HeightSpacer height={50} />
+          <HeightSpacer height={10} /> 
           {/* Footer */}
-          <View style={styles.footer}>
-            <ReusableText
-              text={t("alreadyHaveAccount")}
-              family={"regular"}
-              size={TEXT.xSmall}
-              color={COLORS.description}
-              underline={true}
-            />
-            <TouchableOpacity onPress={() => navigation.navigate("Login")}>
+          {!isKeyboardVisible && (
+            <View style={styles.footer}>
               <ReusableText
-                text={t("loginButton")}
-                family={"bold"}
+                text={t("alreadyHaveAccount")}
+                family={"regular"}
                 size={TEXT.xSmall}
-                color={COLORS.orange}
+                color={COLORS.description}
                 underline={true}
               />
-            </TouchableOpacity>
-          </View>
-        </View>
+              <TouchableOpacity onPress={() => navigation.navigate("Login")}>
+                <ReusableText
+                  text={t("loginButton")}
+                  family={"bold"}
+                  size={TEXT.xSmall}
+                  color={COLORS.orange}
+                  underline={true}
+                />
+              </TouchableOpacity>
+            </View>
+          )}
+        </Animated.View>
         {status && <NoticeMessage status={status} message={message} />}
       </SafeAreaView>
     </KeyboardAvoidingView>

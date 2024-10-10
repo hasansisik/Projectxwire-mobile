@@ -62,7 +62,7 @@ const Auth = ({ navigation }) => {
         <ReusableButton
           btnText={t("loginButton")}
           width={SIZES.width - 40}
-          height={40}
+          height={50}
           borderRadius={SIZES.small}
           backgroundColor={COLORS.orange}
           textColor={COLORS.white}
@@ -74,7 +74,7 @@ const Auth = ({ navigation }) => {
         <ReusableButton
           btnText={t("registerButton")}
           width={SIZES.width - 40}
-          height={45}
+          height={50}
           borderRadius={SIZES.small}
           textColor={COLORS.black}
           textFontSize={TEXT.small}
