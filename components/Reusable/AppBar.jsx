@@ -1,7 +1,7 @@
 import { StyleSheet, View, TouchableOpacity, Text } from "react-native";
 import React from "react";
 import reusable from "./reusable.style";
-import { AntDesign, MaterialIcons } from "@expo/vector-icons";
+import { AntDesign, MaterialIcons, Ionicons } from "@expo/vector-icons";
 import ReusableText from "./ReusableText";
 import { COLORS, TEXT } from "../../constants/theme";
 
@@ -28,6 +28,9 @@ const AppBar = ({
   onCloseDeleteIcon,
   onSearchPress,
   showSearchIcon,
+  showLockIcon,
+  onLockPress,
+  taskStatus, // Yeni prop
 }) => {
   return (
     <View style={styles.overlay(top, left, right, showDeleteIcon)}>
@@ -45,9 +48,9 @@ const AppBar = ({
 
         {!showDeleteIcon && (
           <ReusableText
-            text={truncateText(title, 30)}
+            text={truncateText(title, 25)}
             family={"medium"}
-            size={TEXT.large}
+            size={TEXT.medium}
             color={showDeleteIcon ? COLORS.white : COLORS.black}
           />
         )}
@@ -68,6 +71,15 @@ const AppBar = ({
               <AntDesign name="search1" size={24} color={COLORS.black} />
             </TouchableOpacity>
           )}
+          {showLockIcon && (
+            <TouchableOpacity style={styles.lockIcon} onPress={onLockPress}>
+              <Ionicons
+                name={taskStatus ? "lock-closed" : "lock-open"} 
+                size={24}
+                color="black"
+              />
+            </TouchableOpacity>
+          )}
         </View>
       </View>
     </View>
@@ -84,7 +96,7 @@ const styles = StyleSheet.create({
     right: right,
     justifyContent: "center",
     backgroundColor: showDeleteIcon ? COLORS.red : "transparent",
-    zIndex: 10, 
+    zIndex: 10,
   }),
   box: (color) => ({
     backgroundColor: color,
@@ -110,6 +122,9 @@ const styles = StyleSheet.create({
     marginLeft: 10,
   },
   searchIcon: {
+    marginLeft: 10,
+  },
+  lockIcon: {
     marginLeft: 10,
   },
 });

@@ -60,13 +60,14 @@ export const getTask = createAsyncThunk(
 
 export const updateTask = createAsyncThunk(
   "task/update",
-  async ({ taskId, taskCategory, taskTitle, persons, plans }, thunkAPI) => {
+  async ({ taskId, taskCategory, taskTitle, persons, plans,status }, thunkAPI) => {
     try {
-      const { data } = await axios.put(`${server}/task/${taskId}`, {
+      const { data } = await axios.put(`${server}/task/single/${taskId}`, {
         taskCategory,
         taskTitle,
         persons,
         plans,
+        status
       });
       return data.data;
     } catch (error) {

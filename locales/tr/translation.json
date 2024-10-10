@@ -206,6 +206,8 @@
     "confirmConfirm": "Eminim"
   },
   "enterCategoryName": "Kategori Adı Girin",
-  "addCategory": "Kategori Ekle",  
-  "selectCategory": "Kategori Seç"
+  "addCategory": "Kategori Ekle",
+  "selectCategory": "Kategori Seç",
+  "lockUnlockTask": "Görev Aç/Kilitle",
+  "confirmCompleteOrActivateTask": "Görevi tamamlamak veya tekrar aktif etmek istediğinize emin misiniz?"
 }

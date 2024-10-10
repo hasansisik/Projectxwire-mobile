@@ -207,5 +207,7 @@
   },
   "enterCategoryName": "Введите название категории",
   "addCategory": "Добавить категорию",
-  "selectCategory": "Выберите категорию"
+  "selectCategory": "Выберите категорию",
+  "lockUnlockTask": "Заблокировать/Разблокировать Задачу",
+  "confirmCompleteOrActivateTask": "Вы уверены, что хотите завершить или повторно активировать задачу?"
 }

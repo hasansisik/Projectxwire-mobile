@@ -207,5 +207,7 @@
   },
   "enterCategoryName": "Kategoriename eingeben",
   "addCategory": "Kategorie hinzufügen",
-  "selectCategory": "Kategorie auswählen"
+  "selectCategory": "Kategorie auswählen",
+  "lockUnlockTask": "Aufgabe Sperren/Entsperren",
+  "confirmCompleteOrActivateTask": "Sind Sie sicher, dass Sie die Aufgabe abschließen oder reaktivieren möchten?"
 }

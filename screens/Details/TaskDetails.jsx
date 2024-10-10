@@ -23,6 +23,7 @@ import {
   getTaskMessages,
   getTask,
   deleteSingleMessage,
+  updateTask,
 } from "../../redux/actions/taskActions.js";
 import { storage } from "../../config";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
@@ -86,6 +87,31 @@ const TaskDetails = ({ route, navigation }) => {
     } catch (error) {
       console.error("Failed to delete message:", error);
     }
+  };
+
+  const handleLockPress = () => {
+    Alert.alert(
+      "Görev Aç/Kilitle",
+      "Görevi tamamlamak veya tekrar aktif etmek istediğinize emin misiniz?",
+      [
+        {
+          text: "Vazgeç",
+          style: "cancel",
+        },
+        {
+          text: "Değiştir",
+          onPress: async () => {
+            try {
+              await dispatch(updateTask({ taskId, status: !item.status }));
+              await dispatch(getTask(taskId));
+            } catch (error) {
+              console.error("Failed to lock/unlock task:", error);
+            }
+          },
+        },
+      ],
+      { cancelable: true }
+    );
   };
 
   useFocusEffect(
@@ -338,6 +364,9 @@ const TaskDetails = ({ route, navigation }) => {
             onDeletePress={messages.find((msg) => msg._id === selectedMessageId)?.sender._id === user._id ? onDeletePress : null}
             showDeleteIcon={!!selectedMessageId && messages.find((msg) => msg._id === selectedMessageId)?.sender._id === user._id}
             onCloseDeleteIcon={() => setSelectedMessageId(null)}
+            showLockIcon={true}
+            taskStatus={item.status}
+            onLockPress={handleLockPress}
           />
         </View>
         <TouchableOpacity

@@ -207,5 +207,7 @@
   },
   "enterCategoryName": "Enter Category Name",
   "addCategory": "Add Category",
-  "selectCategory": "Select Category"
+  "selectCategory": "Select Category",
+  "lockUnlockTask": "Lock/Unlock Task",
+  "confirmCompleteOrActivateTask": "Are you sure you want to complete or reactivate the task?"
 }
